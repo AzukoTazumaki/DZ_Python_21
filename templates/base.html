@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python — Сортировка</title>
+    <link rel="stylesheet"
+        href="{{url_for('static', filename='node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+</head>
+
+<body>
+
+    {% block preloader %}
+    {% include 'preloader.html' %}
+    {% endblock %}
+
+    {% block header %}
+    {% include 'header.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+
+    <script src="{{url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='node_modules/jquery/dist/jquery.min.js')}}"></script>
+    <script
+        src="{{url_for('static', filename='node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="https://kit.fontawesome.com/fb866d52e1.js" crossorigin="anonymous"></script>
+    <script>
+
+        
+
+        /* $(".table-scroll-body").mCustomScrollbar({
+            theme: "rounded",
+            scrollbarPosition: "outside",
+            autoHideScrollbar: true,
+            scrollInertia: 1000,
+            mouseWheel: {
+                deltaFactor: 3,
+                normalizeDelta: false,
+                scrollAmount: 5
+            },
+            scrollButtons: {
+                enable: true
+            }
+        }); */
+
+    </script>
+</body>
+
+</html>

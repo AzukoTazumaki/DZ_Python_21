@@ -1,0 +1,14 @@
+{% block header %}
+<header>
+    <nav class="navbar navbar-expand fixed-top">
+        <div class="container nav_container">
+            <a href="/" class="navbar-brand">
+                <img src="{{url_for('static', filename='images/logo.svg')}}" width="150" alt="AZUKO">
+            </a>
+            <a id="github_link" href="https://github.com/AzukoTazumaki">
+                <i class="fa-brands fa-github fa-xl"></i>&#32;Github
+            </a>
+        </div>
+    </nav>
+</header>
+{% endblock %}

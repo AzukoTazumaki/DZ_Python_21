@@ -1,0 +1,290 @@
+@import url(colors.css);
+@import url(preloader.css);
+
+/* ————————————————————————————————————————————————— DEFAULT SETTINGS ————————————————————————————————————————————————— */
+
+@font-face {
+    font-family: 'Exo 2';
+    src: url(../fonts/Exo2-VariableFont_wght.ttf);
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--black);
+    background-image: url(../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--vanilla);
+    font-family: 'Exo 2';
+}
+
+/* ————————————————————————————————————————————————— BLOCK HEADER ————————————————————————————————————————————————— */
+
+nav {
+    background-color: #203730;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+#github_link {
+    text-decoration: none;
+    color: var(--palegoldenrod);
+    margin-right: 20px;
+    transition: .3s;
+}
+
+#github_link:hover {
+    transform: scale(1.1);
+    text-shadow: var(--palegoldenrod-shadow);
+}
+
+.navbar_container {
+    border-radius: 10px;
+    transition: .3s;
+    animation: navbar_container 2s;
+}
+
+@keyframes navbar_container {
+
+    0%,
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
+
+
+.text_welcome,
+.text_welcome_description {
+    white-space: pre-wrap;
+    color: var(--palegoldenrod);
+    text-shadow: var(--palegoldenrod-shadow);
+    transition: 0.3s;
+    overflow: hidden;
+
+}
+
+.span_text_welcome {
+    position: relative;
+    transition: .3s;
+    display: inline-block;
+    animation: title 3s;
+}
+
+.span_text_welcome_description {
+    position: relative;
+    transition: .3s;
+    display: inline-block;
+    animation: span 3s;
+}
+
+@keyframes title {
+
+    0%,
+    30% {
+        transform: translateY(150%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes span {
+
+    0%,
+    30% {
+        transform: translateY(-150%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* ————————————————————————————————————————————————— PRELOADER ————————————————————————————————————————————————— */
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--dark);
+    z-index: 1001;
+}
+
+.preloader__row {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: -75px;
+    margin-left: -75px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+}
+
+.preloader__item {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    background-color: var(--coral);
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    animation: preloader-bounce 2s infinite ease-in-out;
+}
+
+.preloader__item:last-child {
+    top: auto;
+    bottom: 0;
+    animation-delay: -1s;
+}
+
+@keyframes preloader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes preloader-bounce {
+
+    0%,
+    100% {
+        transform: scale(.5);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+.loaded_hiding .preloader {
+    transition: 2s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+/* ————————————————————————————————————————————————— BLOCK EXERCISE ————————————————————————————————————————————————— */
+
+.exercises_content,
+.exercises_answer {
+    background-color: var(--dark-purple);
+    transition: .3s;
+    animation: exercises_content 2s;
+}
+
+@keyframes exercises_content {
+    0% {
+        transform: translateX(400%);
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+.exercises_content:hover {
+    transform: scale(1.02);
+    box-shadow: var(--box-shadow-coral);
+    text-shadow: var(--text-shadow-coral);
+}
+
+.exercises_post_scriptum {
+    background-color: var(--dark-purple);
+    transition: .3s;
+    animation: exercises_post_scriptum 3s;
+}
+
+.exercises_post_scriptum:hover {
+    box-shadow: var(--box-shadow-coral);
+    text-shadow: var(--text-shadow-coral);
+}
+
+@keyframes exercises_post_scriptum {
+
+    0%,
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.submit,
+.button_to_main_page {
+    border-radius: 5px;
+    background-color: var(--coral);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    transition: .3s;
+}
+
+.submit:hover,
+.button_to_main_page:hover {
+    background-color: var(--coral-darker);
+}
+
+.exercises_answer_title {
+    color: var(--purple);
+    text-shadow: 1px 1px 3px var(--purple);
+}
+
+/* —————————————————————————————————————————————————— ERRORS —————————————————————————————————————————————————— */
+
+.page_not_found_content {
+    text-shadow: var(--text-shadow-dark);
+    color: var(--white);
+}
+
+.page_not_found_content button {
+    border-radius: 5px;
+    background-color: var(--dark);
+    color: var(--white);
+    border: none;
+    padding: 5px 20px;
+    transition: .3s;
+}
+
+.page_not_found_content button:hover {
+    background-color: var(--dark-darker);
+}
+
+.page_not_found_content {
+    backdrop-filter: grayscale(1) brightness(.6);
+    animation: page_not_found_page 2s;
+}
+
+@keyframes page_not_found_page {
+    from {
+        opacity: 0;
+        backdrop-filter: none;
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: grayscale(1) brightness(.6);
+    }
+}
