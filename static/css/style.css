@@ -27,7 +27,7 @@ body {
 
 /* ————————————————————————————————————————————————— BLOCK HEADER ————————————————————————————————————————————————— */
 
-nav {
+.nav_container {
     background-color: #203730;
     padding: 10px;
     border-radius: 8px;
@@ -115,176 +115,75 @@ nav {
     }
 }
 
-
-/* ————————————————————————————————————————————————— PRELOADER ————————————————————————————————————————————————— */
-
-.preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--dark);
-    z-index: 1001;
-}
-
-.preloader__row {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    width: 150px;
-    height: 150px;
-    margin-top: -75px;
-    margin-left: -75px;
-    text-align: center;
-    animation: preloader-rotate 2s infinite linear;
-}
-
-.preloader__item {
-    position: absolute;
-    display: inline-block;
-    top: 0;
-    background-color: var(--coral);
-    border-radius: 100%;
-    width: 35px;
-    height: 35px;
-    animation: preloader-bounce 2s infinite ease-in-out;
-}
-
-.preloader__item:last-child {
-    top: auto;
-    bottom: 0;
-    animation-delay: -1s;
-}
-
-@keyframes preloader-rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes preloader-bounce {
-
-    0%,
-    100% {
-        transform: scale(.5);
-    }
-
-    50% {
-        transform: scale(1);
-    }
-}
-
-.loaded_hiding .preloader {
-    transition: 2s opacity;
-    opacity: 0;
-}
-
-.loaded .preloader {
-    display: none;
-}
-
 /* ————————————————————————————————————————————————— BLOCK EXERCISE ————————————————————————————————————————————————— */
 
-.exercises_content,
-.exercises_answer {
-    background-color: var(--dark-purple);
+.block_exercise_1, 
+.block_exercise_2,
+.block_exercise_3,
+.block_exercise_4 {
+    color: var(--marsh);
+    background-color: var(--palegoldenrod);
+    padding: 20px;
+    border-radius: 10px;
     transition: .3s;
-    animation: exercises_content 2s;
 }
 
-@keyframes exercises_content {
-    0% {
-        transform: translateX(400%);
-    }
-
-    100% {
-        transform: translateX(0)
-    }
+.block_exercise_1:hover, 
+.block_exercise_2:hover,
+.block_exercise_3:hover,
+.block_exercise_4:hover {
+    box-shadow: 2px 2px 10px var(--palegoldenrod);
 }
 
-.exercises_content:hover {
-    transform: scale(1.02);
-    box-shadow: var(--box-shadow-coral);
-    text-shadow: var(--text-shadow-coral);
-}
-
-.exercises_post_scriptum {
-    background-color: var(--dark-purple);
-    transition: .3s;
-    animation: exercises_post_scriptum 3s;
-}
-
-.exercises_post_scriptum:hover {
-    box-shadow: var(--box-shadow-coral);
-    text-shadow: var(--text-shadow-coral);
-}
-
-@keyframes exercises_post_scriptum {
-
-    0%,
-    70% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.submit,
-.button_to_main_page {
-    border-radius: 5px;
-    background-color: var(--coral);
-    color: var(--white);
+input {
     border: none;
-    padding: 10px 20px;
+    border-bottom: 1px solid var(--marsh);
+    border-bottom-left-radius: 8px;
+    background-color: transparent;
+    outline: none;
+    color: var(--marsh);
+    padding-left: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.block_exercise_1 span, 
+.block_exercise_2 span,
+.block_exercise_3 span,
+.block_exercise_4 span {
+    border: 1px solid var(--marsh);
+    background-color: transparent;
+    color: var(--marsh);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: none;
+    border-bottom-right-radius: 8px;
+    padding: 5px 15px;
+    white-space: nowrap;
     transition: .3s;
 }
 
-.submit:hover,
-.button_to_main_page:hover {
-    background-color: var(--coral-darker);
+input:focus + span {
+    background-color: var(--marsh);
+    color: var(--palegoldenrod);
 }
 
-.exercises_answer_title {
-    color: var(--purple);
-    text-shadow: 1px 1px 3px var(--purple);
+::placeholder {
+    font-size: 16px;
+    color: #203730b1;
 }
 
-/* —————————————————————————————————————————————————— ERRORS —————————————————————————————————————————————————— */
-
-.page_not_found_content {
-    text-shadow: var(--text-shadow-dark);
-    color: var(--white);
-}
-
-.page_not_found_content button {
-    border-radius: 5px;
-    background-color: var(--dark);
-    color: var(--white);
+.submit {
+    color: var(--palegoldenrod);
     border: none;
-    padding: 5px 20px;
+    background-color: var(--marsh);
+    padding: 10px 25px;
+    border-radius: 8px;
     transition: .3s;
 }
 
-.page_not_found_content button:hover {
-    background-color: var(--dark-darker);
+.submit:hover {
+    background-color: #29483e;
+    text-shadow: var(--palegoldenrod-shadow);
 }
 
-.page_not_found_content {
-    backdrop-filter: grayscale(1) brightness(.6);
-    animation: page_not_found_page 2s;
-}
-
-@keyframes page_not_found_page {
-    from {
-        opacity: 0;
-        backdrop-filter: none;
-    }
-
-    to {
-        opacity: 1;
-        backdrop-filter: grayscale(1) brightness(.6);
-    }
-}
