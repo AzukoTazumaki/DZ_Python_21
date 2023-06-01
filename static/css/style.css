@@ -27,21 +27,23 @@ body {
 
 /* ————————————————————————————————————————————————— BLOCK HEADER ————————————————————————————————————————————————— */
 
-.nav_container {
+.navbar {
     background-color: #203730;
-    padding: 10px;
-    border-radius: 8px;
     z-index: 1;
 }
 
-#github_link {
+.nav_container {
+    padding: 10px;
+}
+
+#github_link, #help_link {
     text-decoration: none;
     color: var(--palegoldenrod);
     margin-right: 20px;
     transition: .3s;
 }
 
-#github_link:hover {
+#github_link:hover, #help_link:hover {
     transform: scale(1.1);
     text-shadow: var(--palegoldenrod-shadow);
 }
@@ -62,6 +64,12 @@ body {
     100% {
         opacity: 1;
     }
+}
+
+/* ————————————————————————————————————————————————— BLOCK HELP ————————————————————————————————————————————————— */
+
+.help_container {
+    text-shadow: var(--palegoldenrod-shadow);
 }
 
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
@@ -113,6 +121,16 @@ body {
     100% {
         transform: translateY(0);
     }
+}
+
+/* ————————————————————————————————————————————————— BLOCK DESCRIPTION ————————————————————————————————————————————————— */
+
+.description ul li {
+    list-style-type: square;
+}
+
+.description {
+    text-shadow: var(--palegoldenrod-shadow);
 }
 
 /* ————————————————————————————————————————————————— BLOCK EXERCISE ————————————————————————————————————————————————— */

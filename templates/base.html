@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python — Сортировка</title>
+    <title>Python — Кортежи</title>
     <link rel="stylesheet"
         href="{{url_for('static', filename='node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -23,6 +23,9 @@
     {% include 'header.html' %}
     {% endblock %}
 
+    {% block help %}
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
 
@@ -38,21 +41,34 @@
     {% block books %}
     {% endblock %}
 
+    <!-- ——SCRIPTS—— -->
+
+        <!-- BOOTSTRAP -->
     <script 
         src="{{url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.bundle.js')}}">
     </script>
+
+        <!-- JQUERY -->
     <script 
         src="{{url_for('static', filename='node_modules/jquery/dist/jquery.min.js')}}">
     </script>
+
+        <!-- INPUTMASK -->
     <script 
         src="{{url_for('static', filename='node_modules/inputmask/dist/inputmask.js')}}">
     </script>
+
+        <!-- CUSTOM SCROLLBAR -->
     <script
         src="{{url_for('static', filename='node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')}}">
     </script>
+
+        <!-- MY SCRIPT -->
     <script 
         src="{{url_for('static', filename='js/main.js')}}">
     </script>
+
+        <!-- ICONS -->
     <script 
         src="https://kit.fontawesome.com/fb866d52e1.js" crossorigin="anonymous">
     </script>
