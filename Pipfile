@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
+translators = "*"
+pyspellchecker = "*"
+pandas = "*"
+openpyxl = "*"
 
 [dev-packages]
 
