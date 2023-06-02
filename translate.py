@@ -18,8 +18,8 @@ class Translate:
         if self.read_csv():
             return self.to_csv([
                 self.word.capitalize(),
-                self.translator.translate_text(self.word, from_language='ru', to_language='en'),
-                self.translator.translate_text(self.word, from_language='ru', to_language='fr')
+                self.translator.translate_text(self.word, from_language='ru', to_language='en').capitalize(),
+                self.translator.translate_text(self.word, from_language='ru', to_language='fr').capitalize()
             ])
         else:
             return 'Данное слово уже существует.'
