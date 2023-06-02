@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from translate import Translate
 
 app = Flask(__name__)
 
@@ -16,8 +17,10 @@ def basketball_players():
 
 @app.route('/translate', methods=['POST', 'GET'])
 def translate():
-    new_word = request.form
-    return render_template('answers/translate.html')
+    if request.method == 'POST':
+        if len(request.form['word_translate']) != 0:
+            return render_template('answers/translate.html', result=Translate(request.form['word_translate']).check_spelling())
+        return render_template('answers/translate.html', result=Translate.read_csv_to_html())
 
 
 @app.route('/company_employees', methods=['POST', 'GET'])

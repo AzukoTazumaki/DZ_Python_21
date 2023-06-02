@@ -70,6 +70,17 @@ body {
 
 .help_container {
     text-shadow: var(--palegoldenrod-shadow);
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    line-height: 32px;
+}
+
+.help_translate {
+    color: var(--raspberry);
+    text-shadow: var(--raspberry-shadow);
+    padding: 3px 8px;
+    border: 1px solid var(--raspberry);
+    border-radius: 4px;
 }
 
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
@@ -191,7 +202,7 @@ input:focus + span {
     color: #203730b1;
 }
 
-.submit {
+.submit, .show {
     color: var(--palegoldenrod);
     border: none;
     background-color: var(--marsh);
@@ -200,8 +211,77 @@ input:focus + span {
     transition: .3s;
 }
 
-.submit:hover {
+.submit:hover, .show:hover {
     background-color: #29483e;
+    text-shadow: var(--palegoldenrod-shadow);
+}
+
+.to_main_page {
+    background-color: var(--palegoldenrod);
+    color: var(--marsh);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.to_main_page:hover {
+    transform: scale(1.03);
+}
+
+.table-scroll-body {
+    height: 40vh;
+    overflow-x: auto;
+    margin-top: 0px;
+    border-bottom: 1px solid var(--text-color-white);
+}
+
+.table-scroll table {
+    width:100%;
+    table-layout: fixed;
+    border: none;
+}
+
+.table-scroll thead th {
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    background: var(--text-color-dark);
+    color: var(--text-color-white);
+    font-size: 14px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table-scroll tbody td {
+    text-align: left;
+    border-left: 1px solid var(--text-color-white);
+    border-right: 1px solid var(--text-color-white);
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.table-scroll tbody tr:nth-child(even){
+    background: var(--text-color-blue);
+    color: var(--text-color-white);
+}
+
+.table-scroll tbody tr:nth-child(odd){
+    background: var(--text-color-blue-darker);
+    color: var(--text-color-white);
+}
+
+thead {
+    border-bottom: 1px solid var(--palegoldenrod);
+}
+
+.table-scroll {
+    text-shadow: var(--palegoldenrod-shadow);
+}
+
+.error_translate {
     text-shadow: var(--palegoldenrod-shadow);
 }
 

@@ -2,11 +2,132 @@
 
 {% block help %}
 <div class="container help_container">
-    <div class="row d-flex align-items-center vh-100">
+    <div class="row">
         <div class="offset-2 col-8">
             <h1>Справка</h1>
             <hr>
-            <h3>Задание 1.</h3>
+            <h3>Задание 2. Переводчик.</h3>
+            <p>Были импортированы следующие библиотеки:</p>
+            <ul>
+                <li>translators;</li>
+                <li>PySpellChecker;</li>
+                <li>Pandas.</li>
+            </ul>
+            <p>
+                Был создан класс <span class="help_translate">Translate</span>. В конструкторе создаются объекты
+                <span class="help_translate">SpellChecker</span> и <span class="help_translate">translators</span>
+                для использования в методах, а также в качестве аргумента класс <span class="help_translate">
+                Translate</span> принимает <span class="help_translate">user_word</span> – слово, введенное
+                пользователем.
+            </p>
+            <div class="highlight" style="border-radius: 8px; background: #fdf6e3; border: 1px solid grey;padding: 15px">
+                <pre style="line-height: 125%;"><span></span><span style="color: #cb4b16">import</span> <span style="color: #268bd2">translators</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">spellchecker</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">SpellChecker</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">pandas</span> <span style="color: #859900">as</span> <span style="color: #268bd2">pd</span> 
+
+
+<span style="color: #859900">class</span> <span style="color: #268bd2">Translate</span><span style="color: #657b83">:</span> 
+    <span style="color: #859900">def</span> <span style="color: #268bd2">__init__</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">user_word:</span> <span style="color: #268bd2">str</span><span style="color: #657b83">):</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">SpellChecker(language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;ru&quot;</span><span style="color: #657b83">)</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">translators</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">user_word</span></pre>
+            </div>
+
+            <p class="mt-3">
+                Вызывается метод <span class="help_translate">check_spelling()</span>, который с помощью модуля PySpellChecker 
+                проверяет правильность ввода самого слова. Если условие выполнено, вызывается метод перевода – <span class="help_translate">
+                translate()</span>, иначе вызывается метод <span class="help_translate">error()</span>.
+            </p>
+
+            <div class="highlight" style="border-radius: 8px; background: #fdf6e3; border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">check_spelling</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span><span style="color: #93a1a1">.</span><span style="color: #657b83">correction(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word)</span> <span style="color: #93a1a1">==</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word:</span> 
+        <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate()</span> 
+    <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">error()</span></pre>
+            </div>
+
+            <p class="mt-3">
+                В методе <span class="help_translate">translate()</span> вначале проверяется условие в виде вызова метода 
+                <span class="help_translate">read_csv()</span>, который вовзвращает либо True, либо False. Если условие выполнено,
+                то вызывается метод <span class="help_translate">to_csv()</span>, куда в качестве параметров передается список
+                из трех элементов, у каждого из которых первый символ переводится в верхний регистр (сделано для более красивого
+                вывода в HTML). Первым элементом идет слово на русском языке, введенное, пользователем, следующими двумя элементами
+                идут переводы слова на английский и французский языки с помощью модуля <span class="help_translate">translators</span>.
+                Если условие не выполнено, возвращается сообщение о том, что слово, введенное пользователем, уже существует в базе.
+            </p>
+
+            <div class="highlight" style="border-radius: 8px; background: #fdf6e3; border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">translate</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv():</span> 
+        <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_csv([</span>
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize(),</span> 
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate_text(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word,</span> <span style="color: #657b83">from_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;ru&quot;</span><span style="color: #657b83">,</span> <span style="color: #657b83">to_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;en&quot;</span><span style="color: #657b83">)</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize(),</span> 
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate_text(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word,</span> <span style="color: #657b83">from_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;ru&quot;</span><span style="color: #657b83">,</span> <span style="color: #657b83">to_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;fr&quot;</span><span style="color: #657b83">)</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()
+        ])</span>
+    <span style="color: #859900">else</span><span style="color: #657b83">:</span>
+        <span style="color: #859900">return</span> <span style="color: #2aa198">&quot;Данное слово уже существует.&quot;</span></pre>
+            </div>
+
+            <p class="mt-3">
+                Метод <span class="help_translate">read_csv()</span> возвращает тип bool. Здесь открывается существующий файл
+                "words.csv", выбирается столбец "Russian" (слова на русском, т.е. введенные пользователем) и преобразовывается в словарь. 
+                Затем цикл перебирает все слова по индексу и сравнивает с введенным словом. Если нашлось совпадение, значит слово
+                уже присутствует в списке – возвращается False. Если по окончании цикла совпадений не найдено, возвращается True.
+            </p>
+
+            <div class="highlight" style="border-radius: 8px;background: #fdf6e3; border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">read_csv</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">)</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">bool</span><span style="color: #657b83">:</span> 
+    <span style="color: #657b83">csv</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">pd</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv(</span><span style="color: #2aa198">&quot;results/words.csv&quot;</span><span style="color: #657b83">)[</span><span style="color: #2aa198">&quot;Russian&quot;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_dict()</span> 
+    <span style="color: #859900">for</span> <span style="color: #657b83">index</span> <span style="color: #859900">in</span> <span style="color: #657b83">csv:</span> 
+        <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> <span style="color: #93a1a1">==</span> <span style="color: #657b83">csv[index]:</span> 
+            <span style="color: #859900">return</span> <span style="color: #2aa198">False</span> 
+        <span style="color: #859900">continue</span> 
+    <span style="color: #859900">return</span> <span style="color: #2aa198">True</span></pre>
+            </div>
+
+            <p class="mt-3">
+                Метод <span class="help_translate">to_csv()</span> принимает в качестве аргумента список
+                <span class="help_translate">words_list</span> из метода <span class="help_translate">translate()</span>. 
+                Вначале создается список колонок – три языка. Затем используется модуль <span class="help_translate">
+                Pandas</span>, с помощью которого создается DataFrame, в который входит список слов. Затем созданный
+                DataFrame добавляется в файл "words.csv". В конце возвращается вызов метода <span class="help_translate">
+                read_csv_to_html()</span>.
+            </p>
+
+            <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">to_csv</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">words_list:</span> <span style="color: #268bd2">list</span><span style="color: #657b83">):</span> 
+    <span style="color: #657b83">columns</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[</span><span style="color: #2aa198">&quot;Russian&quot;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&quot;English&quot;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&quot;French&quot;</span><span style="color: #657b83">]</span> 
+    <span style="color: #657b83">df</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">pd</span><span style="color: #93a1a1">.</span><span style="color: #657b83">DataFrame([words_list],</span> <span style="color: #657b83">columns</span><span style="color: #93a1a1">=</span><span style="color: #657b83">columns)</span> 
+    <span style="color: #657b83">df</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_csv(</span><span style="color: #2aa198">&quot;results/words.csv&quot;</span><span style="color: #657b83">,</span> <span style="color: #657b83">mode</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;a&quot;</span><span style="color: #657b83">,</span> <span style="color: #657b83">header</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">False</span><span style="color: #657b83">,</span> <span style="color: #657b83">index</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">False</span><span style="color: #657b83">)</span> 
+    <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv_to_html()</span></pre>
+            </div>
+
+            <p class="mt-3">
+                В результате используется статический метод <span class="help_translate">read_csv_to_html()</span>, 
+                поэтому используется декоратор <span class="help_translate">@staticmethod</span>. Метод является статическим, 
+                так как в теле этого метода не используется self. Для начала встроенным методом Python <span class="help_translate">
+                open()</span> еще раз открывается файл "words.csv". Затем перебираются все строки, каждая из который содержит в 
+                себе три слова через запятую, встроенным методом split с сепаратом в виде запятой преобразуется в список из трех
+                элементов и добавляется в результирующий список, который отправляется в HTML-шаблон.
+            </p>
+
+            <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #268bd2">@staticmethod</span> 
+<span style="color: #859900">def</span> <span style="color: #268bd2">read_csv_to_html</span><span style="color: #657b83">()</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">list</span><span style="color: #657b83">:</span> 
+    <span style="color: #657b83">file</span> <span style="color: #93a1a1">=</span> <span style="color: #268bd2">open</span><span style="color: #657b83">(</span><span style="color: #2aa198">&quot;results/words.csv&quot;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">"r"</span><span style="color: #657b83">)</span> 
+    <span style="color: #657b83">lines</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[x</span><span style="color: #93a1a1">.</span><span style="color: #657b83">split(</span><span style="color: #2aa198">&quot;,&quot;</span><span style="color: #657b83">)</span> <span style="color: #859900">for</span> <span style="color: #657b83">x</span> <span style="color: #859900">in</span> <span style="color: #657b83">file</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read()</span><span style="color: #93a1a1">.</span><span style="color: #657b83">splitlines()[</span><span style="color: #2aa198">1</span><span style="color: #657b83">:]]</span> 
+    <span style="color: #859900">return</span> <span style="color: #657b83">lines</span></pre>
+            </div>
+
+            <p class="mt-3">
+                Метод <span class="help_translate">error()</span> вначале проверяет, есть ли какие-либо варианты
+                заменить неправильное слово, введенное пользователем. Если варианты нашлись, выводится список вариантов. 
+                Если нет, то возвращается сообщение о том, что такого слова не предусмотрено.
+            </p>
+
+            <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">error</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">)</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">str</span><span style="color: #657b83">:</span> 
+    <span style="color: #859900">try</span><span style="color: #657b83">:</span> 
+        <span style="color: #657b83">mistakes</span> <span style="color: #93a1a1">=</span> <span style="color: #2aa198">&quot;, &quot;</span><span style="color: #93a1a1">.</span><span style="color: #657b83">join([mistake</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> <span style="color: #859900">for</span> <span style="color: #657b83">mistake</span> <span style="color: #859900">in</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span><span style="color: #93a1a1">.</span><span style="color: #657b83">candidates(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word)])</span> 
+        <span style="color: #859900">return</span> <span style="color: #2aa198">f&quot;Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {</span><span style="color: #657b83">mistakes</span><span style="color: #2aa198">}&quot;</span> 
+    <span style="color: #859900">except</span> <span style="color: #268bd2">TypeError</span><span style="color: #657b83">:</span> 
+        <span style="color: #859900">return</span> <span style="color: #2aa198">&quot;Такого слова не предусмотрено.&quot;</span></pre>
+            </div>
+
         </div>
     </div>
 </div>

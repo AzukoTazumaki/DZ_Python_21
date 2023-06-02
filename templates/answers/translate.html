@@ -6,7 +6,54 @@
     <div class="row d-flex align-items-center vh-100">
         <div class="offset-3 col-6">
 
-            
+            {% if result is string %}
+
+            <h4 class="error_translate">{{ result }}</h4>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="/">
+                    <button class="to_main_page">На главную страницу</button>
+                </a>
+            </div>
+
+            {% else %}
+
+            <div class="table-scroll">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Русский</th>
+                            <th>Английский</th>
+                            <th>Французский</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="table-scroll-body content">
+
+                    <table>
+                        <tbody>
+                            {% for line in result %}
+                            <tr>
+                                <td>
+                                    {{ line[0] }}
+                                </td>
+                                <td>
+                                    {{ line[1] }}
+                                </td>
+                                <td>
+                                    {{ line[2] }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            {% endif %}
 
         </div>
     </div>

@@ -24,7 +24,7 @@ class Translate:
         else:
             return 'Данное слово уже существует.'
 
-    def read_csv(self):
+    def read_csv(self) -> bool:
         csv = pd.read_csv('results/words.csv')['Russian'].to_dict()
         for index in csv:
             if self.word.capitalize() == csv[index]:
@@ -32,20 +32,21 @@ class Translate:
             continue
         return True
 
-    @staticmethod
-    def to_csv(words_list: list):
+    def to_csv(self, words_list: list):
         columns = ['Russian', 'English', 'French']
         df = pd.DataFrame([words_list], columns=columns)
         df.to_csv('results/words.csv', mode='a', header=False, index=False)
+        return self.read_csv_to_html()
 
-    def error(self):
+    @staticmethod
+    def read_csv_to_html() -> list:
+        file = open('results/words.csv', 'r')
+        lines = [x.split(',') for x in file.read().splitlines()[1:]]
+        return lines
+
+    def error(self) -> str:
         try:
             mistakes = ', '.join([mistake.capitalize() for mistake in self.spell.candidates(self.word)])
-            return f'Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {mistakes}'
+            return f'Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {mistakes}?'
         except TypeError:
             return 'Такого слова не предусмотрено.'
-
-
-word = input('Введите слово\n>>> ')
-x = Translate(word).check_spelling()
-print(x)

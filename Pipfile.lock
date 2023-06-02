@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1c823b645540092088c60bca9bab3502537a5470e8c8d965517471651e867790"
+            "sha256": "0e3a53926c21f2e283aad9b4bea6b894ea332da8c9d13133c36979946cecd238"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -532,6 +532,14 @@
                 "sha256:34cc1d070976918183ff7bdc0ad71f8157a891c92708c00c5fbbff7a769f505c"
             ],
             "version": "==1.5.1"
+        },
+        "pygments": {
+            "hashes": [
+                "sha256:8ace4d3c1dd481894b2005f560ead0f9f19ee64fe983366be1a21e171d12775c",
+                "sha256:db2db3deb4b4179f399a09054b023b6a586b76499d36965813c71aa8ed7b5fd1"
+            ],
+            "index": "pypi",
+            "version": "==2.15.1"
         },
         "pyspellchecker": {
             "hashes": [
