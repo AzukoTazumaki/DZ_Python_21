@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block basketball_players %}
-
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
 <div class="container-fluid">
     <div class="row d-flex align-items-center vh-100">
+
+        <!-- ———————————————————————————— PLAYERS DESCRIPTION ———————————————————————————— -->
         <div class="offset-1 col-2">
+
+            <!-- ———————————————————————————— PLAYERS ROLE ———————————————————————————— -->
             <div class="players_roles mt-3">
                 <span>Примечание:</span>
                 <ul>
@@ -12,13 +16,17 @@
                     <li>SG (Shooting Guard) – атакующий защитник;</li>
                     <li>SF (Small Forward) – легкий форвард;</li>
                     <li>PF (Power Forward) – тяжелый или мощный форвард;</li>
+                    <li>G (Guard) – защитник;</li>
+                    <li>F (Forward) – форвард;</li>
                     <li>C (center) – центровой.</li>
                 </ul>
             </div>
-            <div class="players_tooltip mt-3">
-                <p>* поиск проводится только по именам</p>
-            </div>
+
+
+
         </div>
+
+        <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
         <div class="col-6">
 
             {% if result is string %}
@@ -28,15 +36,25 @@
                 <a href="/">
                     <button class="to_main_page">На главную страницу</button>
                 </a>
+
             </div>
 
             {% else %}
 
+            <!-- ———————————————————————————— PLAYERS SEARCH ———————————————————————————— -->
             <div class="search_container d-flex justify-content-end mb-3">
                 <input class="mx-2" type="search" placeholder="Поиск">
                 <button type="submit" class="search">Найти</button>
             </div>
 
+            <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+            <div class="players_tooltip mt-1">
+                <p class="text-end text-white">* поиск проводится только по именам, командам и месту обучения</p>
+            </div>
+
+
+
+            <!-- ———————————————————————————— PLAYERS TABLE HEAD ———————————————————————————— -->
             <div class="table-scroll">
 
                 <table>
@@ -50,11 +68,12 @@
                             <th style="width: 10%;">Вес</th>
                             <th style="width: 17%;">Команда</th>
                             <th style="width: 16%;">Обучение</th>
-                            <th style="width: 15%;">Зарплата</th>
+                            <th style="width: 15%;">Зарплата (<i class="fa-solid fa-ruble-sign"></i>)</th>
                         </tr>
                     </thead>
                 </table>
 
+                <!-- ———————————————————————————— PLAYERS TABLE BODY ———————————————————————————— -->
                 <div class="table-scroll-body content">
 
                     <table>
@@ -65,8 +84,8 @@
                                 <td style="width: 17%;">{{ line[0] }}</td>
                                 <td style="width: 10%;">{{ line[1] }}</td>
                                 <td style="width: 7%;">{{ line[2] }}</td>
-                                <td style="width: 10%;">{{ line[3] }}</td>
-                                <td style="width: 10%;">{{ line[4] }}</td>
+                                <td style="width: 10%;">{{ line[3] }} см</td>
+                                <td style="width: 10%;">{{ line[4] }} кг</td>
                                 <td style="width: 17%;">{{ line[5] }}</td>
                                 {% if line[6] == 'Неизвестно' %}
                                 <td style="width: 16%; color: var(--purple-mimosa); 
@@ -78,14 +97,12 @@
                                 <td style="width: 15%; color: var(--purple-mimosa); 
                                     text-shadow: var(--purple-mimosa-shadow);">{{ line[7] }}</td>
                                 {% else %}
-                                <td style="width: 15%;">{{ line[7] }}</td>
+                                <td style="width: 15%;">{{ line[7] }} млн</td>
                                 {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-
-
 
                 </div>
 
@@ -93,11 +110,8 @@
 
             {% endif %}
 
-            <div class="d-flex justify-content-between">
-                
-            </div>
-
         </div>
+
     </div>
 </div>
 

@@ -1,6 +1,9 @@
 {% block exercise_4 %}
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
 <div class="container-fluid welcome_container">
     <div class="row d-flex align-items-center vh-100">
+
+        <!-- ———————————————————————————— BOOKS EXERCISE DESCRIPTION ———————————————————————————— -->
         <div class="offset-1 col-5">
             <h4>Задание 4.</h4>
             <p>
@@ -16,51 +19,71 @@
             </p>
         </div>
 
+        <!-- ———————————————————————————— BOOK EXERCISE BLOCK ———————————————————————————— -->
         <div class="col-5 block_exercise_4">
             <h3>Программа "Книжная коллекция"</h3>
             <h4>Форма данных книги:</h4>
+
+            <!-- ———————————————————————————— BOOK FORM ———————————————————————————— -->
             <form class="mt-3" action="/books" method="post">
+
+                <!-- ———————————————————————————— BOOK AUTHOR ———————————————————————————— -->
                 <div class="d-flex">
                     <input name="book_author" id="book_author" type="text" placeholder="Автор">
                     <span>
                         <i class="fa-solid fa-circle-user"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK TITLE ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_title" id="book_title" type="text" placeholder="Название">
                     <span>
                         <i class="fa-solid fa-feather"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK GENRE ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_genre" id="book_genre" type="text" placeholder="Жанр">
                     <span>
                         <i class="fa-solid fa-bars-staggered"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK YEAR ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_year" id="book_year" type="text" placeholder="Год выпуска">
                     <span>
                         <i class="fa-solid fa-clock"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK AMOUNT PAGES ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_pages" id="book_pages" type="email" placeholder="Количество страниц">
                     <span>
                         <i class="fa-solid fa-list-ol"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK PUBLISH ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_publish" id="book_publish" type="text" placeholder="Издательство">
                     <span>
                         <i class="fa-solid fa-newspaper"></i>
                     </span>
                 </div>
+
+                <!-- ———————————————————————————— BOOK INFO SEND ———————————————————————————— -->
                 <div class="d-flex justify-content-end mt-4">
                     <button class="submit" type="submit">Добавить</button>
                 </div>
+
             </form>
+
         </div>
+        
     </div>
 </div>
 {% endblock %}
