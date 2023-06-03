@@ -285,7 +285,7 @@ thead {
     text-shadow: var(--palegoldenrod-shadow);
 }
 
-.players_roles, .players_tooltip {
+.players_roles {
     text-shadow: var(--palegoldenrod-shadow);
     font-size: 14px;
     animation: players 3s
@@ -305,6 +305,12 @@ thead {
 }
 
 .search_container {
+    animation: players 3.5s;
+}
+
+.players_tooltip {
+    text-shadow: var(--palegoldenrod-shadow);
+    font-size: 14px;
     animation: players 4s;
 }
 

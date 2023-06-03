@@ -8,6 +8,7 @@ from unitsnet_py import Length, LengthUnits, Mass, MassUnits
 import re
 from bs4 import BeautifulSoup as bs
 import requests
+from currency_converter import CurrencyConverter as cc
 
 
 # translator = ts
@@ -88,9 +89,12 @@ import requests
 # print(result_list)
 # print(len(result_list))
 
-# salary = '$4,555,555'
-# result = f"$ {' '.join(''.join(re.findall(r'[0-9,]+', salary)).split(','))}"
-# print(result)
+salary = '$22,600,000'
+result = f"{''.join(''.join(re.findall(r'[0-9,]+', salary)).split(','))}"
+print(result)
 
-a = '12345'
-print(a + '')
+# a = '12345'
+# print(a + '')
+
+# value = round(cc(fallback_on_wrong_date=True).convert(4600000, 'USD', 'RUB') / 1000000, 2)
+# print(value, 'млн. руб')

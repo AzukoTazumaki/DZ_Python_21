@@ -3,6 +3,7 @@ from unitsnet_py import Length, LengthUnits, Mass, MassUnits
 import requests
 import pandas as pd
 import re
+from currency_converter import CurrencyConverter as cc
 
 
 class Players:
@@ -31,8 +32,8 @@ class Players:
                 player_name = ' '.join(re.findall('[A-z.]+', table_datas[1].text))
                 player_role = table_datas[2].text
                 player_age = table_datas[3].text
-                player_height = f"{round(Length(float('.'.join(re.findall(r'[1-9]+', table_datas[4].text))), LengthUnits.Foot).centimeters)} см"
-                player_weight = f"{round(Mass(int(re.findall(r'[0-9]+', table_datas[5].text)[0]), MassUnits.Pound).kilograms)} кг"
+                player_height = round(Length(float('.'.join(re.findall(r'[1-9]+', table_datas[4].text))), LengthUnits.Foot).centimeters)
+                player_weight = round(Mass(int(re.findall(r'[0-9]+', table_datas[5].text)[0]), MassUnits.Pound).kilograms)
                 player_team = ' '.join(
                     [
                         team.text for team in bs(requests.get(url + href).content, 'html.parser')
@@ -43,8 +44,11 @@ class Players:
                 )
                 player_info_unknown = 'Неизвестно'
                 player_education = player_info_unknown if re.search(r'-', table_datas[6].text) else table_datas[6].text
-                player_salary = player_info_unknown if re.search(r'-', table_datas[7].text) \
-                    else f"$ {'.'.join(''.join(re.findall(r'[0-9,]+', table_datas[7].text)).split(','))}"
+                player_salary_usd = ''.join(''.join(re.findall(r'[0-9,]+', table_datas[7].text)).split(','))
+                player_salary = player_info_unknown \
+                    if re.search(r'-', table_datas[7].text) \
+                    else round(cc(fallback_on_wrong_date=True).convert(int(player_salary_usd), 'USD', 'RUB') / 1000000)
+
                 player_info_list = [
                     player_name, player_role, player_age, player_height,
                     player_weight, player_team, player_education, player_salary

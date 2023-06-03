@@ -12,6 +12,7 @@ openpyxl = "*"
 pygments = "*"
 unitsnet-py = "*"
 bs4 = "*"
+currencyconverter = "*"
 
 [dev-packages]
 
