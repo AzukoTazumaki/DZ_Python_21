@@ -1,0 +1,22 @@
+{% block class_translate %}
+<p>
+    Был создан класс <span class="help_translate">Translate</span>. В конструкторе создаются объекты
+    <span class="help_translate">SpellChecker</span> и <span class="help_translate">translators</span>
+    для использования в методах, а также в качестве аргумента класс <span class="help_translate">
+    Translate</span> принимает <span class="help_translate">user_word</span> – слово, введенное
+    пользователем.
+</p>
+
+<div class="highlight" style="border-radius: 8px; background: #fdf6e3; border: 1px solid grey;padding: 15px">
+    <pre style="line-height: 125%;"><span></span><span style="color: #cb4b16">import</span> <span style="color: #268bd2">translators</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">spellchecker</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">SpellChecker</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">pandas</span> <span style="color: #859900">as</span> <span style="color: #268bd2">pd</span> 
+
+
+<span style="color: #859900">class</span> <span style="color: #268bd2">Translate</span><span style="color: #657b83">:</span> 
+    <span style="color: #859900">def</span> <span style="color: #268bd2">__init__</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">user_word:</span> <span style="color: #268bd2">str</span><span style="color: #657b83">):</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">SpellChecker(language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&quot;ru&quot;</span><span style="color: #657b83">)</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">translators</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">user_word</span></pre>
+</div>
+{% endblock %}

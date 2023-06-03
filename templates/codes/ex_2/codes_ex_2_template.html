@@ -1,0 +1,41 @@
+{% block codes_ex_2 %}
+
+<h3>Задание 2. Переводчик.</h3>
+
+<p>Были импортированы следующие библиотеки:</p>
+
+<ul>
+    <li>translators;</li>
+    <li>PySpellChecker;</li>
+    <li>Pandas.</li>
+</ul>
+
+{% block class_translate %}
+{% include 'codes/ex_2/class_translate.html' %}
+{% endblock %}
+
+{% block check_spelling %}
+{% include 'codes/ex_2/check_spelling.html' %}
+{% endblock %}
+
+{% block translate_method %}
+{% include 'codes/ex_2/translate.html' %}
+{% endblock %}
+
+{% block read_csv_ex_2 %}
+{% include 'codes/ex_2/read_csv.html' %}
+{% endblock %}
+
+{% block to_csv_ex_2 %}
+{% include 'codes/ex_2/to_csv.html' %}
+{% endblock %}
+
+{% block read_csv_to_html_ex_2 %}
+{% include 'codes/ex_2/read_csv_to_html.html' %}
+{% endblock %}
+
+{% block error_method_ex_2 %}
+{% include 'codes/ex_2/error.html' %}
+{% endblock %}
+
+{% endblock %}
