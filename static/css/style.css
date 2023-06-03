@@ -69,18 +69,25 @@ body {
 /* ————————————————————————————————————————————————— BLOCK HELP ————————————————————————————————————————————————— */
 
 .help_container {
-    text-shadow: var(--palegoldenrod-shadow);
+    line-height: 20px;
     margin-top: 15vh;
     margin-bottom: 15vh;
-    line-height: 32px;
 }
 
 .help_translate {
-    color: var(--raspberry);
-    text-shadow: var(--raspberry-shadow);
-    padding: 3px 8px;
-    border: 1px solid var(--raspberry);
-    border-radius: 4px;
+    color: var(--purple-mimosa);
+    text-shadow: var(--purple-mimosa-shadow);
+}
+
+.ex-links a {
+    text-decoration: none;
+    color: var(--palegoldenrod);
+    transition: .3s;
+}
+
+.ex-links a:hover {
+    text-shadow: var(--palegoldenrod-shadow);
+    color: var(--palegoldenrod);
 }
 
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
@@ -233,7 +240,6 @@ input:focus + span {
     height: 40vh;
     overflow-x: auto;
     margin-top: 0px;
-    border-bottom: 1px solid var(--text-color-white);
 }
 
 .table-scroll table {
@@ -246,31 +252,15 @@ input:focus + span {
     font-weight: bold;
     text-align: left;
     border: none;
-    padding: 10px 15px;
-    background: var(--text-color-dark);
-    color: var(--text-color-white);
+    padding: 10px;
     font-size: 14px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 .table-scroll tbody td {
     text-align: left;
-    border-left: 1px solid var(--text-color-white);
-    border-right: 1px solid var(--text-color-white);
-    padding: 10px 15px;
+    padding: 10px;
     font-size: 14px;
     vertical-align: top;
-}
-
-.table-scroll tbody tr:nth-child(even){
-    background: var(--text-color-blue);
-    color: var(--text-color-white);
-}
-
-.table-scroll tbody tr:nth-child(odd){
-    background: var(--text-color-blue-darker);
-    color: var(--text-color-white);
 }
 
 thead {
@@ -279,9 +269,82 @@ thead {
 
 .table-scroll {
     text-shadow: var(--palegoldenrod-shadow);
+    animation: table 2.3s;
+}
+
+@keyframes table {
+    0%, 50% {
+        transform: translateX(-400%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .error_translate {
     text-shadow: var(--palegoldenrod-shadow);
 }
 
+.players_roles, .players_tooltip {
+    text-shadow: var(--palegoldenrod-shadow);
+    font-size: 14px;
+    animation: players 3s
+}
+
+@keyframes players {
+    0%, 70% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.players_roles ul li {
+    list-style-type: square;
+}
+
+.search_container {
+    animation: players 4s;
+}
+
+.search_container input {
+    border: none;
+    border-radius: 8px;
+    background-color: var(--palegoldenrod);
+    outline: none;
+    color: var(--marsh);
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 40%;
+}
+
+.search_container input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    background: url(../images/trash-can-solid.svg) no-repeat 50% 50%;
+    color: var(--marsh);
+    cursor: pointer;
+}
+
+.search_container input::placeholder {
+    color: #203730b9;
+}
+
+.search {
+    color: var(--marsh);
+    border: none;
+    background-color: var(--palegoldenrod);
+    padding: 5px 40px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.search:hover {
+    background-color: #c2bd8a;
+}
+
+.search:focus {
+    transform: scale(0.98);
+}

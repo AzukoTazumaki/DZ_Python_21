@@ -4,6 +4,10 @@ import pandas as pd
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
+from unitsnet_py import Length, LengthUnits, Mass, MassUnits
+import re
+from bs4 import BeautifulSoup as bs
+import requests
 
 
 # translator = ts
@@ -28,9 +32,9 @@ from pygments.formatters import HtmlFormatter
 # print(words.keys())
 
 
-file = open('results/words.csv', 'r')
-lines = [x.split(',') for x in file.read().splitlines()]
-print(lines)
+# file = open('results/words.csv', 'r')
+# lines = [x.split(',') for x in file.read().splitlines()]
+# print(lines)
 
 # a = pd.read_html('results/table_translate.html')
 # print(a)
@@ -49,3 +53,44 @@ print(lines)
 # code = 'def error(self) -> str: try: mistakes = ", ".join([mistake.capitalize() for mistake in self.spell.candidates(self.word)]) return f"Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {mistakes}" except TypeError: return "Такого слова не предусмотрено."'
 # print(highlight(code, PythonLexer(), HtmlFormatter(noclasses=True, style='solarized-light', cssstyles='border-radius: 8px;border: 1px solid grey;padding: 15px')))
 
+# first = "6'"
+# second = ' 4"'
+#
+# result = f"{re.findall(r'[1-9]+', first + second)[0]}.{re.findall(r'[1-9]+', first + second)[1]}"
+# feet = Length(float(result), LengthUnits.Foot).centimeters
+# print(feet)
+
+# lbs =
+# print(lbs)
+
+# url = 'https://www.espn.com'
+# response = requests.get(url + '/nba/teams')
+#
+# response_body = bs(response.content, 'html.parser')
+# needed_hrefs = [link["href"] for link in response_body.find('div', {'class': 'layout is-split'}).find_all('a', {'class': 'AnchorLink'}) if 'roster' in link["href"]]
+# result_list = []
+#
+# for href in needed_hrefs:
+#     table_rows = bs(requests.get(url + href).content, 'html.parser').find('tbody', {'class': 'Table__TBODY'}).find_all('tr', {'class': 'Table__TR'})
+#     for table_row in table_rows:
+#         table_datas = table_row.find_all('td', {'class': 'Table__TD'})
+#         player_info = {
+#             'name': table_datas[1].text,
+#             'position': table_datas[2].text,
+#             'age': table_datas[3].text,
+#             'height': f"{round(Length(float('.'.join(re.findall(r'[1-9]+', table_datas[4].text))), LengthUnits.Foot).centimeters)} см",
+#             'weight': f"{round(Mass(int(re.findall(r'[1-9]+', table_datas[5].text)[0]), MassUnits.Pound).kilograms)} кг",
+#             'college': table_datas[6].text,
+#             'salary': table_datas[7].text
+#         }
+#         result_list.append(player_info)
+#
+# print(result_list)
+# print(len(result_list))
+
+# salary = '$4,555,555'
+# result = f"$ {' '.join(''.join(re.findall(r'[0-9,]+', salary)).split(','))}"
+# print(result)
+
+a = '12345'
+print(a + '')

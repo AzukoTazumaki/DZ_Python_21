@@ -10,6 +10,8 @@ pyspellchecker = "*"
 pandas = "*"
 openpyxl = "*"
 pygments = "*"
+unitsnet-py = "*"
+bs4 = "*"
 
 [dev-packages]
 

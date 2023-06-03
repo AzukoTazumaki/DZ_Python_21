@@ -2,11 +2,100 @@
 
 {% block basketball_players %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row d-flex align-items-center vh-100">
-        <div class="offset-3 col-6">
+        <div class="offset-1 col-2">
+            <div class="players_roles mt-3">
+                <span>Примечание:</span>
+                <ul>
+                    <li>PG (Point Guard) – разыгрывающий защитник;</li>
+                    <li>SG (Shooting Guard) – атакующий защитник;</li>
+                    <li>SF (Small Forward) – легкий форвард;</li>
+                    <li>PF (Power Forward) – тяжелый или мощный форвард;</li>
+                    <li>C (center) – центровой.</li>
+                </ul>
+            </div>
+            <div class="players_tooltip mt-3">
+                <p>* поиск проводится только по именам</p>
+            </div>
+        </div>
+        <div class="col-6">
 
-            
+            {% if result is string %}
+
+            <h4 class="error_translate">{{ result }}</h4>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="/">
+                    <button class="to_main_page">На главную страницу</button>
+                </a>
+            </div>
+
+            {% else %}
+
+            <div class="search_container d-flex justify-content-end mb-3">
+                <input class="mx-2" type="search" placeholder="Поиск">
+                <button type="submit" class="search">Найти</button>
+            </div>
+
+            <div class="table-scroll">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">#</th>
+                            <th style="width: 17%;">Имя</th>
+                            <th style="width: 10%;">Амплуа</th>
+                            <th style="width: 7%;">Возраст</th>
+                            <th style="width: 10%;">Рост</th>
+                            <th style="width: 10%;">Вес</th>
+                            <th style="width: 17%;">Команда</th>
+                            <th style="width: 16%;">Обучение</th>
+                            <th style="width: 15%;">Зарплата</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="table-scroll-body content">
+
+                    <table>
+                        <tbody>
+                            {% for line in result %}
+                            <tr>
+                                <td style="width: 5%;">{{ loop.index }}</td>
+                                <td style="width: 17%;">{{ line[0] }}</td>
+                                <td style="width: 10%;">{{ line[1] }}</td>
+                                <td style="width: 7%;">{{ line[2] }}</td>
+                                <td style="width: 10%;">{{ line[3] }}</td>
+                                <td style="width: 10%;">{{ line[4] }}</td>
+                                <td style="width: 17%;">{{ line[5] }}</td>
+                                {% if line[6] == 'Неизвестно' %}
+                                <td style="width: 16%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">{{ line[6] }}</td>
+                                {% else %}
+                                <td style="width: 16%;">{{ line[6] }}</td>
+                                {% endif %}
+                                {% if line[7] == 'Неизвестно' %}
+                                <td style="width: 15%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">{{ line[7] }}</td>
+                                {% else %}
+                                <td style="width: 15%;">{{ line[7] }}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+
+            </div>
+
+            {% endif %}
+
+            <div class="d-flex justify-content-between">
+                
+            </div>
 
         </div>
     </div>

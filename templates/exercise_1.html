@@ -14,39 +14,58 @@
             <p>Примечание: если вы просто хотите посмотреть список баскетболистов, нажмите кнопку отправить, не заполняя форму.</p>
             <p>Форма данных баскетболистов:</p>
             <form class="mt-3" action="/basketball_players" method="post">
+                <!-- ———————————————————————————— FULL NAME ———————————————————————————— -->
                 <div class="d-flex justify-content-between">
                     <div class="d-flex mt-2">
                         <input name="player_first_name" id="player_first_name" type="text" placeholder="Имя">
-                        <span>
-                            <i class="fa-solid fa-circle-user"></i>
-                        </span>
+                        <span><i class="fa-solid fa-circle-user"></i></span>
                     </div>
                     <div class="d-flex mt-2">
                         <input name="player_last_name" id="player_last_name" type="text" placeholder="Фамилия">
-                        <span>
-                            <i class="fa-solid fa-circle-user"></i>
-                        </span>
+                        <span><i class="fa-solid fa-circle-user"></i></span>
                     </div>
                     <div class="d-flex mt-2">
                         <input name="player_surname" id="player_surname" type="text" placeholder="Отчество">
-                        <span>
-                            <i class="fa-solid fa-circle-user"></i>
-                        </span>
+                        <span><i class="fa-solid fa-circle-user"></i></span>
                     </div>
                 </div>
+                <!-- ———————————————————————————— PLAYER ROLE ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_role" id="player_role" type="text" placeholder="Амплуа">
+                    <span><i class="fa-solid fa-location-dot"></i></span>
+                </div>
+                <!-- ———————————————————————————— PLAYER AGE ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_age" id="player_age" type="text" placeholder="Возраст">
+                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                </div>
+                <!-- ———————————————————————————— PLAYER HEIGHT ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_height" id="player_height" type="text" placeholder="Рост">
+                    <span><i class="fa-solid fa-ruler"></i></span>
+                </div>
+                <!-- ———————————————————————————— PLAYER WEIGHT ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_weight" id="player_weight" type="text" placeholder="Вес">
+                    <span><i class="fa-solid fa-weight-scale"></i></span>
+                </div>
+                <!-- ———————————————————————————— PLAYER TEAM ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="player_team" id="player_team" type="text" placeholder="Название команды">
-                    <span>
-                        <i class="fa-solid fa-basketball"></i>
-                    </span>
+                    <span><i class="fa-solid fa-pencil"></i></span>
                 </div>
+                <!-- ———————————————————————————— PLAYER EDUCATION ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_height" id="player_height" type="text" placeholder="Рост игрока">
-                    <span>
-                        <i class="fa-solid fa-ruler"></i>
-                    </span>
+                    <input name="player_education" id="player_education" type="text" placeholder="Университет или колледж">
+                    <span><i class="fa-solid fa-school"></i></span>
                 </div>
-                <div class="d-flex justify-content-between mt-4">
+                <!-- ———————————————————————————— PLAYER SALARY ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_salary" id="player_salary" type="text" placeholder="Зарплата">
+                    <span><i class="fa-solid fa-coins"></i></span>
+                </div>
+                <!-- ———————————————————————————— SEND ———————————————————————————— -->
+                <div class="d-flex justify-content-end mt-4">
                     <button class="submit" type="submit">Отправить</button>
                 </div>
             </form>

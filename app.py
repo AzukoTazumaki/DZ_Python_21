@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from translate import Translate
+from players import Players
 
 app = Flask(__name__)
 
@@ -11,8 +12,10 @@ def index():
 
 @app.route('/basketball_players', methods=['POST', 'GET'])
 def basketball_players():
-    new_player = request.form
-    return render_template('answers/basketball_players.html')
+    if request.method == 'POST':
+        if len(request.form) != 0:
+            return render_template('answers/basketball_players.html', result=Players.read_csv_to_html())
+        return render_template('answers/basketball_players.html', result=request.form.to_dict())
 
 
 @app.route('/translate', methods=['POST', 'GET'])
