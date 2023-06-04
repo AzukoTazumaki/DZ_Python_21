@@ -1,9 +1,9 @@
 /* PRELOADER */
-document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
         document.querySelector("body").classList.add("loaded");
     }, 500)
-  });
+});
 
 /* SCROLLBAR */
 (function ($) {
@@ -20,10 +20,5 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-})(jQuery);
+})(jQuery)
 
-/* CUSTOM INPUT MASK */
-const InputMask = require('inputmask');
-const phone_input = document.getElementById('employee_phone_number');
-let phone = new InputMask('+7(928)-555-55-55');
-phone.mask(phone_input);

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from translate import Translate
 from players import Players
+from company import Company
 
 app = Flask(__name__)
 
@@ -13,23 +14,31 @@ def index():
 @app.route('/basketball_players', methods=['POST', 'GET'])
 def basketball_players():
     if request.method == 'POST':
-        if len(request.form) != 0:
+        data = request.form.to_dict()
+        data_list = [data[key] for key in data if data[key] != '']
+        if len(data_list) == 0:
             return render_template('answers/basketball_players.html', result=Players.read_csv_to_html())
-        return render_template('answers/basketball_players.html', result=request.form.to_dict())
+        return render_template('answers/basketball_players.html', result=Players(data).add_player_to_csv())
 
 
 @app.route('/translate', methods=['POST', 'GET'])
 def translate():
     if request.method == 'POST':
         if len(request.form['word_translate']) != 0:
-            return render_template('answers/translate.html', result=Translate(request.form['word_translate']).check_spelling())
+            return render_template('answers/translate.html',
+                                   result=Translate(request.form['word_translate']).check_spelling())
         return render_template('answers/translate.html', result=Translate.read_csv_to_html())
 
 
 @app.route('/company_employees', methods=['POST', 'GET'])
 def company_employees():
-    new_employee = request.form
-    return render_template('answers/company_employees.html')
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        data_list = [data[key] for key in data if data[key] != '']
+        if len(data_list) == 0:
+            return render_template('answers/company_employees.html', result=Company.read_csv_to_html())
+        #
+        return False
 
 
 @app.route('/books', methods=['POST', 'GET'])
