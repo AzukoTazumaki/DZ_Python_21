@@ -48,14 +48,14 @@
                     <thead>
                         <tr>
                             <th style="width: 5%;">#</th>
-                            <th style="width: 7%;">Имя</th>
+                            <th style="width: 10%;">Имя</th>
                             <th style="width: 12%;">Телефон</th>
                             <th style="width: 18%;">Email</th>
                             <th style="width: 7%;">Возраст</th>
                             <th style="width: 10%;">Должность</th>
                             <th style="width: 12%;">Национальность</th>
                             <th style="width: 19%;">Университет</th>
-                            <th style="width: 10%;">Опыт работы</th>
+                            <th style="width: 7%;">Опыт</th>
                         </tr>
                     </thead>
                 </table>
@@ -75,10 +75,10 @@
 
                                 <!-- ———————————————————————————— LINE 0 ———————————————————————————— -->
                                 {% if line[0] == 'Неизвестно' %}
-                                <td style="width: 7%; color: var(--purple-mimosa); 
+                                <td style="width: 10%; color: var(--purple-mimosa); 
                                     text-shadow: var(--purple-mimosa-shadow);">{{ line[0] }}</td>
                                 {% else %}
-                                <td style="width: 7%;">{{ line[0] }}</td>
+                                <td style="width: 10%;">{{ line[0] }}</td>
                                 {% endif %}
 
                                 <!-- ———————————————————————————— LINE 1 ———————————————————————————— -->
@@ -131,10 +131,10 @@
 
                                 <!-- ———————————————————————————— LINE 7 ———————————————————————————— -->
                                 {% if line[7] == 'Неизвестно' %}
-                                <td style="width: 10%; color: var(--purple-mimosa); 
+                                <td style="width: 7%; color: var(--purple-mimosa); 
                                     text-shadow: var(--purple-mimosa-shadow);">{{ line[7] }}</td>
                                 {% else %}
-                                <td style="width: 10%;">{{ line[7] }}</td>
+                                <td style="width: 7%;">{{ line[7] }}</td>
                                 {% endif %}
 
                             </tr>

@@ -34,7 +34,7 @@ class Company:
                 'nationality': person.nationality(gender=gender),
                 'university': person.university(),
                 'work_experience': person.work_experience(working_start_age=20)
-            } for _ in range(500)
+            } for _ in range(100)
         ]
         df_w = pd.DataFrame([columns], columns=columns)
         df_w.to_csv('results/employees.csv', mode='w', index=False, header=False)
@@ -60,7 +60,7 @@ class Company:
     @staticmethod
     def check_unknown_fields(employee_info: list):
         for index, field in enumerate(employee_info):
-            if field == '' or len(field) == 2:
+            if field == '' or field == '  ':
                 employee_info[index] = 'Неизвестно'
             continue
         return employee_info
