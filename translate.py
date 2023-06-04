@@ -5,9 +5,9 @@ import pandas as pd
 
 class Translate:
     def __init__(self, user_word: str):
-        self.spell = SpellChecker(language='ru')
-        self.translator = translators
-        self.word = user_word
+        self.spell: SpellChecker = SpellChecker(language='ru')
+        self.translator: translators = translators
+        self.word: str = user_word
 
     def check_spelling(self):
         if self.spell.correction(self.word) == self.word:
@@ -33,7 +33,7 @@ class Translate:
         return True
 
     def to_csv(self, words_list: list):
-        columns = ['Russian', 'English', 'French']
+        columns: list = ['Russian', 'English', 'French']
         df = pd.DataFrame([words_list], columns=columns)
         df.to_csv('results/words.csv', mode='a', header=False, index=False)
         return self.read_csv_to_html()
@@ -41,12 +41,12 @@ class Translate:
     @staticmethod
     def read_csv_to_html() -> list:
         file = open('results/words.csv', 'r')
-        lines = [x.split(',') for x in file.read().splitlines()[1:]]
+        lines: list = [x.split(',') for x in file.read().splitlines()[1:]]
         return lines
 
     def error(self) -> str:
         try:
-            mistakes = ', '.join([mistake.capitalize() for mistake in self.spell.candidates(self.word)])
+            mistakes: str = ', '.join([mistake.capitalize() for mistake in self.spell.candidates(self.word)])
             return f'Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {mistakes}?'
         except TypeError:
             return 'Такого слова не предусмотрено.'
