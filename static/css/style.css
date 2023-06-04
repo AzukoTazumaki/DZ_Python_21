@@ -36,14 +36,16 @@ body {
     padding: 10px;
 }
 
-#github_link, #help_link {
+#github_link,
+#help_link {
     text-decoration: none;
     color: var(--palegoldenrod);
     margin-right: 20px;
     transition: .3s;
 }
 
-#github_link:hover, #help_link:hover {
+#github_link:hover,
+#help_link:hover {
     transform: scale(1.1);
     text-shadow: var(--palegoldenrod-shadow);
 }
@@ -153,7 +155,7 @@ body {
 
 /* ————————————————————————————————————————————————— BLOCK EXERCISE ————————————————————————————————————————————————— */
 
-.block_exercise_1, 
+.block_exercise_1,
 .block_exercise_2,
 .block_exercise_3,
 .block_exercise_4 {
@@ -164,7 +166,7 @@ body {
     transition: .3s;
 }
 
-.block_exercise_1:hover, 
+.block_exercise_1:hover,
 .block_exercise_2:hover,
 .block_exercise_3:hover,
 .block_exercise_4:hover {
@@ -179,15 +181,18 @@ input {
     outline: none;
     color: var(--marsh);
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-size: 18px;
     width: 100%;
 }
 
-.block_exercise_1 span, 
+.block_exercise_1 span,
 .block_exercise_2 span,
 .block_exercise_3 span,
 .block_exercise_4 span {
-    border: 1px solid var(--marsh);
+    border-right: 1px solid var(--marsh);
+    border-bottom: 1px solid var(--marsh);
     background-color: transparent;
     color: var(--marsh);
     border-top-right-radius: 8px;
@@ -199,17 +204,13 @@ input {
     transition: .3s;
 }
 
-input:focus + span {
-    background-color: var(--marsh);
-    color: var(--palegoldenrod);
-}
-
 ::placeholder {
     font-size: 16px;
     color: #203730b1;
 }
 
-.submit, .show {
+.submit,
+.show {
     color: var(--palegoldenrod);
     border: none;
     background-color: var(--marsh);
@@ -218,7 +219,8 @@ input:focus + span {
     transition: .3s;
 }
 
-.submit:hover, .show:hover {
+.submit:hover,
+.show:hover {
     background-color: #29483e;
     text-shadow: var(--palegoldenrod-shadow);
 }
@@ -243,7 +245,7 @@ input:focus + span {
 }
 
 .table-scroll table {
-    width:100%;
+    width: 100%;
     table-layout: fixed;
     border: none;
 }
@@ -257,6 +259,7 @@ input:focus + span {
 }
 
 .table-scroll tbody td {
+    vertical-align: middle !important;
     text-align: left;
     padding: 10px;
     font-size: 14px;
@@ -273,9 +276,12 @@ thead {
 }
 
 @keyframes table {
-    0%, 50% {
+
+    0%,
+    50% {
         transform: translateX(-400%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -288,13 +294,16 @@ thead {
 .players_roles {
     text-shadow: var(--palegoldenrod-shadow);
     font-size: 14px;
-    animation: players 3s
+    animation: opacity 3s
 }
 
-@keyframes players {
-    0%, 70% {
+@keyframes opacity {
+
+    0%,
+    70% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -305,37 +314,49 @@ thead {
 }
 
 .search_container {
-    animation: players 3.5s;
+    animation: opacity 3.5s;
 }
 
 .players_tooltip {
-    text-shadow: var(--palegoldenrod-shadow);
+    color: var(--purple-mimosa);
+    text-shadow: var(--purple-mimosa-shadow);
     font-size: 14px;
-    animation: players 4s;
+    animation: opacity 4s;
 }
 
-.search_container input {
+.search_container form div input {
     border: none;
-    border-radius: 8px;
-    background-color: var(--palegoldenrod);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: 1px solid var(--palegoldenrod);
+    background-color: transparent;
     outline: none;
-    color: var(--marsh);
+    color: var(--palegoldenrod);
+    text-shadow: var(--palegoldenrod-shadow);
     padding: 10px 20px;
     font-size: 14px;
     width: 40%;
 }
 
-.search_container input::-webkit-search-cancel-button {
+.search_container form div input::-webkit-search-cancel-button {
     -webkit-appearance: none;
     height: 1em;
     width: 1em;
-    background: url(../images/trash-can-solid.svg) no-repeat 50% 50%;
-    color: var(--marsh);
     cursor: pointer;
+    content: url(../images/trash-can-solid.svg);
+    background-color: var(--palegoldenrod);
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.search_container input::placeholder {
-    color: #203730b9;
+.search_container form div input::placeholder {
+    color: #eee8aaa3;
+    text-shadow: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
 }
 
 .search {
@@ -353,4 +374,72 @@ thead {
 
 .search:focus {
     transform: scale(0.98);
+}
+
+.company_title {
+    text-shadow: var(--palegoldenrod-shadow);
+    animation: table 3s;
+}
+
+/* ———————————————————————————————————— TOOLTIP ———————————————————————————————————— */
+
+.custom-tooltip {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.custom-tooltip .left {
+    min-width: 300px;
+    top: 50%;
+    right: 100%;
+    margin-right: 40px;
+    transform: translate(0, -50%);
+    padding: 10px 20px;
+    color: #FFFFFF;
+    background-color: var(--palegoldenrod);
+    font-weight: normal;
+    font-size: 13px;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 99999999;
+    box-sizing: border-box;
+    box-shadow: 0 1px 8px var(--palegoldenrod);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+.custom-tooltip:hover .left {
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom-tooltip .left i {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -12px;
+    width: 12px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.custom-tooltip .left i::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background-color: var(--palegoldenrod);
+    box-shadow: 0 1px 8px var(--palegoldenrod);
+}
+
+.custom-tooltip div span {
+    color: var(--marsh);
+    font-weight: bold;
+    border: none;
 }

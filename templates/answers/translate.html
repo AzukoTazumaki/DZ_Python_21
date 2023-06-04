@@ -17,9 +17,21 @@
 
             {% else %}
 
-            <div class="search_container d-flex justify-content-end mb-3">
-                <input class="mx-2" type="search" placeholder="Поиск" style="width: 100%;">
-                <button class="search">Найти</button>
+            <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
+            <div class="search_container">
+                <form action="#" method="get">
+                    <div class="d-flex justify-content-end mb-3">
+                        <input class="mx-2" name="search_words" type="search" placeholder="Поиск">
+                        <button type="submit" class="search">Найти</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+            <div class="players_tooltip mb-2">
+                <p class="text-end">
+                    * для поиска достаточно ввести одно слово
+                </p>
             </div>
 
             <div class="table-scroll">
@@ -56,6 +68,13 @@
 
                 </div>
 
+            </div>
+
+            <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+            <div class="players_tooltip mt-3">
+                <p class="text-start">
+                    Найдено слов: {{ result|length }}
+                </p>
             </div>
 
             {% endif %}

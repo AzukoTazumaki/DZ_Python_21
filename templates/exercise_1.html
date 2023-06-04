@@ -15,7 +15,8 @@
         <!-- ———————————————————————————— PLAYERS BLOCK ———————————————————————————— -->
         <div class="col-5 block_exercise_1">
             <h3>Программа "Великие баскетболисты"</h3>
-            <p>Примечание: если вы просто хотите посмотреть список баскетболистов, нажмите кнопку отправить, не заполняя форму.</p>
+            <p>Примечание: если вы просто хотите посмотреть список баскетболистов, нажмите кнопку отправить, не заполняя
+                форму.</p>
             <p>Форма данных баскетболистов:</p>
 
             <!-- ———————————————————————————— PLAYERS INFO FORM ———————————————————————————— -->
@@ -39,25 +40,53 @@
 
                 <!-- ———————————————————————————— PLAYER ROLE ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_role" id="player_role" type="text" placeholder="Амплуа">
-                    <span><i class="fa-solid fa-location-dot"></i></span>
+                    <div class="custom-tooltip">
+                        <input name="player_role" id="player_role" type="text" placeholder="Амплуа">
+                        <div class="left">
+                            <span>Форвард, Защитник или Цетровой?</span>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <span><i class="fa-solid fa-address-book"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— PLAYER AGE ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_age" id="player_age" type="text" placeholder="Возраст">
-                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                    <div class="custom-tooltip">
+                        <input name="player_age" id="player_age" type="number" min="20" max="50" placeholder="Возраст">
+                        <div class="left">
+                            <span>Возраст допускается в пределах [ 20 - 50 ] лет</span>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <span><i class="fa-solid fa-person-arrow-up-from-line"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— PLAYER HEIGHT ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_height" id="player_height" type="text" placeholder="Рост">
+                    <div class="custom-tooltip">
+                        <input name="player_height" id="player_height" min="170" max="230" type="number"
+                            placeholder="Рост">
+                        <div class="left">
+                            <span>Рост допускается в пределах [ 170 - 230 ] см</span>
+                            <i></i>
+                        </div>
+                    </div>
                     <span><i class="fa-solid fa-ruler"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— PLAYER WEIGHT ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_weight" id="player_weight" type="text" placeholder="Вес">
+                    <div class="custom-tooltip">
+                        <input name="player_weight" id="player_weight" min="60" max="140" type="number"
+                            placeholder="Вес">
+                        <div class="left">
+                            <span>Вес допускается в пределах [ 60 - 140 ] кг</span>
+                            <i></i>
+                        </div>
+                    </div>
                     <span><i class="fa-solid fa-weight-scale"></i></span>
                 </div>
 
@@ -69,13 +98,20 @@
 
                 <!-- ———————————————————————————— PLAYER EDUCATION ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_education" id="player_education" type="text" placeholder="Университет или колледж">
+                    <input name="player_education" id="player_education" type="text"
+                        placeholder="Университет или колледж">
                     <span><i class="fa-solid fa-school"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— PLAYER SALARY ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="player_salary" id="player_salary" type="text" placeholder="Зарплата">
+                    <div class="custom-tooltip">
+                        <input name="player_salary" id="player_salary" min="0" max="5000" type="text" placeholder="Зарплата (млн руб)">
+                        <div class="left">
+                            <span>Допускается в пределах [ 0 - 5000 ] млн руб</span>
+                            <i></i>
+                        </div>
+                    </div>
                     <span><i class="fa-solid fa-coins"></i></span>
                 </div>
 
