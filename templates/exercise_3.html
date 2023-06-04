@@ -27,24 +27,26 @@
             <form class="mt-3" action="/company_employees" method="post">
 
                 <!-- ———————————————————————————— EMPLOYEE FULL NAME ———————————————————————————— -->
-                <div class="d-flex">
-                    <input name="employee_first_name" id="employee_first_name" type="text" placeholder="Имя">
-                    <span><i class="fa-solid fa-circle-user"></i></span>
-                </div>
-
-                <div class="d-flex mt-2">
-                    <input name="employee_last_name" id="employee_last_name" type="text" placeholder="Фамилия">
-                    <span><i class="fa-solid fa-circle-user"></i></span>
-                </div>
-
-                <div class="d-flex mt-2">
-                    <input name="employee_surname" id="employee_surname" type="text" placeholder="Отчество">
-                    <span><i class="fa-solid fa-circle-user"></i></span>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex mt-2">
+                        <input name="employee_first_name" id="employee_first_name" type="text" placeholder="Имя">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
+    
+                    <div class="d-flex mt-2">
+                        <input name="employee_last_name" id="employee_last_name" type="text" placeholder="Фамилия">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
+    
+                    <div class="d-flex mt-2">
+                        <input name="employee_surname" id="employee_surname" type="text" placeholder="Отчество">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
                 </div>
 
                 <!-- ———————————————————————————— EMPLOYEE PHONE ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="employee_phone_number" id="employee_phone_number" type="text" placeholder="Телефон">
+                    <input name="employee_phone_number" id="employee_phone_number" pattern="+7(999)-999-99-99" type="text" placeholder="Телефон">
                     <span><i class="fa-solid fa-square-phone"></i></span>
                 </div>
 
@@ -57,7 +59,7 @@
                 <!-- ———————————————————————————— EMPLOYEE AGE ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="employee_age" id="employee_age" type="number" placeholder="Возраст">
-                    <span><i class="fa-solid fa-square-envelope"></i></span>
+                    <span><i class="fa-solid fa-person-arrow-up-from-line"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— EMPLOYEE OCCUPATION ———————————————————————————— -->
@@ -75,13 +77,13 @@
                 <!-- ———————————————————————————— EMPLOYEE UNIVERSITY ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="employee_university" id="employee_university" type="text" placeholder="Университет или колледж">
-                    <span><i class="fa-solid fa-person-circle-question"></i></span>
+                    <span><i class="fa-solid fa-school"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— EMPLOYEE WORK EXPERIENCE ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="employee_work_experience" id="employee_work_experience" type="number" placeholder="Опыт работы">
-                    <span><i class="fa-solid fa-person-circle-question"></i></span>
+                    <span><i class="fa-solid fa-user-clock"></i></span>
                 </div>
 
                 <!-- ———————————————————————————— EMPLOYEE INFO SEND ———————————————————————————— -->

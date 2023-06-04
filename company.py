@@ -15,8 +15,9 @@ class Company:
         self.email: str = employee_info['employee_email']
         self.age: str = employee_info['employee_age']
         self.occupation: str = employee_info['employee_occupation']
-        self.nationality: str = employee_info['nationality']
-        self.work_experience: str = employee_info['work_experience']
+        self.nationality: str = employee_info['employee_nationality']
+        self.university: str = employee_info['employee_university']
+        self.work_experience: str = employee_info['employee_work_experience']
 
     @staticmethod
     def auto_create_employees():
@@ -45,11 +46,24 @@ class Company:
             df_a = pd.DataFrame([employee_info], columns=columns)
             df_a.to_csv('results/employees.csv', mode='a', index=False, header=False)
 
-    def to_csv(self):
-        pass
+    def add_employee_to_csv(self):
+        columns: list = ['Name', 'Phone', 'Email', 'Age', 'Occupation', 'Nationality', 'University', 'Work Experience']
+        new_employee_info: list = [
+            self.full_name, self.phone, self.email, self.age,
+            self.occupation, self.nationality, self.university, self.work_experience
+        ]
+        check_employee_info = self.check_unknown_fields(new_employee_info)
+        df_a = pd.DataFrame([check_employee_info], columns=columns)
+        df_a.to_csv('results/employees.csv', mode='a', index=False, header=False)
+        return self.read_csv_to_html()
 
-    def read_csv(self):
-        pass
+    @staticmethod
+    def check_unknown_fields(employee_info: list):
+        for index, field in enumerate(employee_info):
+            if field == '' or len(field) == 2:
+                employee_info[index] = 'Неизвестно'
+            continue
+        return employee_info
 
     @staticmethod
     def read_csv_to_html() -> list:
