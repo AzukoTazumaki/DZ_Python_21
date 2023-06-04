@@ -7,8 +7,18 @@ from currency_converter import CurrencyConverter as cc
 
 
 class Players:
-    def __init__(self, player_info: list):
-        pass
+    def __init__(self, player_info: dict):
+        self.full_name = \
+            player_info['player_last_name'].capitalize() + ' ' + \
+            player_info['player_first_name'].capitalize() + ' ' + \
+            player_info['player_surname'].capitalize()
+        self.position = player_info['player_role'].upper()
+        self.age = player_info['player_age']
+        self.height = player_info['player_height']
+        self.weight = player_info['player_weight']
+        self.team = player_info['player_team']
+        self.education = player_info['player_education']
+        self.salary = player_info['player_salary']
 
     @staticmethod
     def parse_site():
@@ -55,6 +65,25 @@ class Players:
                 ]
                 df_a = pd.DataFrame([player_info_list], columns=columns)
                 df_a.to_csv('results/players.csv', mode='a', index=False, header=False)
+
+    def add_player_to_csv(self):
+        columns = ['Name', 'Position', 'Age', 'Height', 'Weight', 'Team', 'College', 'Salary']
+        new_player_info = [
+            self.full_name, self.position, self.age, self.height,
+            self.weight, self.team, self.education, self.salary
+        ]
+        checked_player_info = self.check_unknown_fields(new_player_info)
+        df_a = pd.DataFrame([checked_player_info], columns=columns)
+        df_a.to_csv('results/players.csv', mode='a', index=False, header=False)
+        return self.read_csv_to_html()
+
+    @staticmethod
+    def check_unknown_fields(player_info: list):
+        for index, field in enumerate(player_info):
+            if field == '' or field == '  ':
+                player_info[index] = 'Неизвестно'
+            continue
+        return player_info
 
     @staticmethod
     def read_csv_to_html() -> list:

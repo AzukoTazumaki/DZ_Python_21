@@ -13,6 +13,7 @@ pygments = "*"
 unitsnet-py = "*"
 bs4 = "*"
 currencyconverter = "*"
+mimesis = "*"
 
 [dev-packages]
 
