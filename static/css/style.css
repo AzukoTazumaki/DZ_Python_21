@@ -93,19 +93,11 @@ body {
 }
 
 .title_method {
-    color: var(--marsh);
-    text-shadow: var(--marsh-shadow);
-    text-align: center;
-    background-color: var(--cloud-white);
-    padding: 10px;
-    border-radius: 8px;
-    font-style: italic;
-}
-
-.title_method_span {
-    color: var(--papaya-orange);
-    text-shadow:
-        var(--papaya-orange-shadow);
+    color: var(--palegoldenrod);
+    text-shadow: var(--palegoldenrod-shadow);
+    border-bottom: 1px solid var(--palegoldenrod);
+    padding-bottom: 5px;
+    width: fit-content;
 }
 
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
