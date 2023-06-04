@@ -34,7 +34,7 @@ class Players:
         df_w = pd.DataFrame([columns], columns=columns)
         df_w.to_csv('results/players.csv', mode='w', index=False, header=False)
         for href in needed_hrefs:
-            table_rows = bs(requests.get(url + href).content, 'html.parser')\
+            table_rows: list = bs(requests.get(url + href).content, 'html.parser')\
                 .find('tbody', {'class': 'Table__TBODY'})\
                 .find_all('tr', {'class': 'Table__TR'})
             for table_row in table_rows:
@@ -58,7 +58,6 @@ class Players:
                 player_salary: str = player_info_unknown \
                     if re.search(r'-', table_datas[7].text) \
                     else round(cc(fallback_on_wrong_date=True).convert(int(player_salary_usd), 'USD', 'RUB') / 1000000)
-
                 player_info_list: list = [
                     player_name, player_role, player_age, player_height,
                     player_weight, player_team, player_education, player_salary

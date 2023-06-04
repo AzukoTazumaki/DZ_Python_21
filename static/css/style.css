@@ -77,8 +77,8 @@ body {
 }
 
 .help_translate {
-    color: var(--purple-mimosa);
-    text-shadow: var(--purple-mimosa-shadow);
+    color: var(--day-sky-blue);
+    text-shadow: var(--black-shadow);
 }
 
 .ex-links a {
@@ -90,6 +90,22 @@ body {
 .ex-links a:hover {
     text-shadow: var(--palegoldenrod-shadow);
     color: var(--palegoldenrod);
+}
+
+.title_method {
+    color: var(--marsh);
+    text-shadow: var(--marsh-shadow);
+    text-align: center;
+    background-color: var(--cloud-white);
+    padding: 10px;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.title_method_span {
+    color: var(--papaya-orange);
+    text-shadow:
+        var(--papaya-orange-shadow);
 }
 
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
@@ -318,8 +334,8 @@ thead {
 }
 
 .players_tooltip {
-    color: var(--purple-mimosa);
-    text-shadow: var(--purple-mimosa-shadow);
+    color: var(--crystal-blue);
+    text-shadow: var(--crystal-blue-shadow);
     font-size: 14px;
     animation: opacity 4s;
 }

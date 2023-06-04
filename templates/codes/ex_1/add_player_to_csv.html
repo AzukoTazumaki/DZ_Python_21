@@ -1,0 +1,21 @@
+{% block add_player_to_csv %}
+<p>
+    Данный метод использует данные формы, распакованные в конструкторе. Упаковываем 
+    их в список и вызываем метод <span class="help_translate">check_unknowns_fields()
+    </span>, возвращающий список с отформатированными элементами. Далее строкой с помощью 
+    созданного DataFrame добавляется в файл. 
+</p>
+
+<div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px">
+<pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">add_player_to_csv</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #657b83">columns:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[</span><span style="color: #2aa198">&#39;Name&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Position&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Age&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Height&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Weight&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Team&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;College&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Salary&#39;</span><span style="color: #657b83">]</span> 
+    <span style="color: #657b83">new_player_info:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">full_name,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">position,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">age,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">height,</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">weight,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">team,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">education,</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">salary</span> 
+    <span style="color: #657b83">]</span> 
+    <span style="color: #657b83">checked_player_info</span> <span style="color: #93a1a1">=</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">check_unknown_fields(new_player_info)</span> 
+    <span style="color: #657b83">df_a</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">pd</span><span style="color: #93a1a1">.</span><span style="color: #657b83">DataFrame([checked_player_info],</span> <span style="color: #657b83">columns</span><span style="color: #93a1a1">=</span><span style="color: #657b83">columns)</span> 
+    <span style="color: #657b83">df_a</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_csv(</span><span style="color: #2aa198">&#39;results/players.csv&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">mode</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;a&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">index</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">False</span><span style="color: #657b83">,</span> <span style="color: #657b83">header</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">False</span><span style="color: #657b83">)</span> 
+    <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv_to_html()</span></pre>
+</div>
+{% endblock %}

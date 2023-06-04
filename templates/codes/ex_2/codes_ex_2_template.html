@@ -1,6 +1,10 @@
 {% block codes_ex_2 %}
 
+<hr class="mt-3">
+
 <h3>Задание 2. Переводчик.</h3>
+
+<hr>
 
 <p>Были импортированы следующие библиотеки:</p>
 
@@ -10,29 +14,43 @@
     <li>Pandas.</li>
 </ul>
 
+<h5 class="title_method mt-3">Инициализация класса <span class="title_method_span">Translate</span>.</h5>
+
 {% block class_translate %}
 {% include 'codes/ex_2/class_translate.html' %}
 {% endblock %}
+
+<h5 class="title_method mt-3">Метод <span class="title_method_span">check_spelling()</span>.</h5>
 
 {% block check_spelling %}
 {% include 'codes/ex_2/check_spelling.html' %}
 {% endblock %}
 
+<h5 class="title_method mt-3">Метод <span class="title_method_span">translate()</span>.</h5>
+
 {% block translate_method %}
 {% include 'codes/ex_2/translate.html' %}
 {% endblock %}
+
+<h5 class="title_method mt-3">Метод <span class="title_method_span">read_csv()</span>.</h5>
 
 {% block read_csv_ex_2 %}
 {% include 'codes/ex_2/read_csv.html' %}
 {% endblock %}
 
+<h5 class="title_method mt-3">Метод <span class="title_method_span">to_csv()</span>.</h5>
+
 {% block to_csv_ex_2 %}
 {% include 'codes/ex_2/to_csv.html' %}
 {% endblock %}
 
+<h5 class="title_method mt-3">Метод <span class="title_method_span">read_csv_to_html()</span>.</h5>
+
 {% block read_csv_to_html_ex_2 %}
 {% include 'codes/ex_2/read_csv_to_html.html' %}
 {% endblock %}
+
+<h5 class="title_method mt-3">Метод <span class="title_method_span">error_method()</span>.</h5>
 
 {% block error_method_ex_2 %}
 {% include 'codes/ex_2/error.html' %}
