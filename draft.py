@@ -113,5 +113,18 @@ from random import choice
 # code = "@staticmethod def parse_site(): url: str = 'https://www.espn.com' response = requests.get(url + '/nba/teams') response_body = bs(response.content, 'html.parser') needed_hrefs: list = [ link['href'] for link in response_body .find('div', {'class': 'layout is-split'}) .find_all('a', {'class': 'AnchorLink'}) if 'roster' in link['href'] ] columns: list = ['Name', 'Position', 'Age', 'Height', 'Weight', 'Team', 'College', 'Salary'] df_w = pd.DataFrame([columns], columns=columns) df_w.to_csv('results/players.csv', mode='w', index=False, header=False) for href in needed_hrefs: table_rows = bs(requests.get(url + href).content, 'html.parser')\ .find('tbody', {'class': 'Table__TBODY'})\ .find_all('tr', {'class': 'Table__TR'}) for table_row in table_rows: table_datas: list = table_row.find_all('td', {'class': 'Table__TD'}) player_name: str = ' '.join(re.findall('[A-z.]+', table_datas[1].text)) player_role: str = table_datas[2].text player_age: str = table_datas[3].text player_height: int = round(Length(float('.'.join(re.findall(r'[1-9]+', table_datas[4].text))), LengthUnits.Foot).centimeters) player_weight: int = round(Mass(int(re.findall(r'[0-9]+', table_datas[5].text)[0]), MassUnits.Pound).kilograms) player_team: str = ' '.join( [ team.text for team in bs(requests.get(url + href).content, 'html.parser') .find('main', {'id': 'fittPageContainer'}) .find('h1', {'class': 'ClubhouseHeader__Name'}) .find_all('span', {'class': 'db'}) ] ) player_info_unknown: str = 'Неизвестно' player_education: str = player_info_unknown if re.search(r'-', table_datas[6].text) else table_datas[6].text player_salary_usd: str = ''.join(''.join(re.findall(r'[0-9,]+', table_datas[7].text)).split(',')) player_salary: str = player_info_unknown \ if re.search(r'-', table_datas[7].text) \ else round(cc(fallback_on_wrong_date=True).convert(int(player_salary_usd), 'USD', 'RUB') / 1000000) player_info_list: list = [ player_name, player_role, player_age, player_height, player_weight, player_team, player_education, player_salary ] df_a = pd.DataFrame([player_info_list], columns=columns) df_a.to_csv('results/players.csv', mode='a', index=False, header=False)"
 # code = "def add_player_to_csv(self): columns: list = ['Name', 'Position', 'Age', 'Height', 'Weight', 'Team', 'College', 'Salary'] new_player_info: list = [ self.full_name, self.position, self.age, self.height, self.weight, self.team, self.education, self.salary ] checked_player_info = self.check_unknown_fields(new_player_info) df_a = pd.DataFrame([checked_player_info], columns=columns) df_a.to_csv('results/players.csv', mode='a', index=False, header=False) return self.read_csv_to_html()"
 # code = "@staticmethod def check_unknown_fields(player_info: list): for index, field in enumerate(player_info): if field == '' or len(field) == 2: player_info[index] = 'Неизвестно' continue return player_info"
-code = "@staticmethod def read_csv_to_html() -> list: file = open('results/players.csv', 'r') lines = [x.split(',') for x in file.read().splitlines()[1:]] return lines"
-print(highlight(code, PythonLexer(), HtmlFormatter(noclasses=True, style='solarized-light', cssstyles='border-radius: 8px;border: 1px solid grey;padding: 15px')))
+# code = "@staticmethod def read_csv_to_html() -> list: file = open('results/players.csv', 'r') lines = [x.split(',') for x in file.read().splitlines()[1:]] return lines"
+# print(highlight(code, PythonLexer(), HtmlFormatter(noclasses=True, style='solarized-light', cssstyles='border-radius: 8px;border: 1px solid grey;padding: 15px')))
+
+# a = set()
+# a.add(1)
+# a.add(1)
+# print(a)
+
+a = pd.read_csv('results/books.csv')
+for i in range(10000):
+    try:
+        print(a['Year'][i])
+    except KeyError:
+        break
+

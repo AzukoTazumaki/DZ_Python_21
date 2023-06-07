@@ -195,6 +195,15 @@ input {
     width: 100%;
 }
 
+textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--marsh);
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+}
+
 .block_exercise_1 span,
 .block_exercise_2 span,
 .block_exercise_3 span,
@@ -272,6 +281,11 @@ input {
     padding: 10px;
     font-size: 14px;
     vertical-align: top;
+    border-bottom: 1px solid var(--palegoldenrod);
+}
+
+td:last-child {
+    background: var(--marsh);
 }
 
 thead {

@@ -1,14 +1,147 @@
 {% extends 'base.html' %}
 
 {% block books %}
-
-<div class="container">
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
+<div class="container-fluid">
     <div class="row d-flex align-items-center vh-100">
-        <div class="offset-3 col-6">
 
-            
+        <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
+        <div class="offset-1 col-10">
+
+            {% if result is string %}
+
+            <h4 class="error_translate">{{ result }}</h4>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="/">
+                    <button class="to_main_page">На главную страницу</button>
+                </a>
+
+            </div>
+
+            {% else %}
+
+            <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
+            <div class="search_container">
+                <form action="#" method="get">
+                    <div class="d-flex justify-content-end mb-3">
+                        <input class="mx-2" name="search_players" type="search" placeholder="Поиск">
+                        <button type="submit" class="search">Найти</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+            <div class="d-flex justify-content-end">
+                <div class="players_tooltip mb-2">
+                    <p class="text-end">
+                        * поиск производится по названию, автору, жанру и издателю <br>
+                        ** для поиска достаточно ввести одно слово
+                    </p>
+                </div>
+            </div>
+
+            <!-- ———————————————————————————— PLAYERS TABLE HEAD ———————————————————————————— -->
+            <div class="table-scroll">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">#</th>
+                            <th style="width: 10%;">Название</th>
+                            <th style="width: 10%;">Автор</th>
+                            <th style="width: 15%;">Жанр</th>
+                            <th style="width: 5%;">Год</th>
+                            <th style="width: 10%;">Издатель</th>
+                            <th style="width: 45%;">Краткое содержание</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <!-- ———————————————————————————— PLAYERS TABLE BODY ———————————————————————————— -->
+                <div class="table-scroll-body content">
+
+                    <table>
+                        <tbody>
+
+                            <!-- ———————————————————————————— LOOP FOR ———————————————————————————— -->
+                            {% for i in range(0, result|length) %}
+                            <tr>
+
+                                <!-- ———————————————————————————— LOOP INDEX ———————————————————————————— -->
+                                <td style="width: 5%;">{{ loop.index }}</td>
+
+                                <!-- ———————————————————————————— LINE 0 ———————————————————————————— -->
+                                {% if result['Title'][i] == 'Неизвестно' %}
+                                <td style="width: 10%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 10%;">{{ result['Title'][i] }}</td>
+                                {% endif %}
+
+                                <!-- ———————————————————————————— LINE 1 ———————————————————————————— -->
+                                {% if result['Author'][i] == 'Неизвестно' %}
+                                <td style="width: 10%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 10%;">{{ result['Author'][i] }}</td>
+                                {% endif %}
+
+                                <!-- ———————————————————————————— LINE 2 ———————————————————————————— -->
+                                {% if result['Genre'][i] == 'Неизвестно' %}
+                                <td style="width: 15%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 15%;">{{ result['Genre'][i] }}</td>
+                                {% endif %}
+
+                                <!-- ———————————————————————————— LINE 3 ———————————————————————————— -->
+                                {% if result['Year'][i] == 'Неизвестно' %}
+                                <td style="width: 5%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 5%;">{{ result['Year'][i] }}</td>
+                                {% endif %}
+
+                                <!-- ———————————————————————————— LINE 4 ———————————————————————————— -->
+                                {% if result['Publisher'][i] == 'Неизвестно' %}
+                                <td style="width: 10%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 10%;">{{ result['Publisher'][i] }}</td>
+                                {% endif %}
+
+                                <!-- ———————————————————————————— LINE 5 ———————————————————————————— -->
+                                {% if result['Summary'][i] == 'Неизвестно' %}
+                                <td style="width: 45%; color: var(--purple-mimosa); 
+                                    text-shadow: var(--purple-mimosa-shadow);">???</td>
+                                {% else %}
+                                <td style="width: 45%;">{{ result['Summary'][i] }}</td>
+                                {% endif %}
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+            <div class="players_tooltip d-flex justify-content-between mt-3">
+                <p>
+                    Найдено книг: {{ result['Title']|length }}
+                </p>
+                <p>
+                    Вся информация парсилась с сайта LibCat.
+                </p>
+            </div>
+
+            {% endif %}
 
         </div>
+
     </div>
 </div>
 

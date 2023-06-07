@@ -669,3 +669,12 @@
     },
     "develop": {}
 }
+
+Flask~=2.3.2
+pandas~=2.0.2
+requests~=2.31.0
+bs4~=0.0.1
+beautifulsoup4~=4.12.2
+translators~=5.7.6
+Pygments~=2.15.1
+mimesis~=10.1.0

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from translate import Translate
 from players import Players
 from company import Company
+from books import Books
 
 app = Flask(__name__)
 
@@ -42,8 +43,12 @@ def company_employees():
 
 @app.route('/books', methods=['POST', 'GET'])
 def books():
-    new_book = request.form
-    return render_template('answers/books.html')
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        data_list = [data[key] for key in data if data[key] != '']
+        if len(data_list) == 0:
+            return render_template('answers/books.html', result=Books.read_csv_to_html())
+        return render_template('answers/books.html', result=Books(data).add_book_to_csv())
 
 
 @app.route('/help')
