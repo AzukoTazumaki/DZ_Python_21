@@ -38,7 +38,7 @@ from random import choice
 
 
 # file = open('results/words.csv', 'r')
-# lines = [x.split(',') for x in file.read().splitlines()]
+# lines = [x.split('\n') for x in file.read().splitlines()]
 # print(lines)
 
 # a = pd.read_html('results/table_translate.html')
@@ -121,10 +121,72 @@ from random import choice
 # a.add(1)
 # print(a)
 
-a = pd.read_csv('results/books.csv')
-for i in range(10000):
-    try:
-        print(a['Year'][i])
-    except KeyError:
-        break
+# a = pd.read_csv('results/books.csv')
+# for i in range(10000):
+#     try:
+#         print(a['Year'][i])
+#     except KeyError:
+#         break
 
+# def search(word: str) -> str or list:
+#     result = []
+#     with open('results/players.csv') as players:
+#         players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
+#         players_pandas: list = pd.read_csv('results/players.csv')
+#         for title in players_pandas:
+#             if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
+#                 for index, row in enumerate(players_pandas[title]):
+#                     if word in str(row):
+#                         needed_row = ' ,'.join(players_rows[index]).split(',')
+#                         result.append(needed_row)
+#                     continue
+#             continue
+#     print(result)
+#     return result if len(result) > 0 else 'Совпадений не найдено.'
+#
+#
+# search('Stephen')
+
+# def search(word: str) -> str or list:
+#     result = []
+#     with open('results/words.csv') as words:
+#         words_rows: list = [x.split('\n') for x in words.read().splitlines()[1:]]
+#         words_pandas: list = pd.read_csv('results/words.csv')
+#         for title in words_pandas:
+#             for index, row in enumerate(words_pandas[title]):
+#                 if word in row:
+#                     needed_row = ' ,'.join(words_rows[index]).split(',')
+#                     result.append(needed_row)
+#                 continue
+#     return result if len(result) > 0 else 'Совпадений не найдено.'
+#
+#
+# print(search('Бросок'))
+
+def search(word: str) -> str or dict:
+    result = {
+        'Title': [],
+        'Author': [],
+        'Genre': [],
+        'Year': [],
+        'Publisher': [],
+        'Summary': []
+    }
+    with open('results/books.csv') as _:
+        books_pandas: list = pd.read_csv('results/books.csv')
+        for title in books_pandas:
+            if title not in ['Year', 'Summary']:
+                for index, row in enumerate(books_pandas[title]):
+                    if word in str(row):
+                        result['Title'].append(books_pandas['Title'][index])
+                        result['Author'].append(books_pandas['Author'][index])
+                        result['Genre'].append(books_pandas['Genre'][index])
+                        result['Year'].append(books_pandas['Year'][index])
+                        result['Publisher'].append(books_pandas['Publisher'][index])
+                        result['Summary'].append(books_pandas['Summary'][index])
+                    continue
+            continue
+    return result if len(result['Title']) > 0 else 'Совпадений не найдено.'
+
+
+print(search('Дракон'))

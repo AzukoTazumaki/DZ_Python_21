@@ -20,6 +20,9 @@ def basketball_players():
         if len(data_list) == 0:
             return render_template('answers/basketball_players.html', result=Players.read_csv_to_html())
         return render_template('answers/basketball_players.html', result=Players(data).add_player_to_csv())
+    if request.method == 'GET':
+        word = request.args.get('search_players')
+        return render_template('answers/basketball_players.html', result=Players.search(word))
 
 
 @app.route('/translate', methods=['POST', 'GET'])
@@ -29,6 +32,9 @@ def translate():
             return render_template('answers/translate.html',
                                    result=Translate(request.form['word_translate']).check_spelling())
         return render_template('answers/translate.html', result=Translate.read_csv_to_html())
+    if request.method == 'GET':
+        word = request.args.get('search_words')
+        return render_template('answers/translate.html', result=Translate.search(word))
 
 
 @app.route('/company_employees', methods=['POST', 'GET'])
@@ -39,6 +45,9 @@ def company_employees():
         if len(data_list) == 0:
             return render_template('answers/company_employees.html', result=Company.read_csv_to_html())
         return render_template('answers/company_employees.html', result=Company(data).add_employee_to_csv())
+    if request.method == 'GET':
+        word = request.args.get('search_employees')
+        return render_template('answers/company_employees.html', result=Company.search(word))
 
 
 @app.route('/books', methods=['POST', 'GET'])
@@ -49,6 +58,9 @@ def books():
         if len(data_list) == 0:
             return render_template('answers/books.html', result=Books.read_csv_to_html())
         return render_template('answers/books.html', result=Books(data).add_book_to_csv())
+    if request.method == 'GET':
+        word = request.args.get('search_books')
+        return render_template('answers/books.html', result=Books.search(word))
 
 
 @app.route('/help')

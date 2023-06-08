@@ -59,8 +59,8 @@ class Players:
                     if re.search(r'-', table_datas[7].text) \
                     else round(cc(fallback_on_wrong_date=True).convert(int(player_salary_usd), 'USD', 'RUB') / 1000000)
                 player_info_list: list = [
-                    player_name, player_role, player_age, player_height,
-                    player_weight, player_team, player_education, player_salary
+                    str(player_name), str(player_role), str(player_age), str(player_height),
+                    str(player_weight), str(player_team), str(player_education), str(player_salary)
                 ]
                 df_a = pd.DataFrame([player_info_list], columns=columns)
                 df_a.to_csv('results/players.csv', mode='a', index=False, header=False)
@@ -90,6 +90,22 @@ class Players:
         lines = [x.split(',') for x in file.read().splitlines()[1:]]
         return lines
 
+    @staticmethod
+    def search(word: str) -> str or list:
+        result = []
+        with open('results/players.csv') as players:
+            players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
+            players_pandas: list = pd.read_csv('results/players.csv')
+            for title in players_pandas:
+                if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
+                    for index, row in enumerate(players_pandas[title]):
+                        if word in str(row):
+                            needed_row = ' ,'.join(players_rows[index]).split(',')
+                            result.append(needed_row)
+                        continue
+                continue
+        return result if len(result) > 0 else 'Совпадений не найдено.'
 
-if __name__ == '__main__':
-    Players.parse_site()
+
+# if __name__ == '__main__':
+#     Players.parse_site()

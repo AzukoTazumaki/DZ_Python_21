@@ -10,7 +10,7 @@
 
             {% if result is string %}
 
-            <h4 class="error_translate">{{ result }}</h4>
+            <h4 class="error_translate text-center">{{ result }}</h4>
             <div class="d-flex justify-content-center mt-3">
                 <a href="/">
                     <button class="to_main_page">На главную страницу</button>
@@ -22,9 +22,9 @@
 
             <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
             <div class="search_container">
-                <form action="#" method="get">
+                <form action="/company_employees" method="get">
                     <div class="d-flex justify-content-end mb-3">
-                        <input class="mx-2" name="search_players" type="search" placeholder="Поиск">
+                        <input class="mx-2" name="search_employees" type="search" placeholder="Поиск">
                         <button type="submit" class="search">Найти</button>
                     </div>
                 </form>
@@ -153,7 +153,7 @@
                     Найдено сотрудников: {{ result|length }}
                 </p>
                 <p>
-                    *** 100 первых работников сформированы библиотекой генерации фактивных данных - mimesis.
+                    *** 100 первых работников сформированы библиотекой генерации фиктивных данных - mimesis.
                 </p>
             </div>
 

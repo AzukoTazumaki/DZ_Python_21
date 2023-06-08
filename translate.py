@@ -50,3 +50,17 @@ class Translate:
             return f'Ошибка в написании. Возможно, вы имели ввиду одно из следующих слов: {mistakes}?'
         except TypeError:
             return 'Такого слова не предусмотрено.'
+
+    @staticmethod
+    def search(word: str) -> str or list:
+        result = []
+        with open('results/words.csv') as words:
+            words_rows: list = [x.split('\n') for x in words.read().splitlines()[1:]]
+            words_pandas: list = pd.read_csv('results/words.csv')
+            for title in words_pandas:
+                for index, row in enumerate(words_pandas[title]):
+                    if word in row:
+                        needed_row = ' ,'.join(words_rows[index]).split(',')
+                        result.append(needed_row)
+                    continue
+        return result if len(result) > 0 else 'Совпадений не найдено.'

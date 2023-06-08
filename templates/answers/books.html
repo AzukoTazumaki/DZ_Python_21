@@ -5,26 +5,28 @@
 <div class="container-fluid">
     <div class="row d-flex align-items-center vh-100">
 
-        <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
-        <div class="offset-1 col-10">
 
-            {% if result is string %}
 
-            <h4 class="error_translate">{{ result }}</h4>
+        {% if result is string %}
+
+        <div class="offset-3 col-6">
+            <h4 class="error_translate text-center">{{ result }}</h4>
             <div class="d-flex justify-content-center mt-3">
                 <a href="/">
                     <button class="to_main_page">На главную страницу</button>
                 </a>
 
             </div>
+        </div>
 
-            {% else %}
-
+        {% else %}
+        <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
+        <div class="offset-1 col-8">
             <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
             <div class="search_container">
-                <form action="#" method="get">
+                <form action="/books" method="get">
                     <div class="d-flex justify-content-end mb-3">
-                        <input class="mx-2" name="search_players" type="search" placeholder="Поиск">
+                        <input class="mx-2" name="search_books" type="search" placeholder="Поиск">
                         <button type="submit" class="search">Найти</button>
                     </div>
                 </form>
@@ -64,7 +66,7 @@
                         <tbody>
 
                             <!-- ———————————————————————————— LOOP FOR ———————————————————————————— -->
-                            {% for i in range(0, result|length) %}
+                            {% for i in range(0, result['Title']|length) %}
                             <tr>
 
                                 <!-- ———————————————————————————— LOOP INDEX ———————————————————————————— -->

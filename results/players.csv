@@ -6,7 +6,7 @@ JD Davison,SG,20,186,88,Boston Celtics,Alabama,Неизвестно
 Danilo Gallinari,PF,34,186,107,Boston Celtics,Неизвестно,692
 Blake Griffin,PF,34,210,113,Boston Celtics,Oklahoma,196
 Sam Hauser,SF,25,204,98,Boston Celtics,Virginia,167
-Al Horford,C,36,210,109,Boston Celtics,Florida,2828
+Al Horford,C,37,210,109,Boston Celtics,Florida,2828
 Mfiondu Kabengele,C,25,186,113,Boston Celtics,Florida State,182
 Luke Kornet,C,27,219,113,Boston Celtics,Vanderbilt,228
 Mike Muscala,C,31,186,109,Boston Celtics,Bucknell,374
@@ -26,7 +26,7 @@ RaiQuan Gray,F,23,204,122,Brooklyn Nets,Florida State,Неизвестно
 Joe Harris,SF,31,201,100,Brooklyn Nets,Virginia,1990
 Cameron Johnson,SF,27,207,95,Brooklyn Nets,North Carolina,628
 Patty Mills,PG,34,183,82,Brooklyn Nets,Saint Mary's,692
-Royce O Neale,PF,29,201,103,Brooklyn Nets,Baylor,982
+Royce O Neale,PF,30,201,103,Brooklyn Nets,Baylor,982
 Day Ron Sharpe,C,21,210,120,Brooklyn Nets,North Carolina,225
 Ben Simmons,PG,26,186,109,Brooklyn Nets,LSU,3783
 Dru Smith,G,25,192,92,Brooklyn Nets,Missouri,Неизвестно
@@ -55,7 +55,7 @@ Joel Embiid,C,29,213,127,Philadelphia 76ers,Kansas,3588
 James Harden,SG,33,198,100,Philadelphia 76ers,Arizona State,3522
 Montrezl Harrell,C,29,204,109,Philadelphia 76ers,Louisville,263
 Tobias Harris,PF,30,204,103,Philadelphia 76ers,Tennessee,4017
-Danuel House Jr.,SF,29,201,100,Philadelphia 76ers,Texas A&M,438
+Danuel House Jr.,SF,30,201,100,Philadelphia 76ers,Texas A&M,438
 Louis King,SF,24,204,93,Philadelphia 76ers,Oregon,Неизвестно
 Furkan Korkmaz,SG,25,204,92,Philadelphia 76ers,Неизвестно,534
 Tyrese Maxey,PG,22,189,91,Philadelphia 76ers,Kentucky,291
@@ -78,7 +78,7 @@ Malachi Flynn,PG,25,186,79,Toronto Raptors,San Diego State,229
 Ron Harper Jr.,F,23,198,111,Toronto Raptors,Rutgers,Неизвестно
 Christian Koloko,C,22,213,104,Toronto Raptors,Arizona,160
 Jakob Poeltl,C,27,216,111,Toronto Raptors,Utah,1003
-Otto Porter Jr.,SF,29,207,90,Toronto Raptors,Georgetown,640
+Otto Porter Jr.,SF,30,207,90,Toronto Raptors,Georgetown,640
 Pascal Siakam,PF,29,207,104,Toronto Raptors,New Mexico State,3783
 Gary Trent Jr.,SG,24,198,95,Toronto Raptors,Duke,1868
 Fred VanVleet,SG,29,183,89,Toronto Raptors,Wichita State,2268
@@ -235,7 +235,7 @@ Justin Minaya,F,24,204,95,Portland Trail Blazers,Providence,Неизвестно
 Jusuf Nurkic,C,28,213,132,Portland Trail Blazers,Неизвестно,1668
 Cam Reddish,SF,23,207,98,Portland Trail Blazers,Duke,636
 Shaedon Sharpe,SG,20,198,91,Portland Trail Blazers,Kentucky,642
-Anfernee Simons,SG,23,192,82,Portland Trail Blazers,Неизвестно,2382
+Anfernee Simons,SG,24,192,82,Portland Trail Blazers,Неизвестно,2382
 Matisse Thybulle,SG,26,198,91,Portland Trail Blazers,Washington,467
 Jabari Walker,F,20,204,91,Portland Trail Blazers,Colorado,109
 Trendon Watford,PF,22,207,108,Portland Trail Blazers,LSU,167
@@ -243,8 +243,8 @@ Jeenathan Williams,G,24,198,93,Portland Trail Blazers,Buffalo,6
 Justise Winslow,PF,27,201,101,Portland Trail Blazers,Duke,437
 Ochai Agbaji,G,23,198,98,Utah Jazz,Kansas,418
 Udoka Azubuike,C,23,186,122,Utah Jazz,Kansas,232
-Jarrell Brantley,PF,26,198,113,Utah Jazz,Charleston,178
-Jordan Clarkson,PG,30,198,88,Utah Jazz,Missouri,1424
+Jarrell Brantley,PF,27,198,113,Utah Jazz,Charleston,178
+Jordan Clarkson,PG,31,198,88,Utah Jazz,Missouri,1424
 Kris Dunn,G,29,192,93,Utah Jazz,Providence,79
 Simone Fontecchio,F,27,204,95,Utah Jazz,Неизвестно,342
 Rudy Gay,SF,36,207,113,Utah Jazz,UConn,660
@@ -407,7 +407,7 @@ Jonathan Isaac,PF,25,186,104,Orlando Magic,Florida State,1857
 Chuma Okeke,PF,24,207,104,Orlando Magic,Auburn,366
 Admiral Schofield,SF,26,198,109,Orlando Magic,Tennessee,55
 Jay Scrubb,G,22,198,100,Orlando Magic,John A. Logan College,Неизвестно
-Jalen Suggs,SG,21,198,93,Orlando Magic,Gonzaga,739
+Jalen Suggs,SG,22,198,93,Orlando Magic,Gonzaga,739
 Franz Wagner,SF,21,186,100,Orlando Magic,Michigan,561
 Moritz Wagner,C,26,186,111,Orlando Magic,Michigan,201
 Deni Avdija,SF,22,210,95,Washington Wizards,Неизвестно,525
@@ -512,6 +512,3 @@ Doug McDermott,SF,31,201,102,San Antonio Spurs,Creighton,1468
 Jeremy Sochan,F,20,207,104,San Antonio Spurs,Baylor,540
 Devin Vassell,SG,22,198,91,San Antonio Spurs,Florida State,474
 Blake Wesley,G,20,195,84,San Antonio Spurs,Notre Dame,255
-Шовхалов Дмитрий Олегович,PG,22,184,70,Azuko Earls,КубГАУ,100
-Коваленко Андрей ,ФОРВАРД,35,189,85,Неизвестно,Неизвестно,Неизвестно
-, и Мир,,,,,

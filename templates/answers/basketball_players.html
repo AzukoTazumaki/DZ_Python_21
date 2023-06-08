@@ -4,6 +4,19 @@
 <!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
 <div class="container-fluid">
     <div class="row d-flex align-items-center vh-100">
+        {% if result is string %}
+
+            <div class="offset-3 col-6">
+                <h4 class="error_translate text-center">{{ result }}</h4>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="/">
+                    <button class="to_main_page">На главную страницу</button>
+                </a>
+
+            </div>
+            </div>
+
+        {% else %}
 
         <!-- ———————————————————————————— PLAYERS DESCRIPTION ———————————————————————————— -->
         <div class="offset-1 col-2">
@@ -29,21 +42,13 @@
         <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
         <div class="col-6">
 
-            {% if result is string %}
+            
 
-            <h4 class="error_translate">{{ result }}</h4>
-            <div class="d-flex justify-content-center mt-3">
-                <a href="/">
-                    <button class="to_main_page">На главную страницу</button>
-                </a>
-
-            </div>
-
-            {% else %}
+            
 
             <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
             <div class="search_container">
-                <form action="#" method="get">
+                <form action="/basketball_players" method="get">
                     <div class="d-flex justify-content-end mb-3">
                         <input class="mx-2" name="search_players" type="search" placeholder="Поиск">
                         <button type="submit" class="search">Найти</button>

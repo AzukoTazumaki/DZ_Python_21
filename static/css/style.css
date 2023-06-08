@@ -256,7 +256,8 @@ textarea {
 }
 
 .table-scroll-body {
-    height: 40vh;
+    min-height: auto;
+    max-height: 40vh;
     overflow-x: auto;
     margin-top: 0px;
 }
@@ -282,10 +283,6 @@ textarea {
     font-size: 14px;
     vertical-align: top;
     border-bottom: 1px solid var(--palegoldenrod);
-}
-
-td:last-child {
-    background: var(--marsh);
 }
 
 thead {

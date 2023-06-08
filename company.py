@@ -71,6 +71,22 @@ class Company:
         lines = [x.split(',') for x in file.read().splitlines()[1:]]
         return lines
 
+    @staticmethod
+    def search(word: str) -> str or list:
+        result = []
+        with open('results/employees.csv') as employees:
+            employees_rows: list = [x.split('\n') for x in employees.read().splitlines()[1:]]
+            employees_pandas: list = pd.read_csv('results/employees.csv')
+            for title in employees_pandas:
+                if title not in ['Phone', 'Email', 'Age', 'Work Experience']:
+                    for index, row in enumerate(employees_pandas[title]):
+                        if word in str(row):
+                            needed_row = ' ,'.join(employees_rows[index]).split(',')
+                            result.append(needed_row)
+                        continue
+                continue
+        return result if len(result) > 0 else 'Совпадений не найдено.'
+
 
 if __name__ == '__main__':
     Company.auto_create_employees()

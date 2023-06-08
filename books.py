@@ -58,7 +58,6 @@ class Books:
     def add_book_to_csv(self):
         columns = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
         new_book_info: list = [
-
             self.title, self.author, self.genre,
             self.year, self.publisher, self.summary
         ]
@@ -69,8 +68,35 @@ class Books:
 
     @staticmethod
     def read_csv_to_html() -> list:
-        books = pd.read_csv('results/books.csv')
-        return books
+        file = open('results/books.csv', 'r')
+        lines = [x.split('\n') for x in file.read().splitlines()[1:]]
+        return lines
+
+    @staticmethod
+    def search(word: str) -> str or dict:
+        result = {
+            'Title': [],
+            'Author': [],
+            'Genre': [],
+            'Year': [],
+            'Publisher': [],
+            'Summary': []
+        }
+        with open('results/books.csv') as _:
+            books_pandas: list = pd.read_csv('results/books.csv')
+            for title in books_pandas:
+                if title not in ['Year', 'Summary']:
+                    for index, row in enumerate(books_pandas[title]):
+                        if word in str(row):
+                            result['Title'].append(books_pandas['Title'][index])
+                            result['Author'].append(books_pandas['Author'][index])
+                            result['Genre'].append(books_pandas['Genre'][index])
+                            result['Year'].append(books_pandas['Year'][index])
+                            result['Publisher'].append(books_pandas['Publisher'][index])
+                            result['Summary'].append(books_pandas['Summary'][index])
+                        continue
+                continue
+        return result if len(result['Title']) > 0 else 'Совпадений не найдено.'
 
 
 if __name__ == '__main__':
