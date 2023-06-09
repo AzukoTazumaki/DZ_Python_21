@@ -6,15 +6,15 @@
     <div class="row d-flex align-items-center vh-100">
         {% if result is string %}
 
-            <div class="offset-3 col-6">
-                <h4 class="error_translate text-center">{{ result }}</h4>
+        <div class="offset-3 col-6">
+            <h4 class="error_translate text-center">{{ result }}</h4>
             <div class="d-flex justify-content-center mt-3">
                 <a href="/">
                     <button class="to_main_page">На главную страницу</button>
                 </a>
 
             </div>
-            </div>
+        </div>
 
         {% else %}
 
@@ -42,9 +42,9 @@
         <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
         <div class="col-6">
 
-            
 
-            
+
+
 
             <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
             <div class="search_container">
@@ -179,6 +179,162 @@
 
             {% endif %}
 
+            <span class="arrow"><i class="fa-solid fa-angles-down fa-xl"></i></span>
+
+        </div>
+
+    </div>
+
+    <div class="row d-flex align-items-center justify-content-center vh-100">
+
+        <div class="col-3 block_exercise_1">
+            <h4>Удаление:</h4>
+            <p>Чтобы удалить данные какого-либо баскетболиста, введите ID игрока:</p>
+
+            <!-- ———————————————————————————— FORM DELETE ———————————————————————————— -->
+            <form action="/basketball_players/delete" method="post">
+
+                <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_id_delete" id="player_id_delete" type="number" placeholder="ID игрока">
+                        <div class="left">
+                            <span>Введите номер того игрока из таблицы, которого хотите удалить</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-regular fa-id-card"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER DELETE ———————————————————————————— -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="submit" type="submit">Удалить</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mx-5 col-3">
+            <h3 class="text-center"> ИЛИ </h3>
+        </div>
+
+        <div class="col-3 block_exercise_1" style="margin-left: 2vw;">
+
+            <h4>Изменение:</h4>
+
+            <!-- ———————————————————————————— FORM UPDATE ———————————————————————————— -->
+            <form class="mt-3" action="/basketball_players/update" method="post">
+
+                <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_id_update" id="player_id_update" type="number" placeholder="ID игрока">
+                        <div class="left">
+                            <span>Введите номер того игрока из таблицы, данные которого хотели бы поменять</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-regular fa-id-card"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— FULL NAME ———————————————————————————— -->
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex mt-2">
+                        <input name="player_first_name" id="player_first_name" type="text" placeholder="Имя">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
+                    <div class="d-flex mx-3 mt-2">
+                        <input name="player_last_name" id="player_last_name" type="text" placeholder="Фамилия">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <input name="player_surname" id="player_surname" type="text" placeholder="Отчество">
+                        <span><i class="fa-solid fa-circle-user"></i></span>
+                    </div>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER ROLE ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_role" id="player_role" type="text" placeholder="Амплуа">
+                        <div class="left">
+                            <span>Форвард, Защитник или Цетровой?</span>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <span><i class="fa-solid fa-address-book"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER AGE ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_age" id="player_age" type="number" min="20" max="50" placeholder="Возраст">
+                        <div class="left">
+                            <span>Возраст допускается в пределах [ 20 - 50 ] лет</span>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <span><i class="fa-solid fa-person-arrow-up-from-line"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER HEIGHT ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_height" id="player_height" min="170" max="230" type="number"
+                            placeholder="Рост">
+                        <div class="left">
+                            <span>Рост допускается в пределах [ 170 - 230 ] см</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-ruler"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER WEIGHT ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_weight" id="player_weight" min="60" max="140" type="number"
+                            placeholder="Вес">
+                        <div class="left">
+                            <span>Вес допускается в пределах [ 60 - 140 ] кг</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-weight-scale"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER TEAM ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_team" id="player_team" type="text" placeholder="Название команды">
+                    <span><i class="fa-solid fa-pencil"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER EDUCATION ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <input name="player_education" id="player_education" type="text"
+                        placeholder="Университет или колледж">
+                    <span><i class="fa-solid fa-school"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER SALARY ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="player_salary" id="player_salary" min="0" max="5000" type="text"
+                            placeholder="Зарплата (млн руб)">
+                        <div class="left">
+                            <span>Допускается в пределах [ 0 - 5000 ] млн руб</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-coins"></i></span>
+                </div>
+
+                <!-- ———————————————————————————— PLAYER UPDATE ———————————————————————————— -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="submit" type="submit">Изменить</button>
+                </div>
+            </form>
         </div>
 
     </div>

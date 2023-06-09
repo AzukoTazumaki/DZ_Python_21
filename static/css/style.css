@@ -400,6 +400,22 @@ input[type=number]::-webkit-outer-spin-button {
     animation: table 3s;
 }
 
+.arrow {
+    position: absolute;
+    top: 90vh;
+    left: 49vw;
+    animation: arrow 3s ease-in-out infinite;
+}
+
+@keyframes arrow {
+    0%, 100% {
+        top: 90vh;
+    }
+    50% {
+        top: 93vh;
+    }
+}
+
 /* ———————————————————————————————————— TOOLTIP ———————————————————————————————————— */
 
 .custom-tooltip {

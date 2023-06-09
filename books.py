@@ -68,9 +68,8 @@ class Books:
 
     @staticmethod
     def read_csv_to_html() -> list:
-        file = open('results/books.csv', 'r')
-        lines = [x.split('\n') for x in file.read().splitlines()[1:]]
-        return lines
+        books = pd.read_csv('results/books.csv')
+        return books
 
     @staticmethod
     def search(word: str) -> str or dict:

@@ -59,8 +59,8 @@ class Players:
                     if re.search(r'-', table_datas[7].text) \
                     else round(cc(fallback_on_wrong_date=True).convert(int(player_salary_usd), 'USD', 'RUB') / 1000000)
                 player_info_list: list = [
-                    str(player_name), str(player_role), str(player_age), str(player_height),
-                    str(player_weight), str(player_team), str(player_education), str(player_salary)
+                    player_name, player_role, player_age, player_height,
+                    player_weight, player_team, player_education, player_salary
                 ]
                 df_a = pd.DataFrame([player_info_list], columns=columns)
                 df_a.to_csv('results/players.csv', mode='a', index=False, header=False)

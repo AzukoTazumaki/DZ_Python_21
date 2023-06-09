@@ -44,7 +44,7 @@ def company_employees():
         data_list = [data[key] for key in data if data[key] != '']
         if len(data_list) == 0:
             return render_template('answers/company_employees.html', result=Company.read_csv_to_html())
-        return render_template('answers/company_employees.html', result=Company(data).add_employee_to_csv())
+        return render_template('answers/company_employees.html', result=Company(data).add_employee_to_csv()),
     if request.method == 'GET':
         word = request.args.get('search_employees')
         return render_template('answers/company_employees.html', result=Company.search(word))
