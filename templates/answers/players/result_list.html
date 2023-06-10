@@ -1,22 +1,7 @@
 {% block result_list %}
-<div class="row d-flex align-items-center vh-100">
-    <!-- ———————————————————————————— PLAYERS DESCRIPTION ———————————————————————————— -->
-    <div class="offset-1 col-2">
-        <div class="players_roles mt-3">
-            <span>Примечание:</span>
-            <ul>
-                <li>PG (Point Guard) – разыгрывающий защитник;</li>
-                <li>SG (Shooting Guard) – атакующий защитник;</li>
-                <li>SF (Small Forward) – легкий форвард;</li>
-                <li>PF (Power Forward) – тяжелый или мощный форвард;</li>
-                <li>G (Guard) – защитник;</li>
-                <li>F (Forward) – форвард;</li>
-                <li>C (center) – центровой.</li>
-            </ul>
-        </div>
-    </div>
+<div class="row d-flex align-items-center justify-content-center vh-100">
     <!-- ———————————————————————————— PLAYERS TABLE ———————————————————————————— -->
-    <div class="col-6">
+    <div class="col-8 mx-4">
         <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
         <div class="search_container">
             <form action="/basketball_players" method="get">
@@ -60,28 +45,44 @@
                             <!-- ———————————————————————————— LOOP INDEX ———————————————————————————— -->
                             <td style="width: 5%;">{{ loop.index }}</td>
                             <!-- ———————————————————————————— LINE 0 ———————————————————————————— -->
-                            {% if line[0] == 'Неизвестно' %}<td style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[0] == 'Неизвестно' %}<td
+                                style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 17%;">{{ line[0] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 1 ———————————————————————————— -->
-                            {% if line[1] == 'Неизвестно' %}<td style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[1] == 'Неизвестно' %}<td
+                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 10%;">{{ line[1] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 2 ———————————————————————————— -->
-                            {% if line[2] == 'Неизвестно' %}<td style="width: 7%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[2] == 'Неизвестно' %}<td
+                                style="width: 7%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 7%;">{{ line[2] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 3 ———————————————————————————— -->
-                            {% if line[3] == 'Неизвестно' %}<td style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[3] == 'Неизвестно' %}<td
+                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 10%;">{{ line[3] }} см</td>{% endif %}
                             <!-- ———————————————————————————— LINE 4 ———————————————————————————— -->
-                            {% if line[4] == 'Неизвестно' %}<td style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[4] == 'Неизвестно' %}<td
+                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 10%;">{{ line[4] }} кг</td>{% endif %}
                             <!-- ———————————————————————————— LINE 5 ———————————————————————————— -->
-                            {% if line[5] == 'Неизвестно' %}<td style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[5] == 'Неизвестно' %}<td
+                                style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 17%;">{{ line[5] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 6 ———————————————————————————— -->
-                            {% if line[6] == 'Неизвестно' %}<td style="width: 16%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[6] == 'Неизвестно' %}<td
+                                style="width: 16%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 16%;">{{ line[6] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 7 ———————————————————————————— -->
-                            {% if line[7] == 'Неизвестно' %}<td style="width: 15%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">???</td>
+                            {% if line[7] == 'Неизвестно' %}<td
+                                style="width: 15%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                ???</td>
                             {% else %}<td style="width: 15%;">{{ line[7] }} млн</td>{% endif %}
                         </tr>
                         {% endfor %}
@@ -94,6 +95,21 @@
             <p class="text-start">
                 Найдено баскетболистов: {{ result|length }}
             </p>
+        </div>
+    </div>
+    <!-- ———————————————————————————— PLAYERS DESCRIPTION ———————————————————————————— -->
+    <div class="col-3">
+        <div class="players_roles block_exercise_1 mt-3">
+            Примечание:
+            <ul>
+                <li>PG (Point Guard) – разыгрывающий защитник;</li>
+                <li>SG (Shooting Guard) – атакующий защитник;</li>
+                <li>SF (Small Forward) – легкий форвард;</li>
+                <li>PF (Power Forward) – тяжелый или мощный форвард;</li>
+                <li>G (Guard) – защитник;</li>
+                <li>F (Forward) – форвард;</li>
+                <li>C (center) – центровой.</li>
+            </ul>
         </div>
     </div>
     <span class="arrow"><i class="fa-solid fa-angles-down fa-xl"></i></span>
