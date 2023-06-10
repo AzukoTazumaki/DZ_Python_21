@@ -14,7 +14,6 @@ from mimesis.locales import Locale
 from mimesis.enums import Gender
 from random import choice
 
-
 # translator = ts
 
 # spell = sp(language='ru')
@@ -163,30 +162,37 @@ from random import choice
 #
 # print(search('Бросок'))
 
-def search(word: str) -> str or dict:
-    result = {
-        'Title': [],
-        'Author': [],
-        'Genre': [],
-        'Year': [],
-        'Publisher': [],
-        'Summary': []
-    }
-    with open('results/books.csv') as _:
-        books_pandas: list = pd.read_csv('results/books.csv')
-        for title in books_pandas:
-            if title not in ['Year', 'Summary']:
-                for index, row in enumerate(books_pandas[title]):
-                    if word in str(row):
-                        result['Title'].append(books_pandas['Title'][index])
-                        result['Author'].append(books_pandas['Author'][index])
-                        result['Genre'].append(books_pandas['Genre'][index])
-                        result['Year'].append(books_pandas['Year'][index])
-                        result['Publisher'].append(books_pandas['Publisher'][index])
-                        result['Summary'].append(books_pandas['Summary'][index])
-                    continue
-            continue
-    return result if len(result['Title']) > 0 else 'Совпадений не найдено.'
+# def search(word: str) -> str or dict:
+#     result = {
+#         'Title': [],
+#         'Author': [],
+#         'Genre': [],
+#         'Year': [],
+#         'Publisher': [],
+#         'Summary': []
+#     }
+#     with open('results/books.csv') as _:
+#         books_pandas: list = pd.read_csv('results/books.csv')
+#         for title in books_pandas:
+#             if title not in ['Year', 'Summary']:
+#                 for index, row in enumerate(books_pandas[title]):
+#                     if word in str(row):
+#                         result['Title'].append(books_pandas['Title'][index])
+#                         result['Author'].append(books_pandas['Author'][index])
+#                         result['Genre'].append(books_pandas['Genre'][index])
+#                         result['Year'].append(books_pandas['Year'][index])
+#                         result['Publisher'].append(books_pandas['Publisher'][index])
+#                         result['Summary'].append(books_pandas['Summary'][index])
+#                     continue
+#             continue
+#     return result if len(result['Title']) > 0 else 'Совпадений не найдено.'
+#
+#
+# print(search('Дракон'))
 
 
-print(search('Дракон'))
+file = open('results/employees.csv', 'r')
+lines: list = [x.split(',') for x in file.read().splitlines()[1:]]
+print(lines)
+for line in lines:
+    print(line)

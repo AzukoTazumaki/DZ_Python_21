@@ -92,19 +92,21 @@ class Players:
 
     @staticmethod
     def search(word: str) -> str or list:
-        result = []
-        with open('results/players.csv') as players:
-            players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
-            players_pandas: list = pd.read_csv('results/players.csv')
-            for title in players_pandas:
-                if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
-                    for index, row in enumerate(players_pandas[title]):
-                        if word in str(row):
-                            needed_row = ' ,'.join(players_rows[index]).split(',')
-                            result.append(needed_row)
-                        continue
-                continue
-        return result if len(result) > 0 else 'Совпадений не найдено.'
+        if len(word.replace(r'\s+', '')) > 0:
+            result = []
+            with open('results/players.csv') as players:
+                players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
+                players_pandas: list = pd.read_csv('results/players.csv')
+                for title in players_pandas:
+                    if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
+                        for index, row in enumerate(players_pandas[title]):
+                            if word in str(row):
+                                needed_row = ' ,'.join(players_rows[index]).split(',')
+                                result.append(needed_row)
+                            continue
+                    continue
+            return result if len(result) > 0 else 'Совпадений не найдено.'
+        return 'Вы ничего не ввели, чтобы искать'
 
 
 # if __name__ == '__main__':

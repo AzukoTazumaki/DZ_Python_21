@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block company_employees %}
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
+<div class="container-fluid">
+
+    {% if result is string %}
+
+    {% block result_string %}
+    {% include 'answers/company/result_string.html' %}
+    {% endblock %}
+
+    {% else %}
+
+    {% block result_list %}
+    {% include 'answers/company/result_list.html' %}
+    {% endblock %}
+
+    {% block form_put_delete_company %}
+    {% include 'answers/company/form_put_delete_company.html'   %}
+    {% endblock %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

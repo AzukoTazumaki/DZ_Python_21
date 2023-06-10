@@ -410,9 +410,11 @@ input[type=number]::-webkit-outer-spin-button {
 @keyframes arrow {
     0%, 100% {
         top: 90vh;
+        text-shadow: none;
     }
     50% {
         top: 93vh;
+        text-shadow: var(--palegoldenrod-shadow);
     }
 }
 

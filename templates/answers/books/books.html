@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block books %}
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
+<div class="container-fluid">
+    {% if result is string %}
+
+    {% block result_string %}
+    {% include 'answers/books/result_string.html' %}
+    {% endblock %}
+
+    {% else %}
+
+    {% block result_list %}
+    {% include 'answers/books/result_list.html' %}
+    {% endblock %}
+
+    {% block form_put_delete_books %}
+    {% include 'answers/books/form_put_delete_books.html'   %}
+    {% endblock %}
+
+    {% endif %}
+</div>
+
+{% endblock %}

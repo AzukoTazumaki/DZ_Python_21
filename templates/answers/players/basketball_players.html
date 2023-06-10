@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block basketball_players %}
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
+<div class="container-fluid">
+
+    {% if result is string %}
+    
+    {% block result_string %}
+    {% include 'answers/players/result_string.html' %}
+    {% endblock %}
+
+    {% else %}
+
+    {% block result_list %}
+    {% include 'answers/players/result_list.html'   %}
+    {% endblock %}
+
+    {% block form_put_delete_players %}
+    {% include 'answers/players/form_put_delete_players.html' %}
+    {% endblock %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

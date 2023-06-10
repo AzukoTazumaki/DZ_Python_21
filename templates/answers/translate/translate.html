@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block translate %}
+
+<!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
+<div class="container">
+
+    {% if result is string %}
+    
+    {% block result_string %}
+    {% include 'answers/translate/result_string.html'   %}
+    {% endblock %}
+
+    {% else %}
+
+    {% block result_list %}
+    {% include 'answers/translate/result_list.html'   %}
+    {% endblock %}
+
+    {% block form_put_delete_words %}
+    {% include 'answers/translate/form_put_delete_words.html' %}
+    {% endblock %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -2,7 +2,6 @@
 <!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
 <div class="container-fluid welcome_container">
     <div class="row d-flex align-items-center vh-100">
-
         <!-- ———————————————————————————— BOOKS EXERCISE DESCRIPTION ———————————————————————————— -->
         <div class="offset-1 col-5">
             <h4>Задание 4.</h4>
@@ -14,73 +13,59 @@
                 хранения информации.
             </p>
             <p>
-                Примечание: если хотите вывести все книги, можете просто нажать кнопку 
+                Примечание: если хотите вывести все книги, можете просто нажать кнопку
                 отправить и программа выдаст Вам список.
             </p>
         </div>
-
         <!-- ———————————————————————————— BOOK EXERCISE BLOCK ———————————————————————————— -->
         <div class="col-5 block_exercise_4">
             <h3>Программа "Книжная коллекция"</h3>
             <h4>Форма данных книги:</h4>
-
             <!-- ———————————————————————————— BOOK FORM ———————————————————————————— -->
             <form class="mt-3" action="/books" method="post">
-
                 <!-- ———————————————————————————— BOOK TITLE ———————————————————————————— -->
                 <div class="d-flex">
                     <input name="book_title" id="book_title" type="text" placeholder="Название">
-                    <span>
-                        <i class="fa-solid fa-signature"></i>
-                    </span>
+                    <span><i class="fa-solid fa-signature"></i></span>
                 </div>
-
                 <!-- ———————————————————————————— BOOK AUTHOR ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_author" id="book_author" type="text" placeholder="Автор">
-                    <span>
-                        <i class="fa-solid fa-circle-user"></i>
-                    </span>
+                    <span><i class="fa-solid fa-circle-user"></i></span>
                 </div>
-
                 <!-- ———————————————————————————— BOOK GENRE ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_genre" id="book_genre" type="text" placeholder="Жанр">
-                    <span>
-                        <i class="fa-solid fa-bars-staggered"></i>
-                    </span>
+                    <span><i class="fa-solid fa-bars-staggered"></i></span>
                 </div>
-
                 <!-- ———————————————————————————— BOOK YEAR ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <input name="book_year" id="book_year" type="text" placeholder="Год выпуска">
-                    <span>
-                        <i class="fa-regular fa-calendar-days"></i>
-                    </span>
+                    <div class="custom-tooltip">
+                        <input name="book_year" min="1950" max="2023" id="book_year" type="text"
+                            placeholder="Год выпуска">
+                        <div class="left">
+                            <span>Год допускается в диапазоне [ 1950 - 2023 ]</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-regular fa-calendar-days"></i></span>
                 </div>
-
                 <!-- ———————————————————————————— BOOK PUBLISH ———————————————————————————— -->
                 <div class="d-flex mt-2">
                     <input name="book_publisher" id="book_publisher" type="text" placeholder="Издательство">
-                    <span>
-                        <i class="fa-solid fa-building"></i>
-                    </span>
+                    <span><i class="fa-solid fa-building"></i></span>
                 </div>
-
                 <!-- ———————————————————————————— BOOK SUMMARY ———————————————————————————— -->
                 <div class="d-flex mt-2">
-                    <textarea name="book_summary" id="book_summary" cols="1" rows="3" placeholder="Краткое содержание"></textarea>
+                    <textarea name="book_summary" id="book_summary" cols="1" rows="3"
+                        placeholder="Краткое содержание"></textarea>
                 </div>
-                
                 <!-- ———————————————————————————— BOOK INFO SEND ———————————————————————————— -->
                 <div class="d-flex justify-content-end mt-4">
                     <button class="submit" type="submit">Отправить</button>
                 </div>
-
             </form>
-
         </div>
-        
     </div>
 </div>
 {% endblock %}

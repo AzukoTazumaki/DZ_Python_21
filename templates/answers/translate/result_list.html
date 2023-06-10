@@ -1,0 +1,58 @@
+{% block result_list %}
+<!-- ———————————————————————————— BLOCK TRANSLATE ———————————————————————————— -->
+<div class="row d-flex align-items-center vh-100">
+    <div class="offset-3 col-6">
+        <!-- ———————————————————————————— BLOCK SEARCH ———————————————————————————— -->
+        <div class="search_container">
+            <form action="/translate" method="get">
+                <div class="d-flex justify-content-end mb-3">
+                    <input class="mx-2" name="search_words" type="search" placeholder="Поиск">
+                    <button type="submit" class="search">Найти</button>
+                </div>
+            </form>
+        </div>
+        <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+        <div class="players_tooltip mb-2">
+            <p class="text-end">
+                * для поиска достаточно ввести одно слово
+            </p>
+        </div>
+        <!-- ———————————————————————————— TRANSLATE TABLE ———————————————————————————— -->
+        <div class="table-scroll">
+            <!-- ———————————————————————————— TABLE HEAD ———————————————————————————— -->
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">#</th>
+                        <th>Русский</th>
+                        <th>Английский</th>
+                        <th>Французский</th>
+                    </tr>
+                </thead>
+            </table>
+            <!-- ———————————————————————————— TABLE BODY ———————————————————————————— -->
+            <div class="table-scroll-body content">
+                <table>
+                    <tbody>
+                        {% for line in result %}
+                        <tr>
+                            <td style="width: 10%;">{{ loop.index }}</td>
+                            <td>{{ line[0] }}</td>
+                            <td>{{ line[1] }}</td>
+                            <td>{{ line[2] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- ———————————————————————————— TABLE TOOLTIP ———————————————————————————— -->
+        <div class="players_tooltip mt-3">
+            <p class="text-start">
+                Найдено слов: {{ result|length }}
+            </p>
+        </div>
+    </div>
+    <span class="arrow"><i class="fa-solid fa-angles-down fa-xl"></i></span>
+</div>
+{% endblock %}

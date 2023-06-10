@@ -1,0 +1,82 @@
+{% block form_put_delete_words %}
+<div class="row d-flex align-items-center justify-content-center vh-100">
+    <!-- ———————————————————————————— BLOCK DELETE ———————————————————————————— -->
+    <div class="col-4">
+        <div class="block_exercise_2">
+            <h4>Удаление:</h4>
+            <!-- ———————————————————————————— FORM DELETE ———————————————————————————— -->
+            <form class="mt-3" action="/translate/delete" method="post">
+                <!-- ———————————————————————————— TRANSLATE WORD ID ———————————————————————————— -->
+                <div class="d-flex">
+                    <div class="custom-tooltip">
+                        <input name="word_translate_id_delete" id="word_translate_id_delete" type="number"
+                            placeholder="ID слова">
+                        <div class="left">
+                            <span>Введите номер того слова из таблицы, которое хотите удалить</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-language"></i></span>
+                </div>
+                <!-- ———————————————————————————— TRANSLATE WORD DELETE ———————————————————————————— -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="submit" type="submit">Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <h3 class="text-center"> ИЛИ </h3>
+    </div>
+    <!-- ———————————————————————————— BLOCK UPDATE ———————————————————————————— -->
+    <div class="col-4">
+        <div class="block_exercise_2">
+            <h4>Изменение:</h4>
+            <!-- ———————————————————————————— FORM UPDATE ———————————————————————————— -->
+            <form class="mt-3" action="/translate/update" method="post">
+                <!-- ———————————————————————————— TRANSLATE WORD ID ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="word_translate_id_update" id="word_translate_id_update" type="number"
+                            placeholder="ID слова">
+                        <div class="left">
+                            <span>Введите номер того слова из таблицы, перевод которого хотели бы поменять</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-language"></i></span>
+                </div>
+                <!-- ———————————————————————————— TRANSLATE WORD ENGLISH ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="word_translate_english" id="word_translate_english" type="text"
+                            placeholder="Английский">
+                        <div class="left">
+                            <span>Введите перевод выбранного слова на английский язык</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-book"></i></span>
+                </div>
+                <!-- ———————————————————————————— TRANSLATE WORD FRENCH ———————————————————————————— -->
+                <div class="d-flex mt-2">
+                    <div class="custom-tooltip">
+                        <input name="word_translate_french" id="word_translate_french" type="text"
+                            placeholder="Французский">
+                        <div class="left">
+                            <span>Введите перевод выбранного слова на французский язык</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <span><i class="fa-solid fa-book"></i></span>
+                </div>
+                <!-- ———————————————————————————— TRANSLATE WORD UPDATE ———————————————————————————— -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="submit" type="submit">Изменить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
