@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
+from players import Players, UD
 from translate import Translate
-from players import Players
 from company import Company
 from books import Books
 
@@ -23,6 +23,12 @@ def basketball_players():
     if request.method == 'GET':
         word = request.args.get('search_players')
         return render_template('answers/players/basketball_players.html', result=Players.search(word))
+
+
+@project.route('/basketball_players/delete', methods=['POST', 'GET'])
+def delete_player():
+    player_id = request.form.to_dict()
+    return render_template('answers/players/basketball_players.html', result=UD(player_id).delete())
 
 
 @project.route('/translate', methods=['POST', 'GET'])

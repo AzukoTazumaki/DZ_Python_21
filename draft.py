@@ -13,6 +13,7 @@ from mimesis import Person
 from mimesis.locales import Locale
 from mimesis.enums import Gender
 from random import choice
+import csv
 
 # translator = ts
 
@@ -191,8 +192,37 @@ from random import choice
 # print(search('Дракон'))
 
 
-file = open('results/employees.csv', 'r')
-lines: list = [x.split(',') for x in file.read().splitlines()[1:]]
-print(lines)
-for line in lines:
-    print(line)
+# file = open('results/employees.csv', 'r')
+# lines: list = [x.split(',') for x in file.read().splitlines()[1:]]
+# print(lines)
+# for line in lines:
+#     print(line)
+
+# table = pd.read_csv('results/players.csv')
+# table.drop([513, 514, 515], inplace=True)
+# print(table)
+
+
+# delete_id = 1
+# table = pd.read_csv('results/players.csv')
+# table.drop(delete_id, inplace=True)
+# table.to_csv('results/players.csv', mode='w', index=False)
+
+
+# delete_id = 3
+# with open('results/players.csv', 'r') as players_reader:
+#     result = []
+#     reader = csv.reader(players_reader)
+#     for index, row in enumerate(reader):
+#         if index != delete_id:
+#             result.append(row)
+#         continue
+#     with open('results/players.csv', 'w') as players_writer:
+#         for row in result:
+#             csv.writer(players_writer).writerow(row)
+
+delete_id = 0
+# table = pd.read_csv('results/players.csv')
+table = pd.read_csv('draft.csv')
+table.drop(delete_id, inplace=True)
+table.to_csv('draft.csv', index=False, mode='w')
