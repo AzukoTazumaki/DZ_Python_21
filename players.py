@@ -84,7 +84,7 @@ class Players:
     @staticmethod
     def check_unknown_fields(player_info: list):
         for index, field in enumerate(player_info):
-            if field in ['', '  ']:
+            if len(re.sub(r'\s+', '', field)) == 0:
                 player_info[index] = 'Неизвестно'
             continue
         return player_info
@@ -97,7 +97,7 @@ class Players:
 
     @staticmethod
     def search(word: str) -> str or list:
-        if len(word.replace(r'\s+', '')) > 0:
+        if len(re.sub(r'\s+', '', word)) > 0:
             result = []
             with open('results/players.csv') as players:
                 players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
@@ -119,24 +119,49 @@ class UD(Players):
         super().__init__(form_info)
 
     def update(self):
-        update_id = self.form_info['player_id_update']
+        update_id = int(self.form_info['player_id_update']) - 1
+        full_name = \
+            self.form_info['player_first_name'].capitalize() + ' ' + \
+            self.form_info['player_last_name'].capitalize() + ' ' + \
+            self.form_info['player_surname'].capitalize()
+        position = self.form_info['player_role'].capitalize()
+        age = self.form_info['player_age']
+        height = self.form_info['player_height']
+        weight = self.form_info['player_weight']
+        team = self.form_info['player_team']
+        education = self.form_info['player_education']
+        salary = self.form_info['player_salary']
+        player_new_info: list = [
+            full_name, position, age, height,
+            weight, team, education, salary
+        ]
+        checked_player_new_info = self.check_unknown_fields(player_new_info)
+        file = pd.read_csv('results/players.csv')
+        file.loc[update_id, 'Name'] = checked_player_new_info[0] \
+            if checked_player_new_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
+        file.loc[update_id, 'Position'] = checked_player_new_info[1] \
+            if checked_player_new_info[1] != 'Неизвестно' else file.loc[update_id, 'Position']
+        file.loc[update_id, 'Age'] = checked_player_new_info[2] \
+            if checked_player_new_info[2] != 'Неизвестно' else file.loc[update_id, 'Age']
+        file.loc[update_id, 'Height'] = checked_player_new_info[3] \
+            if checked_player_new_info[3] != 'Неизвестно' else file.loc[update_id, 'Height']
+        file.loc[update_id, 'Weight'] = checked_player_new_info[4] \
+            if checked_player_new_info[4] != 'Неизвестно' else file.loc[update_id, 'Weight']
+        file.loc[update_id, 'Team'] = checked_player_new_info[5] \
+            if checked_player_new_info[5] != 'Неизвестно' else file.loc[update_id, 'Team']
+        file.loc[update_id, 'College'] = checked_player_new_info[6] \
+            if checked_player_new_info[6] != 'Неизвестно' else file.loc[update_id, 'College']
+        file.loc[update_id, 'Salary'] = checked_player_new_info[7] \
+            if checked_player_new_info[7] != 'Неизвестно' else file.loc[update_id, 'Salary']
+        file.to_csv('results/players.csv', index=False, mode='w')
         return self.read_csv_to_html()
 
     def delete(self):
         delete_id = int(self.form_info['player_id_delete'])
-        table = pd.read_csv('draft.csv')
-        table.drop(delete_id, inplace=True)
-        table.to_csv('results/players.csv', index=False, mode='w')
+        file = pd.read_csv('results/players.csv')
+        file.drop(delete_id, inplace=True)
+        file.to_csv('results/players.csv', index=False, mode='w')
         return self.read_csv_to_html()
-
-    def check_empty_fields(self):
-        pass
-
-    def rewrite_csv_rows(self):
-        pass
-
-    def delete_csv_rows(self):
-        pass
 
 
 # if __name__ == '__main__':

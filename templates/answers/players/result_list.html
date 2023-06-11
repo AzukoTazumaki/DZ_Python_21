@@ -40,48 +40,48 @@
                 <table>
                     <tbody>
                         {% for line in result %}
-                        {% set color, shadow = 'var(--purple-mimosa)', 'var(--purple-mimosa-shadow)' %}
+                        {% set color, shadow = 'var(--crystal-blue)', 'var(--crystal-blue-shadow)' %}
                         <tr>
                             <!-- ———————————————————————————— LOOP INDEX ———————————————————————————— -->
                             <td style="width: 5%;">{{ loop.index }}</td>
                             <!-- ———————————————————————————— LINE 0 ———————————————————————————— -->
                             {% if line[0] == 'Неизвестно' %}<td
-                                style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 17%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 17%;">{{ line[0] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 1 ———————————————————————————— -->
                             {% if line[1] == 'Неизвестно' %}<td
-                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 10%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 10%;">{{ line[1] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 2 ———————————————————————————— -->
                             {% if line[2] == 'Неизвестно' %}<td
-                                style="width: 7%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 7%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 7%;">{{ line[2] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 3 ———————————————————————————— -->
                             {% if line[3] == 'Неизвестно' %}<td
-                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 10%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 10%;">{{ line[3] }} см</td>{% endif %}
                             <!-- ———————————————————————————— LINE 4 ———————————————————————————— -->
                             {% if line[4] == 'Неизвестно' %}<td
-                                style="width: 10%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 10%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 10%;">{{ line[4] }} кг</td>{% endif %}
                             <!-- ———————————————————————————— LINE 5 ———————————————————————————— -->
                             {% if line[5] == 'Неизвестно' %}<td
-                                style="width: 17%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 17%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 17%;">{{ line[5] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 6 ———————————————————————————— -->
                             {% if line[6] == 'Неизвестно' %}<td
-                                style="width: 16%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 16%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 16%;">{{ line[6] }}</td>{% endif %}
                             <!-- ———————————————————————————— LINE 7 ———————————————————————————— -->
                             {% if line[7] == 'Неизвестно' %}<td
-                                style="width: 15%; color: var(--purple-mimosa); text-shadow: var(--purple-mimosa-shadow);">
+                                style="width: 15%; color: var(--crystal-blue); text-shadow: var(--crystal-blue-shadow);">
                                 ???</td>
                             {% else %}<td style="width: 15%;">{{ line[7] }} млн</td>{% endif %}
                         </tr>
@@ -99,7 +99,7 @@
     </div>
     <!-- ———————————————————————————— PLAYERS DESCRIPTION ———————————————————————————— -->
     <div class="col-3">
-        <div class="players_roles block_exercise_1 mt-3">
+        <div class="players_roles exercise_description mt-3">
             Примечание:
             <ul>
                 <li>PG (Point Guard) – разыгрывающий защитник;</li>

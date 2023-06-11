@@ -418,6 +418,19 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
+.exercise_description {
+    color: var(--marsh);
+    background-color: var(--crystal-blue);
+    text-shadow: none;
+    padding: 15px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.exercise_description:hover {
+    box-shadow: 0 1px 8px var(--crystal-blue);
+}
+
 /* ———————————————————————————————————— TOOLTIP ———————————————————————————————————— */
 
 .custom-tooltip {

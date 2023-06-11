@@ -223,6 +223,21 @@ import csv
 
 delete_id = 0
 # table = pd.read_csv('results/players.csv')
-table = pd.read_csv('draft.csv')
-table.drop(delete_id, inplace=True)
-table.to_csv('draft.csv', index=False, mode='w')
+# table = pd.read_csv('draft.csv')
+# table.drop(delete_id, inplace=True)
+# table.to_csv('draft.csv', index=False, mode='w')
+
+# player_new_info: list = [
+#     'full_name', '', 'age', 'height',
+#     'weight', 'team', '  ', 'salary'
+# ]
+# df = pd.read_csv('draft.csv')
+# for title in df:
+#     for data in player_new_info:
+#         df.loc[delete_id, title] = data if data not in ['', '  '] else df.loc[delete_id, title]
+# # df.iloc[delete_id] = player_new_info
+# print(df.iloc[delete_id])
+
+field = 'z  '
+a = re.sub(r'\s+', '', field)
+print(f"_{a}_")

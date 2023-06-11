@@ -31,6 +31,12 @@ def delete_player():
     return render_template('answers/players/basketball_players.html', result=UD(player_id).delete())
 
 
+@project.route('/basketball_players/update', methods=['POST', 'GET'])
+def update_player():
+    data = request.form.to_dict()
+    return render_template('answers/players/basketball_players.html', result=UD(data).update())
+
+
 @project.route('/translate', methods=['POST', 'GET'])
 def translate():
     if request.method == 'POST':

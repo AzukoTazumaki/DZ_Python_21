@@ -2,14 +2,14 @@
 
 <div class="row d-flex align-items-center justify-content-center vh-100">
     <!-- ———————————————————————————— BLOCK DELETE ———————————————————————————— -->
-    <div class="col-4 block_exercise_1">
+    <div class="col-3 block_exercise_1">
         <h4>Удаление:</h4>
         <p>Чтобы удалить данные какого-либо баскетболиста, введите ID игрока:</p>
         <!-- ———————————————————————————— FORM DELETE ———————————————————————————— -->
         <form action="/basketball_players/delete" method="post">
             <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->
             <div class="d-flex mt-2">
-                <input name="player_id_delete" id="player_id_delete" type="number" placeholder="ID игрока">
+                <input name="player_id_delete" id="player_id_delete" type="number" required placeholder="ID игрока">
                 <span><i class="fa-regular fa-id-card"></i></span>
             </div>
             <!-- ———————————————————————————— PLAYER DELETE ———————————————————————————— -->
@@ -19,8 +19,17 @@
         </form>
     </div>
 
-    <div class="col-2">
-        <h3 class="text-center">ИЛИ</h3>
+    <div class="col-4 mx-4 exercise_description">
+        <h3>Примечание</h3>
+        <hr>
+        <p>
+            Чтобы удалить строку из таблицы, достаточно ввести ее номер в поле ввода. Для изменения данных 
+            необязательно заполнять форму, обязательным является поле ввода ID. А дальше можете заполнить 
+            только те поля, которые хотите поменять. <br><br>
+            Просьба не изменять и не удалять данные после того, как 
+            произвели поиск, иначе изменятся данные номера из исходной таблицы. Здесь все 
+            привязано к loop.index и из коробки id у каждого элемента нет.
+        </p>
     </div>
 
     <!-- ———————————————————————————— BLOCK UPDATE ———————————————————————————— -->
@@ -31,7 +40,7 @@
             <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->
             <div class="d-flex mt-2">
                 <div class="custom-tooltip">
-                    <input name="player_id_update" id="player_id_update" type="number" placeholder="ID игрока">
+                    <input name="player_id_update" id="player_id_update" type="number" required placeholder="ID игрока">
                     <div class="left">
                         <span>Введите номер того игрока из таблицы, данные которого хотели бы поменять</span>
                         <i></i>
@@ -126,13 +135,6 @@
             </div>
         </form>
     </div>
-</div>
-<div class="offset-1 col-10">
-    <p>
-        Примечание: просьба не изменять и не удалять данные после того, как 
-        произвели поиск, иначе удалится номер из исходной таблицы. Здесь все 
-        привязано к loop.index и из коробки id у каждого элемента нет.
-    </p>
 </div>
 
 {% endblock %}
