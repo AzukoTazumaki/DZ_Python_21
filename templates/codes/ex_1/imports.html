@@ -1,0 +1,32 @@
+{% block imports %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-6">
+        <div>
+            <h5>Импорты</h5>
+            <hr>
+            <p>
+                Были импортированы библиотеки: <br>
+                <ul>
+                    <li><span class="help_translate">bs4</span> – для парсинга сайтов</li>
+                    <li><span class="help_translate">unitsnet_py</span> – для конвертации метрических единиц</li>
+                    <li><span class="help_translate">Requests</span> – для упрощения работы с HTTP-запросами</li>
+                    <li><span class="help_translate">Pandas</span> – для работы с csv-файлами</li>
+                    <li><span class="help_translate">re</span> – для использования регулярных выражений</li>
+                    <li><span class="help_translate">currency_converter</span> – для конвертации валют</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px">
+<pre style="line-height: 125%;"><span></span>
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">bs4</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">BeautifulSoup</span> <span style="color: #859900">as</span> <span style="color: #657b83">bs</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">unitsnet_py</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">Length,</span> <span style="color: #657b83">LengthUnits,</span> <span style="color: #657b83">Mass,</span> <span style="color: #657b83">MassUnits</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">requests</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">pandas</span> <span style="color: #859900">as</span> <span style="color: #268bd2">pd</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">re</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">currency_converter</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">CurrencyConverter</span> <span style="color: #859900">as</span> <span style="color: #657b83">cc</span></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

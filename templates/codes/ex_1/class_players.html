@@ -1,33 +1,22 @@
 {% block class_players %}
-<p>
-    Был создан класс <span class="help_translate">Players</span>. В конструктор в качестве 
-    аргумента принимается дата <span class="help_translate">player_info</span> из формы в виде словаря. 
-    Зная все имена полей ввода в форме, словарь сразу распаковывается на 8 составляющих: полное имя, 
-    амплуа, возраст, рост, вес, название команды, место обучения и зарплата игрока за год, т.е. 
-    полная информация об игроке.
-</p>
-
-<div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px">
-<pre style="line-height: 125%;"><span></span><span style="color: #cb4b16">from</span> <span style="color: #268bd2">bs4</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">BeautifulSoup</span> <span style="color: #859900">as</span> <span style="color: #657b83">bs</span> 
-<span style="color: #cb4b16">from</span> <span style="color: #268bd2">unitsnet_py</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">Length,</span> <span style="color: #657b83">LengthUnits,</span> <span style="color: #657b83">Mass,</span> <span style="color: #657b83">MassUnits</span> 
-<span style="color: #cb4b16">import</span> <span style="color: #268bd2">requests</span> 
-<span style="color: #cb4b16">import</span> <span style="color: #268bd2">pandas</span> <span style="color: #859900">as</span> <span style="color: #268bd2">pd</span> 
-<span style="color: #cb4b16">import</span> <span style="color: #268bd2">re</span> 
-<span style="color: #cb4b16">from</span> <span style="color: #268bd2">currency_converter</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">CurrencyConverter</span> <span style="color: #859900">as</span> <span style="color: #657b83">cc</span> 
-
-
+<div class="row d-flex align-items-center code_description justify-content-between mt-4">
+    <div class="col-6">
+        <div>
+            <h5>Инициализация класса Players</h5>
+            <hr>
+            <p>
+                Здесь в качестве аргумента приходит словарь из формы. Распаковывать 
+                его будем в методах, так как этот словарь приходит в трех случаях и 
+                всегда разный. Словарь приходит при добавлении игрока, изменении и 
+                удалении данных игрока.
+            </p>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
 <span style="color: #859900">class</span> <span style="color: #268bd2">Players</span><span style="color: #657b83">:</span> 
-    <span style="color: #859900">def</span> <span style="color: #268bd2">__init__</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">player_info:</span> <span style="color: #268bd2">dict</span><span style="color: #657b83">):</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">full_name</span> <span style="color: #93a1a1">=</span> <span style="color: #2aa198">\<span> 
-            <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_last_name&#39;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> <span style="color: #93a1a1">+</span> <span style="color: #2aa198">&#39; &#39;</span> <span style="color: #93a1a1">+</span> <span style="color: #2aa198">\<span> 
-            <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_first_name&#39;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> <span style="color: #93a1a1">+</span> <span style="color: #2aa198">&#39; &#39;</span> <span style="color: #93a1a1">+</span> <span style="color: #2aa198">\<span> 
-            <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_surname&#39;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">position</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_role&#39;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">upper()</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">age</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_age&#39;</span><span style="color: #657b83">]</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">height</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_height&#39;</span><span style="color: #657b83">]</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">weight</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_weight&#39;</span><span style="color: #657b83">]</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">team</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_team&#39;</span><span style="color: #657b83">]</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">education</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_education&#39;</span><span style="color: #657b83">]</span> 
-        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">salary</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">player_info[</span><span style="color: #2aa198">&#39;player_salary&#39;</span><span style="color: #657b83">]</span></pre>
+    <span style="color: #859900">def</span> <span style="color: #268bd2">__init__</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">form_info:</span> <span style="color: #268bd2">dict</span><span style="color: #657b83">):</span> 
+        <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">form_info:</span> <span style="color: #268bd2">dict</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">form_info</span></pre></div>
+    </div>
 </div>
 {% endblock %}

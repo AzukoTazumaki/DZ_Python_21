@@ -1,14 +1,23 @@
 {% block read_csv_to_html_ex_1 %}
-<p>
-    Этот метод является статическим, его роль – открыть файл, прочитать 
-    все строки и вернуть список с ними. В итоге этот список распаковывается 
-    в шаблоне HTML в таблицу.
-</p>
-
-<div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span><span style="color: #268bd2">@staticmethod</span> 
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-7">
+        <h5>Метод отправки в HTML</h5>
+        <hr>
+        <p>
+            Этот метод является статическим, его роль – открыть файл, прочитать 
+            все строки и вернуть список с ними. В итоге этот список распаковывается 
+            в шаблоне HTML в таблицу.
+        </p>
+    </div>
+    <div class="col-5">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #268bd2">@staticmethod</span> 
 <span style="color: #859900">def</span> <span style="color: #268bd2">read_csv_to_html</span><span style="color: #657b83">()</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">list</span><span style="color: #657b83">:</span> 
     <span style="color: #657b83">file</span> <span style="color: #93a1a1">=</span> <span style="color: #268bd2">open</span><span style="color: #657b83">(</span><span style="color: #2aa198">&#39;results/players.csv&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;r&#39;</span><span style="color: #657b83">)</span> 
-    <span style="color: #657b83">lines</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[x</span><span style="color: #93a1a1">.</span><span style="color: #657b83">split(</span><span style="color: #2aa198">&#39;,&#39;</span><span style="color: #657b83">)</span> <span style="color: #859900">for</span> <span style="color: #657b83">x</span> <span style="color: #859900">in</span> <span style="color: #657b83">file</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read()</span><span style="color: #93a1a1">.</span><span style="color: #657b83">splitlines()[</span><span style="color: #2aa198">1</span><span style="color: #657b83">:]]</span> 
+    <span style="color: #657b83">lines:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[x</span><span style="color: #93a1a1">.</span><span style="color: #657b83">split(</span><span style="color: #2aa198">&#39;,&#39;</span><span style="color: #657b83">)</span> <span style="color: #859900">for</span> <span style="color: #657b83">x</span> <span style="color: #859900">in</span> <span style="color: #657b83">file</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read()</span><span style="color: #93a1a1">.</span><span style="color: #657b83">splitlines()[</span><span style="color: #2aa198">1</span><span style="color: #657b83">:]]</span> 
     <span style="color: #859900">return</span> <span style="color: #657b83">lines</span></pre>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

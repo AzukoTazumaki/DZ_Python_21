@@ -1,0 +1,26 @@
+{% block delete_player %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-6">
+        <h5>Метод удаления данных</h5>
+        <hr>
+        <p>
+            Здесь из формы приходит только ID. Как и в случае с <span class="help_translate">update_id</span> 
+            переводим в число и отнимаем единицу. Проверяем, что ID в нужном диапазоне, иначе возвращаем строку 
+            с ошибкой. Затем с помощью Pandas открываем файл, удаляем строку по ID 
+            и перезаписываем файл. В конце возвращаем вызов метода <span class="help_translate">read_csv_to_html()</span>.
+        </p>
+    </div>
+    <div class="col-6">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #859900">def</span> <span style="color: #268bd2">delete</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #657b83">delete_id:</span> <span style="color: #268bd2">int</span> <span style="color: #93a1a1">=</span> <span style="color: #268bd2">int</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">form_info[</span><span style="color: #2aa198">&#39;player_id_delete&#39;</span><span style="color: #657b83">])</span> <span style="color: #93a1a1">-</span> <span style="color: #2aa198">1</span> 
+    <span style="color: #657b83">file</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">pd</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv(</span><span style="color: #2aa198">&#39;results/players.csv&#39;</span><span style="color: #657b83">)</span> 
+    <span style="color: #859900">if</span> <span style="color: #2aa198">1</span> <span style="color: #93a1a1">&lt;</span> <span style="color: #657b83">delete_id</span> <span style="color: #93a1a1">&lt;</span> <span style="color: #268bd2">len</span><span style="color: #657b83">(file[</span><span style="color: #2aa198">&#39;Name&#39;</span><span style="color: #657b83">]):</span> 
+        <span style="color: #657b83">file</span><span style="color: #93a1a1">.</span><span style="color: #657b83">drop(delete_id,</span> <span style="color: #657b83">inplace</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">True</span><span style="color: #657b83">)</span> 
+        <span style="color: #657b83">file</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_csv(</span><span style="color: #2aa198">&#39;results/players.csv&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">index</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">False</span><span style="color: #657b83">,</span> <span style="color: #657b83">mode</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;w&#39;</span><span style="color: #657b83">)</span> 
+        <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv_to_html()</span> 
+    <span style="color: #859900">return</span> <span style="color: #2aa198">&#39;Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.&#39;</span></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

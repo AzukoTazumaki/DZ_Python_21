@@ -71,14 +71,18 @@ body {
 /* ————————————————————————————————————————————————— BLOCK HELP ————————————————————————————————————————————————— */
 
 .help_container {
-    line-height: 20px;
+    line-height: 30px;
     margin-top: 15vh;
     margin-bottom: 15vh;
 }
 
 .help_translate {
-    color: var(--day-sky-blue);
-    text-shadow: var(--black-shadow);
+    color: var(--palegoldenrod);
+    text-shadow: 0 0 1px var(--black);
+    padding: 3px 8px;
+    background-color: var(--marsh);
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .ex-links a {
@@ -166,7 +170,8 @@ body {
 .block_exercise_1,
 .block_exercise_2,
 .block_exercise_3,
-.block_exercise_4 {
+.block_exercise_4,
+.code_description {
     color: var(--marsh);
     background-color: var(--palegoldenrod);
     padding: 20px;
@@ -177,7 +182,8 @@ body {
 .block_exercise_1:hover,
 .block_exercise_2:hover,
 .block_exercise_3:hover,
-.block_exercise_4:hover {
+.block_exercise_4:hover,
+.code_description:hover {
     box-shadow: 2px 2px 10px var(--palegoldenrod);
 }
 

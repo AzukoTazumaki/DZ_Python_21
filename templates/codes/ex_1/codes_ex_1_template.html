@@ -1,46 +1,49 @@
 {% block codes_ex_1 %}
 
-<h3>Задание 1. Баскетболисты.</h3>
+<h2>Задание 1. Баскетболисты.</h2>
+<hr>
+<h3>Класс Players</h3>
 
-<p>Были импортированы следующие библиотеки:</p>
-
-<ul>
-    <li>BeatifulSoup4;</li>
-    <li>unitsnet_py;</li>
-    <li>requests;</li>
-    <li>pandas;</li>
-    <li>re;</li>
-    <li>CurrencyConverter.</li>
-</ul>
-
-<h5 class="title_method mt-3">Инициализация класса <span class="title_method_span">Players</span>.</h5>
+{% block imports %}
+{% include 'codes/ex_1/imports.html' %}
+{% endblock %}
 
 {% block class_players %}
 {% include 'codes/ex_1/class_players.html' %}
 {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">parse_site()</span>.</h5>
-
 {% block parse_site %}
 {% include 'codes/ex_1/parse_site.html' %}
 {% endblock %}
-
-<h5 class="title_method mt-3">Метод <span class="title_method_span">add_player_to_csv()</span>.</h5>
 
 {% block add_player_to_csv %}
 {% include 'codes/ex_1/add_player_to_csv.html' %}
 {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">check_unknown_fields()</span>.</h5>
-
-{% block check_unknown_fields_ex_1 %}
+{% block check_unknown_fields %}
 {% include 'codes/ex_1/check_unknown_fields.html' %}
 {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">read_csv_to_html()</span>.</h5>
-
-{% block read_csv_to_html_ex_1 %}
+{% block read_csv_to_html %}
 {% include 'codes/ex_1/read_csv_to_html.html' %}
+{% endblock %}
+
+{% block search_players %}
+{% include 'codes/ex_1/search_players.html' %}
+{% endblock %}
+
+<h3 class="mt-4">Класс UDPlayers</h3>
+
+{% block class_ud_players %}
+{% include 'codes/ex_1/class_ud_players.html' %}
+{% endblock %}
+
+{% block update_player %}
+{% include 'codes/ex_1/update_player.html' %}
+{% endblock %}
+
+{% block delete_player %}
+{% include 'codes/ex_1/delete_player.html' %}
 {% endblock %}
 
 {% endblock %}

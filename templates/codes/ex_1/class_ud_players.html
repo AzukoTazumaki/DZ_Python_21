@@ -1,0 +1,23 @@
+{% block class_ud_players %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-7">
+        <h5>Инициализация класса UDPlayers</h5>
+        <hr>
+        <p>
+            Инициализируем новый класс, который наследуется от класса <span class="help_translate">Players</span> 
+            – <span class="help_translate">UDPlayers</span> (в данном случае UD означает Update & Delete). Затем 
+            вызывается метод <span class="help_translate">super()</span>, чтобы вызвать конструктор из главного класса – 
+            это позволит вызывать подкласс, передавая в него тот же самый словарь. 
+            Я специально разграничил класс и подкласс с разными методами для удобства чтения и понимания кода. По крайней мере, 
+            по моей логике, мне кажется, что так понятнее.
+        </p>
+    </div>
+    <div class="col-5">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #859900">class</span> <span style="color: #268bd2">UDPlayers</span><span style="color: #657b83">(Players):</span> 
+    <span style="color: #859900">def</span> <span style="color: #268bd2">__init__</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">,</span> <span style="color: #657b83">form_info):</span> 
+        <span style="color: #268bd2">super</span><span style="color: #657b83">()</span><span style="color: #93a1a1">.</span><span style="color: #268bd2">__init__</span><span style="color: #657b83">(form_info)</span></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

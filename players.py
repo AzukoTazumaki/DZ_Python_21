@@ -17,9 +17,9 @@ class Players:
         response = requests.get(url + '/nba/teams')
         response_body = bs(response.content, 'html.parser')
         needed_hrefs: list = [
-            link["href"] for link in response_body
+            link['href'] for link in response_body
             .find('div', {'class': 'layout is-split'})
-            .find_all('a', {'class': 'AnchorLink'}) if 'roster' in link["href"]
+            .find_all('a', {'class': 'AnchorLink'}) if 'roster' in link['href']
         ]
         columns: list = ['Name', 'Position', 'Age', 'Height', 'Weight', 'Team', 'College', 'Salary']
         for href in needed_hrefs:
@@ -44,8 +44,8 @@ class Players:
                     ]
                 )
                 player_info_unknown: str = 'Неизвестно'
-                player_education: str = player_info_unknown if re.search(r'-', table_datas[6].text) else table_datas[
-                    6].text
+                player_education: str = player_info_unknown \
+                    if re.search(r'-', table_datas[6].text) else table_datas[6].text
                 player_salary_usd: str = ''.join(''.join(re.findall(r'[0-9,]+', table_datas[7].text)).split(','))
                 player_salary: str = player_info_unknown \
                     if re.search(r'-', table_datas[7].text) \
@@ -55,8 +55,8 @@ class Players:
                     player_weight, player_team, player_education, player_salary
                 ]
                 result.append(player_info_list)
-        df_a = pd.DataFrame(result, columns=columns)
-        df_a.to_csv('results/players.csv', mode='w', index=False)
+        df_w = pd.DataFrame(result, columns=columns)
+        df_w.to_csv('results/players.csv', mode='w', index=False)
 
     def add_player_to_csv(self):
         full_name: str = \
@@ -100,7 +100,7 @@ class Players:
             result: list = []
             with open('results/players.csv') as players:
                 players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
-                players_pandas: list = pd.read_csv('results/players.csv')
+                players_pandas = pd.read_csv('results/players.csv')
                 for title in players_pandas:
                     if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
                         for index, row in enumerate(players_pandas[title]):
@@ -137,22 +137,14 @@ class UDPlayers(Players):
         checked_player_new_info: list = self.check_unknown_fields(player_new_info)
         file = pd.read_csv('results/players.csv')
         if 1 < update_id < len(file['Name']):
-            file.loc[update_id, 'Name'] = checked_player_new_info[0] \
-                if checked_player_new_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
-            file.loc[update_id, 'Position'] = checked_player_new_info[1] \
-                if checked_player_new_info[1] != 'Неизвестно' else file.loc[update_id, 'Position']
-            file.loc[update_id, 'Age'] = checked_player_new_info[2] \
-                if checked_player_new_info[2] != 'Неизвестно' else file.loc[update_id, 'Age']
-            file.loc[update_id, 'Height'] = checked_player_new_info[3] \
-                if checked_player_new_info[3] != 'Неизвестно' else file.loc[update_id, 'Height']
-            file.loc[update_id, 'Weight'] = checked_player_new_info[4] \
-                if checked_player_new_info[4] != 'Неизвестно' else file.loc[update_id, 'Weight']
-            file.loc[update_id, 'Team'] = checked_player_new_info[5] \
-                if checked_player_new_info[5] != 'Неизвестно' else file.loc[update_id, 'Team']
-            file.loc[update_id, 'College'] = checked_player_new_info[6] \
-                if checked_player_new_info[6] != 'Неизвестно' else file.loc[update_id, 'College']
-            file.loc[update_id, 'Salary'] = checked_player_new_info[7] \
-                if checked_player_new_info[7] != 'Неизвестно' else file.loc[update_id, 'Salary']
+            file.loc[update_id, 'Name'] = checked_player_new_info[0] if checked_player_new_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
+            file.loc[update_id, 'Position'] = checked_player_new_info[1] if checked_player_new_info[1] != 'Неизвестно' else file.loc[update_id, 'Position']
+            file.loc[update_id, 'Age'] = checked_player_new_info[2] if checked_player_new_info[2] != 'Неизвестно' else file.loc[update_id, 'Age']
+            file.loc[update_id, 'Height'] = checked_player_new_info[3] if checked_player_new_info[3] != 'Неизвестно' else file.loc[update_id, 'Height']
+            file.loc[update_id, 'Weight'] = checked_player_new_info[4] if checked_player_new_info[4] != 'Неизвестно' else file.loc[update_id, 'Weight']
+            file.loc[update_id, 'Team'] = checked_player_new_info[5] if checked_player_new_info[5] != 'Неизвестно' else file.loc[update_id, 'Team']
+            file.loc[update_id, 'College'] = checked_player_new_info[6] if checked_player_new_info[6] != 'Неизвестно' else file.loc[update_id, 'College']
+            file.loc[update_id, 'Salary'] = checked_player_new_info[7] if checked_player_new_info[7] != 'Неизвестно' else file.loc[update_id, 'Salary']
             file.to_csv('results/players.csv', index=False, mode='w')
             return self.read_csv_to_html()
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
