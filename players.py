@@ -8,7 +8,7 @@ from currency_converter import CurrencyConverter as cc
 
 class Players:
     def __init__(self, form_info: dict):
-        self.form_info = form_info
+        self.form_info: dict = form_info
 
     @staticmethod
     def parse_site():
@@ -114,7 +114,7 @@ class Players:
         return 'Вы ничего не ввели, чтобы искать'
 
 
-class UD(Players):
+class UDPlayers(Players):
     def __init__(self, form_info):
         super().__init__(form_info)
 
@@ -157,12 +157,12 @@ class UD(Players):
         return self.read_csv_to_html()
 
     def delete(self):
-        delete_id = int(self.form_info['player_id_delete'])
+        delete_id = int(self.form_info['player_id_delete']) - 1
         file = pd.read_csv('results/players.csv')
         file.drop(delete_id, inplace=True)
         file.to_csv('results/players.csv', index=False, mode='w')
         return self.read_csv_to_html()
 
 
-# if __name__ == '__main__':
-#     Players.parse_site()
+if __name__ == '__main__':
+    Players.parse_site()

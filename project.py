@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-from players import Players, UD
-from translate import Translate
+from players import Players, UDPlayers
+from translate import Translate, UDTranslate
 from company import Company
 from books import Books
 
@@ -26,15 +26,15 @@ def basketball_players():
 
 
 @project.route('/basketball_players/delete', methods=['POST', 'GET'])
-def delete_player():
+def delete_players():
     player_id = request.form.to_dict()
-    return render_template('answers/players/basketball_players.html', result=UD(player_id).delete())
+    return render_template('answers/players/basketball_players.html', result=UDPlayers(player_id).delete())
 
 
 @project.route('/basketball_players/update', methods=['POST', 'GET'])
-def update_player():
+def update_players():
     data = request.form.to_dict()
-    return render_template('answers/players/basketball_players.html', result=UD(data).update())
+    return render_template('answers/players/basketball_players.html', result=UDPlayers(data).update())
 
 
 @project.route('/translate', methods=['POST', 'GET'])
@@ -47,6 +47,18 @@ def translate():
     if request.method == 'GET':
         word = request.args.get('search_words')
         return render_template('answers/translate/translate.html', result=Translate.search(word))
+
+
+@project.route('/translate/delete', methods=['POST', 'GET'])
+def delete_words():
+    word_id = request.form.to_dict()
+    return render_template('answers/translate/translate.html', result=UDTranslate(word_id).delete())
+
+
+@project.route('/translate/update', methods=['POST', 'GET'])
+def update_words():
+    data = request.form.to_dict()
+    return render_template('answers/translate/translate.html', result=UDTranslate(data).update())
 
 
 @project.route('/company_employees', methods=['POST', 'GET'])

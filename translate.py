@@ -1,25 +1,26 @@
 import translators
 from spellchecker import SpellChecker
 import pandas as pd
+import re
 
 
 class Translate:
-    def __init__(self, user_word: str):
+    def __init__(self, word: dict):
         self.spell: SpellChecker = SpellChecker(language='ru')
         self.translator: translators = translators
-        self.word: str = user_word
+        self.word: dict = word
 
     def check_spelling(self):
-        if self.spell.correction(self.word) == self.word:
+        if self.spell.correction(self.word['word_translate']) == self.word['word_translate']:
             return self.translate()
         return self.error()
 
     def translate(self):
         if self.read_csv():
             return self.to_csv([
-                self.word.capitalize(),
-                self.translator.translate_text(self.word, from_language='ru', to_language='en').capitalize(),
-                self.translator.translate_text(self.word, from_language='ru', to_language='fr').capitalize()
+                self.word['word_translate'].capitalize(),
+                self.translator.translate_text(self.word['word_translate'], from_language='ru', to_language='en').capitalize(),
+                self.translator.translate_text(self.word['word_translate'], from_language='ru', to_language='fr').capitalize()
             ])
         else:
             return 'Данное слово уже существует.'
@@ -27,7 +28,7 @@ class Translate:
     def read_csv(self) -> bool:
         csv = pd.read_csv('results/words.csv')['Russian'].to_dict()
         for index in csv:
-            if self.word.capitalize() == csv[index]:
+            if self.word['word_translate'].capitalize() == csv[index]:
                 return False
             continue
         return True
@@ -66,3 +67,27 @@ class Translate:
                         continue
             return result if len(result) > 0 else 'Совпадений не найдено.'
         return 'Вы ничего не ввели, чтобы искать'
+
+
+class UDTranslate(Translate):
+    def __init__(self, word: dict):
+        super().__init__(word)
+
+    def update(self):
+        update_id = int(self.word['word_translate_id_update']) - 1
+        word_english = self.word['word_translate_english']
+        word_french = self.word['word_translate_french']
+        file = pd.read_csv('results/words.csv')
+        file.loc[update_id, 'English'] = word_english \
+            if len(re.sub(r'\s+', '', word_english)) != 0 else file.loc[update_id, 'English']
+        file.loc[update_id, 'French'] = word_french \
+            if len(re.sub(r'\s+', '', word_french)) != 0 else file.loc[update_id, 'French']
+        file.to_csv('results/words.csv', index=False, mode='w')
+        return self.read_csv_to_html()
+
+    def delete(self):
+        delete_id = int(self.word['word_translate_id_delete']) - 1
+        file = pd.read_csv('results/words.csv')
+        file.drop(delete_id, inplace=True)
+        file.to_csv('results/words.csv', index=False, mode='w')
+        return self.read_csv_to_html()
