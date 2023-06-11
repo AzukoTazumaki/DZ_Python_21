@@ -78,16 +78,20 @@ class UDTranslate(Translate):
         word_english = self.word['word_translate_english']
         word_french = self.word['word_translate_french']
         file = pd.read_csv('results/words.csv')
-        file.loc[update_id, 'English'] = word_english \
-            if len(re.sub(r'\s+', '', word_english)) != 0 else file.loc[update_id, 'English']
-        file.loc[update_id, 'French'] = word_french \
-            if len(re.sub(r'\s+', '', word_french)) != 0 else file.loc[update_id, 'French']
-        file.to_csv('results/words.csv', index=False, mode='w')
-        return self.read_csv_to_html()
+        if 1 < update_id < len(file['Russian']):
+            file.loc[update_id, 'English'] = word_english \
+                if len(re.sub(r'\s+', '', word_english)) != 0 else file.loc[update_id, 'English']
+            file.loc[update_id, 'French'] = word_french \
+                if len(re.sub(r'\s+', '', word_french)) != 0 else file.loc[update_id, 'French']
+            file.to_csv('results/words.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
         delete_id = int(self.word['word_translate_id_delete']) - 1
         file = pd.read_csv('results/words.csv')
-        file.drop(delete_id, inplace=True)
-        file.to_csv('results/words.csv', index=False, mode='w')
-        return self.read_csv_to_html()
+        if 1 < delete_id < len(file['Russian']):
+            file.drop(delete_id, inplace=True)
+            file.to_csv('results/words.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'

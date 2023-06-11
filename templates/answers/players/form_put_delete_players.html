@@ -3,8 +3,11 @@
 <div class="row d-flex align-items-center justify-content-center vh-100">
     <!-- ———————————————————————————— BLOCK DELETE ———————————————————————————— -->
     <div class="col-3 block_exercise_1">
-        <h4>Удаление:</h4>
-        <p>Чтобы удалить данные какого-либо баскетболиста, введите ID игрока:</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4>Удаление:</h4>
+            <i class="fa-solid fa-trash"></i>
+        </div>
+        <hr>
         <!-- ———————————————————————————— FORM DELETE ———————————————————————————— -->
         <form action="/basketball_players/delete" method="post">
             <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->
@@ -40,7 +43,11 @@
 
     <!-- ———————————————————————————— BLOCK UPDATE ———————————————————————————— -->
     <div class="col-4 block_exercise_1">
-        <h4>Изменение:</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4>Изменение:</h4>
+            <i class="fa-solid fa-pen-to-square"></i>
+        </div>
+        <hr>
         <!-- ———————————————————————————— FORM UPDATE ———————————————————————————— -->
         <form class="mt-3" action="/basketball_players/update" method="post">
             <!-- ———————————————————————————— PLAYER ID ———————————————————————————— -->

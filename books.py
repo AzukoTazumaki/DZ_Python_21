@@ -1,16 +1,12 @@
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 import requests
+import re
 
 
 class Books:
-    def __init__(self, book: dict):
-        self.title = book['book_title']
-        self.author = book['book_author']
-        self.genre = book['book_genre']
-        self.year = book['book_year']
-        self.publisher = book['book_publisher']
-        self.summary = book['book_summary']
+    def __init__(self, form_info: dict):
+        self.form_info = form_info
 
     @staticmethod
     def parse_site():
@@ -50,16 +46,22 @@ class Books:
     @staticmethod
     def check_unknown_fields(book_info: list) -> list:
         for index, field in enumerate(book_info):
-            if field == '':
+            if len(re.sub(r'\s+', '', field)) == 0:
                 book_info[index] = 'Неизвестно'
             continue
         return book_info
 
     def add_book_to_csv(self):
+        title = self.form_info['book_title']
+        author = self.form_info['book_author']
+        genre = self.form_info['book_genre']
+        year = self.form_info['book_year']
+        publisher = self.form_info['book_publisher']
+        summary = self.form_info['book_summary']
         columns = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
         new_book_info: list = [
-            self.title, self.author, self.genre,
-            self.year, self.publisher, self.summary
+            title, author, genre,
+            year, publisher, summary
         ]
         checked_book_info = self.check_unknown_fields(new_book_info)
         df_a = pd.DataFrame([checked_book_info], columns=columns)
@@ -99,6 +101,50 @@ class Books:
             return result if len(result['Title']) > 0 else 'Совпадений не найдено.'
         return 'Вы ничего не ввели, чтобы искать'
 
+
+class UDBooks(Books):
+    def __init__(self, form_info: dict):
+        super().__init__(form_info)
+
+    def update(self):
+        update_id = int(self.form_info['book_id_update']) - 1
+        title = self.form_info['book_title']
+        author = self.form_info['book_author']
+        genre = self.form_info['book_genre']
+        year = self.form_info['book_year']
+        publisher = self.form_info['book_publisher']
+        summary = self.form_info['book_summary']
+        new_book_info: list = [
+            title, author, genre,
+            year, publisher, summary
+        ]
+        checked_book_info = self.check_unknown_fields(new_book_info)
+        file = pd.read_csv('results/books.csv')
+        if 1 < update_id < len(file['Title']):
+            file.loc[update_id, 'Title'] = checked_book_info[0] \
+                if checked_book_info[0] != 'Неизвестно' else file.loc[update_id, 'Title']
+            file.loc[update_id, 'Author'] = checked_book_info[1] \
+                if checked_book_info[1] != 'Неизвестно' else file.loc[update_id, 'Author']
+            file.loc[update_id, 'Genre'] = checked_book_info[2] \
+                if checked_book_info[2] != 'Неизвестно' else file.loc[update_id, 'Genre']
+            file.loc[update_id, 'Year'] = checked_book_info[3] \
+                if checked_book_info[3] != 'Неизвестно' else file.loc[update_id, 'Year']
+            file.loc[update_id, 'Publisher'] = checked_book_info[4] \
+                if checked_book_info[4] != 'Неизвестно' else file.loc[update_id, 'Publisher']
+            file.loc[update_id, 'Summary'] = checked_book_info[5] \
+                if checked_book_info[5] != 'Неизвестно' else file.loc[update_id, 'Summary']
+            file.to_csv('results/books.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
+
+    def delete(self):
+        delete_id = int(self.form_info['book_id_delete']) - 1
+        file = pd.read_csv('results/books.csv')
+        if 1 < delete_id < len(file['Title']):
+            file.drop(delete_id, inplace=True)
+            file.to_csv('results/books.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
 if __name__ == '__main__':
     Books.parse_site()

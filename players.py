@@ -137,31 +137,35 @@ class UDPlayers(Players):
         ]
         checked_player_new_info = self.check_unknown_fields(player_new_info)
         file = pd.read_csv('results/players.csv')
-        file.loc[update_id, 'Name'] = checked_player_new_info[0] \
-            if checked_player_new_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
-        file.loc[update_id, 'Position'] = checked_player_new_info[1] \
-            if checked_player_new_info[1] != 'Неизвестно' else file.loc[update_id, 'Position']
-        file.loc[update_id, 'Age'] = checked_player_new_info[2] \
-            if checked_player_new_info[2] != 'Неизвестно' else file.loc[update_id, 'Age']
-        file.loc[update_id, 'Height'] = checked_player_new_info[3] \
-            if checked_player_new_info[3] != 'Неизвестно' else file.loc[update_id, 'Height']
-        file.loc[update_id, 'Weight'] = checked_player_new_info[4] \
-            if checked_player_new_info[4] != 'Неизвестно' else file.loc[update_id, 'Weight']
-        file.loc[update_id, 'Team'] = checked_player_new_info[5] \
-            if checked_player_new_info[5] != 'Неизвестно' else file.loc[update_id, 'Team']
-        file.loc[update_id, 'College'] = checked_player_new_info[6] \
-            if checked_player_new_info[6] != 'Неизвестно' else file.loc[update_id, 'College']
-        file.loc[update_id, 'Salary'] = checked_player_new_info[7] \
-            if checked_player_new_info[7] != 'Неизвестно' else file.loc[update_id, 'Salary']
-        file.to_csv('results/players.csv', index=False, mode='w')
-        return self.read_csv_to_html()
+        if 1 < update_id < len(file['Name']):
+            file.loc[update_id, 'Name'] = checked_player_new_info[0] \
+                if checked_player_new_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
+            file.loc[update_id, 'Position'] = checked_player_new_info[1] \
+                if checked_player_new_info[1] != 'Неизвестно' else file.loc[update_id, 'Position']
+            file.loc[update_id, 'Age'] = checked_player_new_info[2] \
+                if checked_player_new_info[2] != 'Неизвестно' else file.loc[update_id, 'Age']
+            file.loc[update_id, 'Height'] = checked_player_new_info[3] \
+                if checked_player_new_info[3] != 'Неизвестно' else file.loc[update_id, 'Height']
+            file.loc[update_id, 'Weight'] = checked_player_new_info[4] \
+                if checked_player_new_info[4] != 'Неизвестно' else file.loc[update_id, 'Weight']
+            file.loc[update_id, 'Team'] = checked_player_new_info[5] \
+                if checked_player_new_info[5] != 'Неизвестно' else file.loc[update_id, 'Team']
+            file.loc[update_id, 'College'] = checked_player_new_info[6] \
+                if checked_player_new_info[6] != 'Неизвестно' else file.loc[update_id, 'College']
+            file.loc[update_id, 'Salary'] = checked_player_new_info[7] \
+                if checked_player_new_info[7] != 'Неизвестно' else file.loc[update_id, 'Salary']
+            file.to_csv('results/players.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
         delete_id = int(self.form_info['player_id_delete']) - 1
         file = pd.read_csv('results/players.csv')
-        file.drop(delete_id, inplace=True)
-        file.to_csv('results/players.csv', index=False, mode='w')
-        return self.read_csv_to_html()
+        if 1 < delete_id < len(file['Name']):
+            file.drop(delete_id, inplace=True)
+            file.to_csv('results/players.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
 
 if __name__ == '__main__':

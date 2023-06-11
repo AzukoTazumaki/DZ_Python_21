@@ -3,21 +3,12 @@ from mimesis.locales import Locale
 from mimesis.enums import Gender
 from random import choice
 import pandas as pd
+import re
 
 
 class Company:
-    def __init__(self, employee_info: dict):
-        self.full_name: str = \
-            employee_info['employee_last_name'].capitalize() + ' ' + \
-            employee_info['employee_first_name'].capitalize() + ' ' + \
-            employee_info['employee_surname'].capitalize()
-        self.phone: str = employee_info['employee_phone_number']
-        self.email: str = employee_info['employee_email']
-        self.age: str = employee_info['employee_age']
-        self.occupation: str = employee_info['employee_occupation']
-        self.nationality: str = employee_info['employee_nationality']
-        self.university: str = employee_info['employee_university']
-        self.work_experience: str = employee_info['employee_work_experience']
+    def __init__(self, form_info: dict):
+        self.form_info = form_info
 
     @staticmethod
     def auto_create_employees():
@@ -47,10 +38,21 @@ class Company:
             df_a.to_csv('results/employees.csv', mode='a', index=False, header=False)
 
     def add_employee_to_csv(self):
+        full_name: str = \
+            self.form_info['employee_first_name'].capitalize() + ' ' + \
+            self.form_info['employee_last_name'].capitalize() + ' ' + \
+            self.form_info['employee_surname'].capitalize()
+        phone: str = self.form_info['employee_phone_number']
+        email: str = self.form_info['employee_email']
+        age: str = self.form_info['employee_age']
+        occupation: str = self.form_info['employee_occupation']
+        nationality: str = self.form_info['employee_nationality']
+        university: str = self.form_info['employee_university']
+        work_experience: str = self.form_info['employee_work_experience']
         columns: list = ['Name', 'Phone', 'Email', 'Age', 'Occupation', 'Nationality', 'University', 'Work Experience']
         new_employee_info: list = [
-            self.full_name, self.phone, self.email, self.age,
-            self.occupation, self.nationality, self.university, self.work_experience
+            full_name, phone, email, age, occupation,
+            nationality, university, work_experience
         ]
         check_employee_info: list = self.check_unknown_fields(new_employee_info)
         df_a = pd.DataFrame([check_employee_info], columns=columns)
@@ -60,7 +62,7 @@ class Company:
     @staticmethod
     def check_unknown_fields(employee_info: list) -> list:
         for index, field in enumerate(employee_info):
-            if len(field.replace(r'\s+', '')) == 0:
+            if len(re.sub(r'\s+', '', field)) == 0:
                 employee_info[index] = 'Неизвестно'
             continue
         return employee_info
@@ -88,6 +90,60 @@ class Company:
                     continue
             return result if len(result) > 0 else 'Совпадений не найдено.'
         return 'Вы ничего не ввели, чтобы искать'
+
+
+class UDCompany(Company):
+    def __init__(self, form_info: dict):
+        super().__init__(form_info)
+
+    def update(self):
+        update_id = int(self.form_info['employee_id_update']) - 1
+        full_name: str = \
+            self.form_info['employee_first_name'].capitalize() + ' ' + \
+            self.form_info['employee_last_name'].capitalize() + ' ' + \
+            self.form_info['employee_surname'].capitalize()
+        phone: str = self.form_info['employee_phone_number']
+        email: str = self.form_info['employee_email']
+        age: str = self.form_info['employee_age']
+        occupation: str = self.form_info['employee_occupation']
+        nationality: str = self.form_info['employee_nationality']
+        university: str = self.form_info['employee_university']
+        work_experience: str = self.form_info['employee_work_experience']
+        new_employee_info: list = [
+            full_name, phone, email, age, occupation,
+            nationality, university, work_experience
+        ]
+        check_employee_info: list = self.check_unknown_fields(new_employee_info)
+        file = pd.read_csv('results/employees.csv')
+        if 1 < update_id < len(file['Name']):
+            file.loc[update_id, 'Name'] = check_employee_info[0] \
+                if check_employee_info[0] != 'Неизвестно' else file.loc[update_id, 'Name']
+            file.loc[update_id, 'Phone'] = check_employee_info[1] \
+                if check_employee_info[1] != 'Неизвестно' else file.loc[update_id, 'Phone']
+            file.loc[update_id, 'Email'] = check_employee_info[2] \
+                if check_employee_info[2] != 'Неизвестно' else file.loc[update_id, 'Email']
+            file.loc[update_id, 'Age'] = check_employee_info[3] \
+                if check_employee_info[3] != 'Неизвестно' else file.loc[update_id, 'Age']
+            file.loc[update_id, 'Occupation'] = check_employee_info[4] \
+                if check_employee_info[4] != 'Неизвестно' else file.loc[update_id, 'Occupation']
+            file.loc[update_id, 'Nationality'] = check_employee_info[5] \
+                if check_employee_info[5] != 'Неизвестно' else file.loc[update_id, 'Nationality']
+            file.loc[update_id, 'University'] = check_employee_info[6] \
+                if check_employee_info[6] != 'Неизвестно' else file.loc[update_id, 'University']
+            file.loc[update_id, 'Work Experience'] = check_employee_info[7] \
+                if check_employee_info[7] != 'Неизвестно' else file.loc[update_id, 'Work Experience']
+            file.to_csv('results/employees.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
+
+    def delete(self):
+        delete_id = int(self.form_info['employee_id_delete']) - 1
+        file = pd.read_csv('results/employees.csv')
+        if 1 < delete_id < len(file['Name']):
+            file.drop(delete_id, inplace=True)
+            file.to_csv('results/employees.csv', index=False, mode='w')
+            return self.read_csv_to_html()
+        return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 from players import Players, UDPlayers
 from translate import Translate, UDTranslate
-from company import Company
-from books import Books
+from company import Company, UDCompany
+from books import Books, UDBooks
 
 project = Flask(__name__)
 
@@ -75,6 +75,18 @@ def company_employees():
         return render_template('answers/company/company_employees.html', result=Company.search(word))
 
 
+@project.route('/company_employees/delete', methods=['POST', 'GET'])
+def delete_employee():
+    employee_id = request.form.to_dict()
+    return render_template('answers/company/company_employees.html', result=UDCompany(employee_id).delete())
+
+
+@project.route('/company_employees/update', methods=['POST', 'GET'])
+def update_employee():
+    data = request.form.to_dict()
+    return render_template('answers/company/company_employees.html', result=UDCompany(data).update())
+
+
 @project.route('/books', methods=['POST', 'GET'])
 def books():
     if request.method == 'POST':
@@ -86,6 +98,18 @@ def books():
     if request.method == 'GET':
         word = request.args.get('search_books')
         return render_template('answers/books/books.html', result=Books.search(word))
+
+
+@project.route('/books/delete', methods=['POST', 'GET'])
+def delete_book():
+    book_id = request.form.to_dict()
+    return render_template('answers/books/books.html', result=UDBooks(book_id).delete())
+
+
+@project.route('/books/update', methods=['POST', 'GET'])
+def update_book():
+    data = request.form.to_dict()
+    return render_template('answers/books/books.html', result=UDBooks(data).update())
 
 
 @project.route('/help')
