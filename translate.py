@@ -26,7 +26,7 @@ class Translate:
             return 'Данное слово уже существует.'
 
     def read_csv(self) -> bool:
-        csv = pd.read_csv('results/words.csv')['Russian'].to_dict()
+        csv: dict = pd.read_csv('results/words.csv')['Russian'].to_dict()
         for index in csv:
             if self.word['word_translate'].capitalize() == csv[index]:
                 return False
@@ -55,14 +55,14 @@ class Translate:
     @staticmethod
     def search(word: str) -> str or list:
         if len(word.replace(r'\s+', '')) > 0:
-            result = []
+            result: list = []
             with open('results/words.csv') as words:
                 words_rows: list = [x.split('\n') for x in words.read().splitlines()[1:]]
                 words_pandas: list = pd.read_csv('results/words.csv')
                 for title in words_pandas:
                     for index, row in enumerate(words_pandas[title]):
                         if word in row:
-                            needed_row = ' ,'.join(words_rows[index]).split(',')
+                            needed_row: str = ' ,'.join(words_rows[index]).split(',')
                             result.append(needed_row)
                         continue
             return result if len(result) > 0 else 'Совпадений не найдено.'
@@ -74,9 +74,9 @@ class UDTranslate(Translate):
         super().__init__(word)
 
     def update(self):
-        update_id = int(self.word['word_translate_id_update']) - 1
-        word_english = self.word['word_translate_english']
-        word_french = self.word['word_translate_french']
+        update_id: int = int(self.word['word_translate_id_update']) - 1
+        word_english: str = self.word['word_translate_english']
+        word_french: str = self.word['word_translate_french']
         file = pd.read_csv('results/words.csv')
         if 1 < update_id < len(file['Russian']):
             file.loc[update_id, 'English'] = word_english \
@@ -88,7 +88,7 @@ class UDTranslate(Translate):
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
-        delete_id = int(self.word['word_translate_id_delete']) - 1
+        delete_id: int = int(self.word['word_translate_id_delete']) - 1
         file = pd.read_csv('results/words.csv')
         if 1 < delete_id < len(file['Russian']):
             file.drop(delete_id, inplace=True)

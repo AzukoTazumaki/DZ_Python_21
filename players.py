@@ -12,7 +12,7 @@ class Players:
 
     @staticmethod
     def parse_site():
-        result = []
+        result: list = []
         url: str = 'https://www.espn.com'
         response = requests.get(url + '/nba/teams')
         response_body = bs(response.content, 'html.parser')
@@ -38,9 +38,9 @@ class Players:
                 player_team: str = ' '.join(
                     [
                         team.text for team in bs(requests.get(url + href).content, 'html.parser')
-                    .find('main', {'id': 'fittPageContainer'})
-                    .find('h1', {'class': 'ClubhouseHeader__Name'})
-                    .find_all('span', {'class': 'db'})
+                        .find('main', {'id': 'fittPageContainer'})
+                        .find('h1', {'class': 'ClubhouseHeader__Name'})
+                        .find_all('span', {'class': 'db'})
                     ]
                 )
                 player_info_unknown: str = 'Неизвестно'
@@ -54,35 +54,34 @@ class Players:
                     player_name, player_role, player_age, player_height,
                     player_weight, player_team, player_education, player_salary
                 ]
-                print(player_info_list)
                 result.append(player_info_list)
         df_a = pd.DataFrame(result, columns=columns)
         df_a.to_csv('results/players.csv', mode='w', index=False)
 
     def add_player_to_csv(self):
-        full_name = \
+        full_name: str = \
             self.form_info['player_last_name'].capitalize() + ' ' + \
             self.form_info['player_first_name'].capitalize() + ' ' + \
             self.form_info['player_surname'].capitalize()
-        position = self.form_info['player_role'].upper()
-        age = self.form_info['player_age']
-        height = self.form_info['player_height']
-        weight = self.form_info['player_weight']
-        team = self.form_info['player_team']
-        education = self.form_info['player_education']
-        salary = self.form_info['player_salary']
+        position: str = self.form_info['player_role'].upper()
+        age: str = self.form_info['player_age']
+        height: str = self.form_info['player_height']
+        weight: str = self.form_info['player_weight']
+        team: str = self.form_info['player_team']
+        education: str = self.form_info['player_education']
+        salary: str = self.form_info['player_salary']
         columns: list = ['Name', 'Position', 'Age', 'Height', 'Weight', 'Team', 'College', 'Salary']
         new_player_info: list = [
             full_name, position, age, height,
             weight, team, education, salary
         ]
-        checked_player_info = self.check_unknown_fields(new_player_info)
+        checked_player_info: list = self.check_unknown_fields(new_player_info)
         df_a = pd.DataFrame([checked_player_info], columns=columns)
         df_a.to_csv('results/players.csv', mode='a', index=False, header=False)
         return self.read_csv_to_html()
 
     @staticmethod
-    def check_unknown_fields(player_info: list):
+    def check_unknown_fields(player_info: list) -> list:
         for index, field in enumerate(player_info):
             if len(re.sub(r'\s+', '', field)) == 0:
                 player_info[index] = 'Неизвестно'
@@ -92,13 +91,13 @@ class Players:
     @staticmethod
     def read_csv_to_html() -> list:
         file = open('results/players.csv', 'r')
-        lines = [x.split(',') for x in file.read().splitlines()[1:]]
+        lines: list = [x.split(',') for x in file.read().splitlines()[1:]]
         return lines
 
     @staticmethod
     def search(word: str) -> str or list:
         if len(re.sub(r'\s+', '', word)) > 0:
-            result = []
+            result: list = []
             with open('results/players.csv') as players:
                 players_rows: list = [x.split('\n') for x in players.read().splitlines()[1:]]
                 players_pandas: list = pd.read_csv('results/players.csv')
@@ -106,7 +105,7 @@ class Players:
                     if title not in ['Position', 'Age', 'Height', 'Weight', 'Salary']:
                         for index, row in enumerate(players_pandas[title]):
                             if word in str(row):
-                                needed_row = ' ,'.join(players_rows[index]).split(',')
+                                needed_row: str = ' ,'.join(players_rows[index]).split(',')
                                 result.append(needed_row)
                             continue
                     continue
@@ -119,23 +118,23 @@ class UDPlayers(Players):
         super().__init__(form_info)
 
     def update(self):
-        update_id = int(self.form_info['player_id_update']) - 1
-        full_name = \
+        update_id: int = int(self.form_info['player_id_update']) - 1
+        full_name: str = \
             self.form_info['player_first_name'].capitalize() + ' ' + \
             self.form_info['player_last_name'].capitalize() + ' ' + \
             self.form_info['player_surname'].capitalize()
-        position = self.form_info['player_role'].capitalize()
-        age = self.form_info['player_age']
-        height = self.form_info['player_height']
-        weight = self.form_info['player_weight']
-        team = self.form_info['player_team']
-        education = self.form_info['player_education']
-        salary = self.form_info['player_salary']
+        position: str = self.form_info['player_role'].capitalize()
+        age: str = self.form_info['player_age']
+        height: str = self.form_info['player_height']
+        weight: str = self.form_info['player_weight']
+        team: str = self.form_info['player_team']
+        education: str = self.form_info['player_education']
+        salary: str = self.form_info['player_salary']
         player_new_info: list = [
             full_name, position, age, height,
             weight, team, education, salary
         ]
-        checked_player_new_info = self.check_unknown_fields(player_new_info)
+        checked_player_new_info: list = self.check_unknown_fields(player_new_info)
         file = pd.read_csv('results/players.csv')
         if 1 < update_id < len(file['Name']):
             file.loc[update_id, 'Name'] = checked_player_new_info[0] \
@@ -159,14 +158,10 @@ class UDPlayers(Players):
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
-        delete_id = int(self.form_info['player_id_delete']) - 1
+        delete_id: int = int(self.form_info['player_id_delete']) - 1
         file = pd.read_csv('results/players.csv')
         if 1 < delete_id < len(file['Name']):
             file.drop(delete_id, inplace=True)
             file.to_csv('results/players.csv', index=False, mode='w')
             return self.read_csv_to_html()
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
-
-
-if __name__ == '__main__':
-    Players.parse_site()

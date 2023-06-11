@@ -221,7 +221,7 @@ import csv
 #         for row in result:
 #             csv.writer(players_writer).writerow(row)
 
-delete_id = 0
+# delete_id = 0
 # table = pd.read_csv('results/players.csv')
 # table = pd.read_csv('draft.csv')
 # table.drop(delete_id, inplace=True)
@@ -238,6 +238,11 @@ delete_id = 0
 # # df.iloc[delete_id] = player_new_info
 # print(df.iloc[delete_id])
 
-field = 'z  '
-a = re.sub(r'\s+', '', field)
-print(f"_{a}_")
+# field = 'z  '
+# a = re.sub(r'\s+', '', field)
+# print(f"_{a}_")
+
+# gender: str = choice([Gender.FEMALE, Gender.MALE])
+# print(type(gender))
+
+# print(type(pd))

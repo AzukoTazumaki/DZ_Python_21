@@ -6,12 +6,12 @@ import re
 
 class Books:
     def __init__(self, form_info: dict):
-        self.form_info = form_info
+        self.form_info: dict = form_info
 
     @staticmethod
     def parse_site():
-        url = 'https://libcat.ru/'
-        columns = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
+        url: str = 'https://libcat.ru/'
+        columns: list = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
         needed_hrefs: list = [
             link['href'] for link in bs(requests.get(url).content, 'html.parser')
             .find_all('a', {'class': 'tag'})
@@ -19,7 +19,7 @@ class Books:
         df_w = pd.DataFrame([columns], columns=columns)
         df_w.to_csv('results/books.csv', mode='w', index=False, header=False)
         for href in needed_hrefs:
-            links = set([
+            links: set = set([
                 link['href'] for link in bs(requests.get(url + href).content, 'html.parser')
                 .find('div', {'id': 'dle-content'})
                 .find_all('a') if 'page' not in link['href']
@@ -27,14 +27,14 @@ class Books:
             for link in links:
                 try:
                     book_page = bs(requests.get(link).content, 'html.parser')
-                    title_of_book = book_page.find('div', attrs={'itemprop': 'name'}).text
-                    author_of_book = book_page.find('a', attrs={'itemprop': 'author'}).text
-                    genre_of_book = book_page.find('a', attrs={'itemprop': 'genre'}).text
-                    year_of_book = book_page.find('div', attrs={'itemprop': 'copyrightYear'}).text
-                    publisher_of_book = book_page.find('div', attrs={'itemprop': 'publisher'}).text
-                    summary_of_book = 'Неизвестно' if '' == book_page.find('div', attrs={'itemprop': 'about'}).text \
+                    title_of_book: str = book_page.find('div', attrs={'itemprop': 'name'}).text
+                    author_of_book: str = book_page.find('a', attrs={'itemprop': 'author'}).text
+                    genre_of_book: str = book_page.find('a', attrs={'itemprop': 'genre'}).text
+                    year_of_book: str = book_page.find('div', attrs={'itemprop': 'copyrightYear'}).text
+                    publisher_of_book: str = book_page.find('div', attrs={'itemprop': 'publisher'}).text
+                    summary_of_book: str = 'Неизвестно' if '' == book_page.find('div', attrs={'itemprop': 'about'}).text \
                         else book_page.find('div', attrs={'itemprop': 'about'}).text
-                    book_info = [
+                    book_info: list = [
                         title_of_book, author_of_book, genre_of_book,
                         year_of_book, publisher_of_book, summary_of_book
                     ]
@@ -52,31 +52,31 @@ class Books:
         return book_info
 
     def add_book_to_csv(self):
-        title = self.form_info['book_title']
-        author = self.form_info['book_author']
-        genre = self.form_info['book_genre']
-        year = self.form_info['book_year']
-        publisher = self.form_info['book_publisher']
-        summary = self.form_info['book_summary']
-        columns = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
+        title: str = self.form_info['book_title']
+        author: str = self.form_info['book_author']
+        genre: str = self.form_info['book_genre']
+        year: str = self.form_info['book_year']
+        publisher: str = self.form_info['book_publisher']
+        summary: str = self.form_info['book_summary']
+        columns: list = ['Title', 'Author', 'Genre', 'Year', 'Publisher', 'Summary']
         new_book_info: list = [
             title, author, genre,
             year, publisher, summary
         ]
-        checked_book_info = self.check_unknown_fields(new_book_info)
+        checked_book_info: list = self.check_unknown_fields(new_book_info)
         df_a = pd.DataFrame([checked_book_info], columns=columns)
         df_a.to_csv('results/books.csv', mode='a', index=False, header=False)
         return self.read_csv_to_html()
 
     @staticmethod
-    def read_csv_to_html() -> list:
+    def read_csv_to_html():
         books = pd.read_csv('results/books.csv')
         return books
 
     @staticmethod
     def search(word: str) -> str or dict:
         if len(word.replace(r'\s+', '')) > 0:
-            result = {
+            result: dict = {
                 'Title': [],
                 'Author': [],
                 'Genre': [],
@@ -107,18 +107,18 @@ class UDBooks(Books):
         super().__init__(form_info)
 
     def update(self):
-        update_id = int(self.form_info['book_id_update']) - 1
-        title = self.form_info['book_title']
-        author = self.form_info['book_author']
-        genre = self.form_info['book_genre']
-        year = self.form_info['book_year']
-        publisher = self.form_info['book_publisher']
-        summary = self.form_info['book_summary']
+        update_id: int = int(self.form_info['book_id_update']) - 1
+        title: str = self.form_info['book_title']
+        author: str = self.form_info['book_author']
+        genre: str = self.form_info['book_genre']
+        year: str = self.form_info['book_year']
+        publisher: str = self.form_info['book_publisher']
+        summary: str = self.form_info['book_summary']
         new_book_info: list = [
             title, author, genre,
             year, publisher, summary
         ]
-        checked_book_info = self.check_unknown_fields(new_book_info)
+        checked_book_info: list = self.check_unknown_fields(new_book_info)
         file = pd.read_csv('results/books.csv')
         if 1 < update_id < len(file['Title']):
             file.loc[update_id, 'Title'] = checked_book_info[0] \
@@ -138,13 +138,10 @@ class UDBooks(Books):
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
-        delete_id = int(self.form_info['book_id_delete']) - 1
+        delete_id: int = int(self.form_info['book_id_delete']) - 1
         file = pd.read_csv('results/books.csv')
         if 1 < delete_id < len(file['Title']):
             file.drop(delete_id, inplace=True)
             file.to_csv('results/books.csv', index=False, mode='w')
             return self.read_csv_to_html()
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
-
-if __name__ == '__main__':
-    Books.parse_site()

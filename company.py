@@ -8,12 +8,12 @@ import re
 
 class Company:
     def __init__(self, form_info: dict):
-        self.form_info = form_info
+        self.form_info: dict = form_info
 
     @staticmethod
     def auto_create_employees():
         person: Person = Person(locale=Locale.RU)
-        gender = choice([Gender.FEMALE, Gender.MALE])
+        gender: Gender = choice([Gender.FEMALE, Gender.MALE])
         columns: list = ['Name', 'Phone', 'Email', 'Age', 'Occupation', 'Nationality', 'University', 'Work Experience']
         employees_list: list = [
             {
@@ -84,7 +84,7 @@ class Company:
                     if title not in ['Phone', 'Email', 'Age', 'Work Experience']:
                         for index, row in enumerate(employees_pandas[title]):
                             if word in str(row):
-                                needed_row = ' ,'.join(employees_rows[index]).split(',')
+                                needed_row: str = ' ,'.join(employees_rows[index]).split(',')
                                 result.append(needed_row)
                             continue
                     continue
@@ -97,7 +97,7 @@ class UDCompany(Company):
         super().__init__(form_info)
 
     def update(self):
-        update_id = int(self.form_info['employee_id_update']) - 1
+        update_id: int = int(self.form_info['employee_id_update']) - 1
         full_name: str = \
             self.form_info['employee_first_name'].capitalize() + ' ' + \
             self.form_info['employee_last_name'].capitalize() + ' ' + \
@@ -137,14 +137,10 @@ class UDCompany(Company):
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
 
     def delete(self):
-        delete_id = int(self.form_info['employee_id_delete']) - 1
+        delete_id: int = int(self.form_info['employee_id_delete']) - 1
         file = pd.read_csv('results/employees.csv')
         if 1 < delete_id < len(file['Name']):
             file.drop(delete_id, inplace=True)
             file.to_csv('results/employees.csv', index=False, mode='w')
             return self.read_csv_to_html()
         return 'Введенный ID недопустим. Вы ввели ID за пределами границ таблицы.'
-
-
-if __name__ == '__main__':
-    Company.auto_create_employees()
