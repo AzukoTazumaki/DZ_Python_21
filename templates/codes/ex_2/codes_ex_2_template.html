@@ -1,57 +1,72 @@
+{% extends 'help.html' %}
+
 {% block codes_ex_2 %}
 
-<hr class="mt-3">
+<div class="offset-1 col-10">
 
-<h3>Задание 2. Переводчик.</h3>
+    <h1>Справка</h1>
+    <hr>
 
-<p>Были импортированы следующие библиотеки:</p>
+    <h2>Задание 2. Переводчик.</h2>
+    <hr>
+    <h3>Класс Translate</h3>
 
-<ul>
-    <li>translators;</li>
-    <li>PySpellChecker;</li>
-    <li>Pandas.</li>
-</ul>
+    {% block imports %}
+    {% include 'codes/ex_2/imports.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Инициализация класса <span class="title_method_span">Translate</span>.</h5>
+    {% block class_translate %}
+    {% include 'codes/ex_2/class_translate.html' %}
+    {% endblock %}
 
-{% block class_translate %}
-{% include 'codes/ex_2/class_translate.html' %}
-{% endblock %}
+    {% block check_spelling %}
+    {% include 'codes/ex_2/check_spelling.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">check_spelling()</span>.</h5>
+    {% block translate_method %}
+    {% include 'codes/ex_2/translate_method.html' %}
+    {% endblock %}
 
-{% block check_spelling %}
-{% include 'codes/ex_2/check_spelling.html' %}
-{% endblock %}
+    {% block read_csv %}
+    {% include 'codes/ex_2/read_csv.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">translate()</span>.</h5>
+    {% block to_csv %}
+    {% include 'codes/ex_2/to_csv.html' %}
+    {% endblock %}
 
-{% block translate_method %}
-{% include 'codes/ex_2/translate.html' %}
-{% endblock %}
+    {% block read_csv_to_html %}
+    {% include 'codes/ex_2/read_csv_to_html.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">read_csv()</span>.</h5>
+    {% block error %}
+    {% include 'codes/ex_2/error.html' %}
+    {% endblock %}
 
-{% block read_csv_ex_2 %}
-{% include 'codes/ex_2/read_csv.html' %}
-{% endblock %}
+    {% block search_words %}
+    {% include 'codes/ex_2/search_words.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">to_csv()</span>.</h5>
+    <h3 class="mt-4">Класс UDTranslate</h3>
 
-{% block to_csv_ex_2 %}
-{% include 'codes/ex_2/to_csv.html' %}
-{% endblock %}
+    {% block class_ud_translate %}
+    {% include 'codes/ex_2/class_ud_translate.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">read_csv_to_html()</span>.</h5>
+    {% block update_word %}
+    {% include 'codes/ex_2/update_word.html' %}
+    {% endblock %}
 
-{% block read_csv_to_html_ex_2 %}
-{% include 'codes/ex_2/read_csv_to_html.html' %}
-{% endblock %}
+    {% block delete_word %}
+    {% include 'codes/ex_2/delete_word.html' %}
+    {% endblock %}
 
-<h5 class="title_method mt-3">Метод <span class="title_method_span">error()</span>.</h5>
+</div>
 
-{% block error_method_ex_2 %}
-{% include 'codes/ex_2/error.html' %}
-{% endblock %}
+<div class="col-12 mt-5">
+    <div class="d-flex justify-content-center">
+        <a class="help_back" href="/help">Вернуться назад</a>
+    </div>
+</div>
 
 {% endblock %}

@@ -3,28 +3,30 @@
 {% block help %}
 <!-- ———————————————————————————— CONTAINER ———————————————————————————— -->
 <div class="container-fluid help_container">
+    <div class="row align-items-center justify-content-center">
+        
+        {% block help_links %}
+        {% endblock %}
+
+    </div>
+
     <div class="row">
+        <!-- ———————————————————————————— HELP EX_1 ———————————————————————————— -->
+        {% block codes_ex_1 %}
+        {% endblock %}
 
-        <!-- ———————————————————————————— HELP CONTENT ———————————————————————————— -->
-        <div class="offset-1 col-10">
+        <!-- ———————————————————————————— HELP EX_2 ———————————————————————————— -->
+        {% block codes_ex_2 %}
+        {% endblock %}
 
-            <!-- ———————————————————————————— HELP TITLE ———————————————————————————— -->
-            <h1>Справка</h1>
+        <!-- ———————————————————————————— HELP EX_3 ———————————————————————————— -->
+        {% block codes_ex_3 %}
+        {% endblock %}
 
-            <hr>
-
-            <!-- ———————————————————————————— HELP EX_1 ———————————————————————————— -->
-            {% block codes_ex_1 %}
-            {% include 'codes/ex_1/codes_ex_1_template.html' %}
-            {% endblock %}
-
-            <!-- ———————————————————————————— HELP EX_2 ———————————————————————————— -->
-            {% block codes_ex_2 %}
-            {% include 'codes/ex_2/codes_ex_2_template.html' %}
-            {% endblock %}
-
-        </div>
-
+        <!-- ———————————————————————————— HELP EX_4 ———————————————————————————— -->
+        {% block codes_ex_4 %}
+        {% endblock %}
     </div>
 </div>
 {% endblock %}
+

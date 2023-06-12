@@ -6,8 +6,8 @@ import re
 
 class Translate:
     def __init__(self, word: dict):
-        self.spell: SpellChecker = SpellChecker(language='ru')
-        self.translator: translators = translators
+        self.spell = SpellChecker(language='ru')
+        self.translator = translators
         self.word: dict = word
 
     def check_spelling(self):

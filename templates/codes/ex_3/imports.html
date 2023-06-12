@@ -1,0 +1,26 @@
+{% block imports %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-5">
+        <h5>Импорты</h5>
+        <hr>
+        <p class="mt-3">
+            Импортированы следующие библиотеки:
+            <ul>
+                <li><span class="help_translate">Mimesis</span> – для создания фиктивных данных</li>
+                <li><span class="help_translate">Random</span> – для рандомного выбора элеменов</li>
+                <li><span class="help_translate">Pandas</span> – для работы с csv-файлами</li>
+                <li><span class="help_translate">re</span> – для использования регулярных выражений</li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-7">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">mimesis</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">Person</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">mimesis.locales</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">Locale</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">mimesis.enums</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">Gender</span> 
+<span style="color: #cb4b16">from</span> <span style="color: #268bd2">random</span> <span style="color: #cb4b16">import</span> <span style="color: #657b83">choice</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">pandas</span> <span style="color: #859900">as</span> <span style="color: #268bd2">pd</span> 
+<span style="color: #cb4b16">import</span> <span style="color: #268bd2">re</span></pre></div>
+    </div>
+</div>
+{% endblock %}

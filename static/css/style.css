@@ -104,6 +104,66 @@ body {
     width: fit-content;
 }
 
+.help_title {
+    white-space: pre-wrap;
+}
+
+.card {
+    background: var(--palegoldenrod);
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.card img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card .card-body {
+    border-top: 2px solid var(--marsh);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 2px 5px var(--palegoldenrod);
+}
+
+.help_link {
+    text-decoration: none;
+    color: var(--palegoldenrod);
+    border: none;
+    background-color: var(--marsh);
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.help_link:hover {
+    background-color: #29483e;
+    text-shadow: var(--palegoldenrod-shadow);
+}
+
+.help_back {
+    text-decoration: none;
+    color: var(--marsh);
+    border: none;
+    background-color: var(--palegoldenrod);
+    padding: 10px 40px;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: .3s;
+}
+
+.help_back:hover {
+    transform: scale(1.1);
+    box-shadow: var(--palegoldenrod-shadow);
+    background-color: #c2bd8a;
+}
+
+.help_back:active {
+    transform: scale(1);
+}
+
 /* ————————————————————————————————————————————————— BLOCK WELCOME ————————————————————————————————————————————————— */
 
 

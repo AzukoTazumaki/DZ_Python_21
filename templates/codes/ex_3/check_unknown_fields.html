@@ -1,0 +1,22 @@
+{% block check_unknown_fields %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-5">
+        <h5>Метод проверки на пустоту</h5>
+        <hr>
+        <p class="mt-3">
+            Полностью аналогичен методу из задания с баскетболистами, за исключением 
+            названия переменных. Возвращает отформатированный список.
+        </p>
+    </div>
+    <div class="col-7">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #268bd2">@staticmethod</span> 
+<span style="color: #859900">def</span> <span style="color: #268bd2">check_unknown_fields</span><span style="color: #657b83">(employee_info:</span> <span style="color: #268bd2">list</span><span style="color: #657b83">)</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">list</span><span style="color: #657b83">:</span> 
+    <span style="color: #859900">for</span> <span style="color: #657b83">index,</span> <span style="color: #657b83">field</span> <span style="color: #859900">in</span> <span style="color: #268bd2">enumerate</span><span style="color: #657b83">(employee_info):</span> 
+        <span style="color: #859900">if</span> <span style="color: #268bd2">len</span><span style="color: #657b83">(re</span><span style="color: #93a1a1">.</span><span style="color: #657b83">sub(</span><span style="color: #2aa198">r&#39;\s+&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">field))</span> <span style="color: #93a1a1">==</span> <span style="color: #2aa198">0</span><span style="color: #657b83">:</span> 
+            <span style="color: #657b83">employee_info[index]</span> <span style="color: #93a1a1">=</span> <span style="color: #2aa198">&#39;Неизвестно&#39;</span> 
+        <span style="color: #859900">continue</span> 
+    <span style="color: #859900">return</span> <span style="color: #657b83">employee_info</span></pre></div>
+    </div>
+</div>
+{% endblock %}

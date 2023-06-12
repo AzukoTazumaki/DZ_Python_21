@@ -1,49 +1,64 @@
+{% extends 'help.html' %}
+
 {% block codes_ex_1 %}
 
-<h2>Задание 1. Баскетболисты.</h2>
-<hr>
-<h3>Класс Players</h3>
+<div class="offset-1 col-10">
 
-{% block imports %}
-{% include 'codes/ex_1/imports.html' %}
-{% endblock %}
+    <h1>Справка</h1>
+    <hr>
 
-{% block class_players %}
-{% include 'codes/ex_1/class_players.html' %}
-{% endblock %}
+    <h2>Задание 1. Баскетболисты.</h2>
+    <hr>
+    <h3>Класс Players</h3>
 
-{% block parse_site %}
-{% include 'codes/ex_1/parse_site.html' %}
-{% endblock %}
+    {% block imports %}
+    {% include 'codes/ex_1/imports.html' %}
+    {% endblock %}
 
-{% block add_player_to_csv %}
-{% include 'codes/ex_1/add_player_to_csv.html' %}
-{% endblock %}
+    {% block class_players %}
+    {% include 'codes/ex_1/class_players.html' %}
+    {% endblock %}
 
-{% block check_unknown_fields %}
-{% include 'codes/ex_1/check_unknown_fields.html' %}
-{% endblock %}
+    {% block parse_site %}
+    {% include 'codes/ex_1/parse_site.html' %}
+    {% endblock %}
 
-{% block read_csv_to_html %}
-{% include 'codes/ex_1/read_csv_to_html.html' %}
-{% endblock %}
+    {% block add_player_to_csv %}
+    {% include 'codes/ex_1/add_player_to_csv.html' %}
+    {% endblock %}
 
-{% block search_players %}
-{% include 'codes/ex_1/search_players.html' %}
-{% endblock %}
+    {% block check_unknown_fields %}
+    {% include 'codes/ex_1/check_unknown_fields.html' %}
+    {% endblock %}
 
-<h3 class="mt-4">Класс UDPlayers</h3>
+    {% block read_csv_to_html %}
+    {% include 'codes/ex_1/read_csv_to_html.html' %}
+    {% endblock %}
 
-{% block class_ud_players %}
-{% include 'codes/ex_1/class_ud_players.html' %}
-{% endblock %}
+    {% block search_players %}
+    {% include 'codes/ex_1/search_players.html' %}
+    {% endblock %}
 
-{% block update_player %}
-{% include 'codes/ex_1/update_player.html' %}
-{% endblock %}
+    <h3 class="mt-4">Класс UDPlayers</h3>
 
-{% block delete_player %}
-{% include 'codes/ex_1/delete_player.html' %}
-{% endblock %}
+    {% block class_ud_players %}
+    {% include 'codes/ex_1/class_ud_players.html' %}
+    {% endblock %}
+
+    {% block update_player %}
+    {% include 'codes/ex_1/update_player.html' %}
+    {% endblock %}
+
+    {% block delete_player %}
+    {% include 'codes/ex_1/delete_player.html' %}
+    {% endblock %}
+    
+</div>
+
+<div class="col-12 mt-5">
+    <div class="d-flex justify-content-center">
+        <a class="help_back" href="/help">Вернуться назад</a>
+    </div>
+</div>
 
 {% endblock %}

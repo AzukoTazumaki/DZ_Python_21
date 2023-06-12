@@ -1,0 +1,44 @@
+{% block search_employees %}
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-5">
+        <h5>Метод поиска</h5>
+        <hr>
+        <p class="mt-3">
+            Ничего нового, поиск во всех заданиях работает одинаково за исключением задания с книгами. 
+            В качестве параметра метод <span class="help_translate">search()</span> принимает 
+            слово из формы. Для начала делаем проверку на пустоту поля ввода. Если длина больше 0, 
+            тогда продолжаем, иначе возвращаем строку с ошибкой. При успешной проверке создаем пустой 
+            список <span class="help_translate">result</span>. Затем открываем файл двумя методами – 
+            при помощи обычного метода Python <span class="help_translate">open</span> и метода Pandas 
+            <span class="help_translate">pd.read_csv()</span>. Далее проходимся по шапке каждого столбца и 
+            проверяем, нет ли ее в списке шапок, которые не подходят для поиска. Если условие выполнено, циклом 
+            проходимся по каждому элементу столбца, проверяя построчно, нет ли запрошенного слова, и если слово 
+            найдено, то строкой по индексу в созданном списке <span class="help_translate">employees_rows</span> 
+            добавляется в ранее созданный список <span class="help_translate">result</span>. Если слово не 
+            найдено, продолжаем поиск по следующим строкам. При отсутствии слова в проходимой колонке продолжаем 
+            итерации по следующим колонкам. Если же и в этом случае слово не найдено, возвращаем строку с 
+            ошибкой. 
+        </p>
+    </div>
+    <div class="col-7">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #268bd2">@staticmethod</span> 
+<span style="color: #859900">def</span> <span style="color: #268bd2">search</span><span style="color: #657b83">(word:</span> <span style="color: #268bd2">str</span><span style="color: #657b83">)</span> <span style="color: #93a1a1">-&gt;</span> <span style="color: #268bd2">str</span> <span style="color: #859900">or</span> <span style="color: #268bd2">list</span><span style="color: #657b83">:</span> 
+    <span style="color: #859900">if</span> <span style="color: #268bd2">len</span><span style="color: #657b83">(word</span><span style="color: #93a1a1">.</span><span style="color: #657b83">replace(</span><span style="color: #2aa198">r&#39;\s+&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;&#39;</span><span style="color: #657b83">))</span> <span style="color: #93a1a1">&gt;</span> <span style="color: #2aa198">0</span><span style="color: #657b83">:</span> 
+        <span style="color: #657b83">result:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[]</span> 
+        <span style="color: #859900">with</span> <span style="color: #268bd2">open</span><span style="color: #657b83">(</span><span style="color: #2aa198">&#39;results/employees.csv&#39;</span><span style="color: #657b83">)</span> <span style="color: #859900">as</span> <span style="color: #657b83">employees:</span> 
+            <span style="color: #657b83">employees_rows:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">[x</span><span style="color: #93a1a1">.</span><span style="color: #657b83">split(</span><span style="color: #2aa198">&#39;\n&#39;</span><span style="color: #657b83">)</span> <span style="color: #859900">for</span> <span style="color: #657b83">x</span> <span style="color: #859900">in</span> <span style="color: #657b83">employees</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read()</span><span style="color: #93a1a1">.</span><span style="color: #657b83">splitlines()[</span><span style="color: #2aa198">1</span><span style="color: #657b83">:]]</span> 
+            <span style="color: #657b83">employees_pandas:</span> <span style="color: #268bd2">list</span> <span style="color: #93a1a1">=</span> <span style="color: #657b83">pd</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv(</span><span style="color: #2aa198">&#39;results/employees.csv&#39;</span><span style="color: #657b83">)</span> 
+            <span style="color: #859900">for</span> <span style="color: #657b83">title</span> <span style="color: #859900">in</span> <span style="color: #657b83">employees_pandas:</span> 
+                <span style="color: #859900">if</span> <span style="color: #657b83">title</span> <span style="color: #859900">not</span> <span style="color: #859900">in</span> <span style="color: #657b83">[</span><span style="color: #2aa198">&#39;Phone&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Email&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Age&#39;</span><span style="color: #657b83">,</span> <span style="color: #2aa198">&#39;Work Experience&#39;</span><span style="color: #657b83">]:</span> 
+                    <span style="color: #859900">for</span> <span style="color: #657b83">index,</span> <span style="color: #657b83">row</span> <span style="color: #859900">in</span> <span style="color: #268bd2">enumerate</span><span style="color: #657b83">(employees_pandas[title]):</span> 
+                        <span style="color: #859900">if</span> <span style="color: #657b83">word</span> <span style="color: #859900">in</span> <span style="color: #268bd2">str</span><span style="color: #657b83">(row):</span> 
+                            <span style="color: #657b83">needed_row:</span> <span style="color: #268bd2">str</span> <span style="color: #93a1a1">=</span> <span style="color: #2aa198">&#39; ,&#39;</span><span style="color: #93a1a1">.</span><span style="color: #657b83">join(employees_rows[index])</span><span style="color: #93a1a1">.</span><span style="color: #657b83">split(</span><span style="color: #2aa198">&#39;,&#39;</span><span style="color: #657b83">)</span> 
+                            <span style="color: #657b83">result</span><span style="color: #93a1a1">.</span><span style="color: #657b83">append(needed_row)</span> 
+                        <span style="color: #859900">continue</span> 
+                <span style="color: #859900">continue</span> 
+        <span style="color: #859900">return</span> <span style="color: #657b83">result</span> <span style="color: #859900">if</span> <span style="color: #268bd2">len</span><span style="color: #657b83">(result)</span> <span style="color: #93a1a1">&gt;</span> <span style="color: #2aa198">0</span> <span style="color: #859900">else</span> <span style="color: #2aa198">&#39;Совпадений не найдено.&#39;</span> 
+    <span style="color: #859900">return</span> <span style="color: #2aa198">&#39;Вы ничего не ввели, чтобы искать&#39;</span></pre></div>    
+    </div>
+</div>
+{% endblock %}

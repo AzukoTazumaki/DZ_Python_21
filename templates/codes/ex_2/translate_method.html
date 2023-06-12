@@ -1,0 +1,35 @@
+{% block translate_method %}
+
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-5">
+        <h5>Метод перевода</h5>
+        <hr>
+        <p class="mt-3">
+            В методе <span class="help_translate">translate()</span> вначале проверяется 
+            условие в виде вызова метода <span class="help_translate">read_csv()</span>, 
+            который вовзвращает либо True, либо False. Если условие выполнено, то вызывается 
+            метод <span class="help_translate">to_csv()</span>, куда в качестве параметров
+            передается список из трех элементов, у каждого из которых первый символ переводится 
+            в верхний регистр (сделано для более красивого вывода в HTML). Первым элементом 
+            идет слово на русском языке, введенное, пользователем, следующими двумя элементами
+            идут переводы слова на английский и французский языки с помощью модуля <span
+            class="help_translate">translators</span>. Если условие не выполнено, возвращается 
+            сообщение о том, что слово, введенное пользователем, уже существует в базе.
+        </p>
+    </div>
+    <div class="col-7">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #859900">def</span> <span style="color: #268bd2">translate</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">read_csv():</span> 
+        <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">to_csv([</span> 
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word[</span><span style="color: #2aa198">&#39;word_translate&#39;</span><span style="color: #657b83">]</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize(),</span> 
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate_text(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word[</span><span style="color: #2aa198">&#39;word_translate&#39;</span><span style="color: #657b83">],</span> <span style="color: #657b83">from_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;ru&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">to_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;en&#39;</span><span style="color: #657b83">)</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize(),</span> 
+            <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translator</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate_text(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word[</span><span style="color: #2aa198">&#39;word_translate&#39;</span><span style="color: #657b83">],</span> <span style="color: #657b83">from_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;ru&#39;</span><span style="color: #657b83">,</span> <span style="color: #657b83">to_language</span><span style="color: #93a1a1">=</span><span style="color: #2aa198">&#39;fr&#39;</span><span style="color: #657b83">)</span><span style="color: #93a1a1">.</span><span style="color: #657b83">capitalize()</span> 
+        <span style="color: #657b83">])</span> 
+    <span style="color: #859900">else</span><span style="color: #657b83">:</span> 
+        <span style="color: #859900">return</span> <span style="color: #2aa198">&#39;Данное слово уже существует.&#39;</span></pre>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

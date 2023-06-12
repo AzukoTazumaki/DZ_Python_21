@@ -1,17 +1,25 @@
 {% block check_spelling %}
-<p class="mt-3">
-    Вызывается метод <span class="help_translate">check_spelling()</span>, который 
-    с помощью модуля PySpellChecker проверяет правильность ввода самого слова. Если 
-    условие выполнено, вызывается метод перевода – <span class="help_translate">
-    translate()</span>, иначе вызывается метод <span class="help_translate">error()
-    </span>.
-</p>
-
-<div class="highlight"
-    style="border-radius: 8px; background: #fdf6e3; border: 1px solid grey;padding: 15px">
-    <pre style="line-height: 125%;"><span></span><span style="color: #859900">def</span> <span style="color: #268bd2">check_spelling</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
-    <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span><span style="color: #93a1a1">.</span><span style="color: #657b83">correction(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word)</span> <span style="color: #93a1a1">==</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word:</span> 
+<div class="row d-flex align-items-center justify-content-between code_description mt-4">
+    <div class="col-6">
+        <h5>Метод проверки слова</h5>
+        <hr>
+        <p class="mt-3">
+            Вызывается метод <span class="help_translate">check_spelling()</span>, который 
+            с помощью модуля <span class="help_translate">PySpellChecker</span> проверяет 
+            правильность ввода самого слова. Если 
+            условие выполнено, вызывается метод перевода – <span class="help_translate">
+            translate()</span>, иначе вызывается метод <span class="help_translate">error()
+            </span>.
+        </p>
+    </div>
+    <div class="col-6">
+        <div class="highlight" style="background: #fdf6e3; border-radius: 8px;border: 1px solid grey;padding: 15px"><pre style="line-height: 125%;"><span></span>
+<span style="color: #859900">def</span> <span style="color: #268bd2">check_spelling</span><span style="color: #657b83">(</span><span style="color: #268bd2">self</span><span style="color: #657b83">):</span> 
+    <span style="color: #859900">if</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">spell</span><span style="color: #93a1a1">.</span><span style="color: #657b83">correction(</span><span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word[</span><span style="color: #2aa198">&#39;word_translate&#39;</span><span style="color: #657b83">])</span> <span style="color: #93a1a1">==</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">word[</span><span style="color: #2aa198">&#39;word_translate&#39;</span><span style="color: #657b83">]:</span> 
         <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">translate()</span> 
     <span style="color: #859900">return</span> <span style="color: #268bd2">self</span><span style="color: #93a1a1">.</span><span style="color: #657b83">error()</span></pre>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

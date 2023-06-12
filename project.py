@@ -113,7 +113,27 @@ def update_book():
 
 @project.route('/help')
 def help_page():
-    return render_template('help.html')
+    return render_template('codes/help_links.html')
+
+
+@project.route('/help_players')
+def help_ex_1():
+    return render_template('codes/ex_1/codes_ex_1_template.html')
+
+
+@project.route('/help_translate')
+def help_ex_2():
+    return render_template('codes/ex_2/codes_ex_2_template.html')
+
+
+@project.route('/help_company')
+def help_ex_3():
+    return render_template('codes/ex_3/codes_ex_3_template.html')
+
+
+@project.route('/help_books')
+def help_ex_4():
+    return render_template('codes/ex_4/codes_ex_4_template.html')
 
 
 if __name__ == '__main__':

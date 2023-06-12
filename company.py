@@ -12,8 +12,8 @@ class Company:
 
     @staticmethod
     def auto_create_employees():
-        person: Person = Person(locale=Locale.RU)
-        gender: Gender = choice([Gender.FEMALE, Gender.MALE])
+        person = Person(locale=Locale.RU)
+        gender = choice([Gender.FEMALE, Gender.MALE])
         columns: list = ['Name', 'Phone', 'Email', 'Age', 'Occupation', 'Nationality', 'University', 'Work Experience']
         employees_list: list = [
             {
