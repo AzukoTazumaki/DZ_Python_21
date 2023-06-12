@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from werkzeug.exceptions import BadRequest
 from players import Players, UDPlayers
 from translate import Translate, UDTranslate
 from company import Company, UDCompany
@@ -134,6 +135,16 @@ def help_ex_3():
 @project.route('/help_books')
 def help_ex_4():
     return render_template('codes/ex_4/codes_ex_4_template.html')
+
+
+@project.errorhandler(BadRequest)
+def bad_request(e):
+    return render_template('errors/bad_request.html'), 400
+
+
+@project.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
 
 
 if __name__ == '__main__':
